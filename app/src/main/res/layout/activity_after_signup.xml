@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AfterSignupActivity">
+    tools:context=".UI.AfterSignupActivity">
 
     <TextView
         android:id="@+id/heading"
@@ -30,7 +30,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/heading"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/notification_ic" />
+        app:srcCompat="@drawable/ic_notification" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -41,7 +41,7 @@
         app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/trans_ic" />
+        app:srcCompat="@drawable/ic_trans" />
 
     <LinearLayout
         android:id="@+id/linearLayout6"
@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/plus_small_ic" />
+                app:srcCompat="@drawable/ic_plus_small" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -166,7 +166,7 @@
             android:id="@+id/imageView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/call_ic" />
+            app:srcCompat="@drawable/ic_call" />
 
         <TextView
             android:id="@+id/textView13"

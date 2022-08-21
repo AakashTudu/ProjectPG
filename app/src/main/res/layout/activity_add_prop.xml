@@ -30,7 +30,7 @@
         app:layout_constraintHorizontal_bias="0.235"
         app:layout_constraintStart_toEndOf="@+id/heading"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/notification_ic" />
+        app:srcCompat="@drawable/ic_notification" />
 
     <LinearLayout
         android:id="@+id/linearLayout6"

@@ -1,4 +1,4 @@
-package com.example.hostel;
+package com.example.hostel.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.hostel.R;
 
 public class SignUpOneActivity extends AppCompatActivity {
 

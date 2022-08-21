@@ -24,7 +24,7 @@
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_ic" />
+        app:srcCompat="@drawable/ic_back" />
 
     <ImageView
         android:id="@+id/textView5"
@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/state_ic" />
+            android:src="@drawable/ic_state" />
 
         <EditText
             android:id="@+id/state"
@@ -107,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/country_ic" />
+            android:src="@drawable/ic_country" />
 
         <EditText
             android:id="@+id/country"

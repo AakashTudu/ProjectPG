@@ -1,32 +1,27 @@
-package com.example.hostel;
+package com.example.hostel.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 
-public class AddPropActivity extends AppCompatActivity {
+import com.example.hostel.R;
 
-    Button button;
+public class DashboardActivity extends AppCompatActivity {
 
     Spinner spinner;
-    String[] months = {"Select Property Type", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-
+    String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_prop);
-
+        setContentView(R.layout.activity_dashboard);
         spinner = findViewById(R.id.spinner);
-        button = findViewById(R.id.button);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddPropActivity.this, android.R.layout.simple_spinner_item, months);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(DashboardActivity.this, android.R.layout.simple_spinner_item, months);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
@@ -42,12 +37,5 @@ public class AddPropActivity extends AppCompatActivity {
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), TotalFloorsActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }

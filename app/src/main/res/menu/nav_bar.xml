@@ -3,7 +3,7 @@
 
     <item android:title="Dashboard"
         android:id="@+id/dashboard"
-        android:icon="@drawable/bn_dash_icon"/>
+        android:icon="@drawable/ic_bn_dash"/>
 
     <item android:title="Manage"
         android:id="@+id/manage"

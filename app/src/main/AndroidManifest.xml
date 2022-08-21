@@ -16,13 +16,17 @@
         android:theme="@style/Theme.Hostel"
         tools:targetApi="31">
         <activity
-            android:name=".TotalFloorsActivity"
+            android:name=".UI.TotalRoomsActivity"
             android:exported="false" />
         <activity
-            android:name=".AddPropActivity"
+            android:name=".UI.TotalFloorsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".UI.AddPropActivity"
             android:exported="false" />
         <activity
-            android:name=".AfterSignupActivity"
+            android:name=".UI.AfterSignupActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,22 +35,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DashboardActivity"
+            android:name=".UI.DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".SignInOtpActivity"
+            android:name=".UI.SignInOtpActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpThreeActivity"
+            android:name=".UI.SignUpThreeActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpTwoActivity"
+            android:name=".UI.SignUpTwoActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpOneActivity"
+            android:name=".UI.SignUpOneActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".UI.LoginActivity"
             android:exported="false" />
     </application>
 
