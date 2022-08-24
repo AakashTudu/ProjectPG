@@ -13,11 +13,11 @@
         android:padding="13dp">
 
         <TextView
-            android:id="@+id/tv_total_floors"
+            android:id="@+id/tv_total_rooms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Total Floors"
+            android:text="Total Rooms"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
@@ -44,8 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_below="@id/rl_1"
-        android:layout_marginTop="0.5dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="0.5dp"
         android:layout_marginEnd="10dp"
         android:background="#03A9F4" />
 
@@ -56,18 +56,47 @@
         android:layout_below="@+id/lb_1"
         android:layout_centerHorizontal="true"
         android:padding="20dp"
-        android:text="How many floor are there?"
+        android:text="How many Rooms are there?"
         android:textColor="@color/black"
         android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/rl_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_how_many">
+
+        <TextView
+            android:id="@+id/tv_floor"
+            android:layout_width="60dp"
+            android:layout_height="36dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="70dp"
+            android:gravity="center"
+            android:text="Rooms"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_toStartOf="@id/tv_floor"
+            android:gravity="center"
+            android:text="Floors"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/linearLayout1"
-        android:layout_below="@id/tv_how_many"
+        android:layout_below="@id/rl_2"
         android:overScrollMode="never"
-        tools:listitem="@layout/layout_floor_item" />
+        tools:listitem="@layout/layout_room_item" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -77,17 +106,35 @@
         android:gravity="center"
         android:orientation="vertical">
 
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_add"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            app:strokeColor="@color/black"
-            android:text="Add Floor"
-            android:textAllCaps="false"/>
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_total_room_quantity"
+                android:layout_width="60dp"
+                android:layout_height="36dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="70dp"
+                android:layout_marginEnd="70dp"
+                android:background="@drawable/round_corner"
+                android:elevation="0dp"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:layout_toStartOf="@id/tv_total_room_quantity"
+                android:gravity="center"
+                android:text="Total Rooms"
+                android:textColor="@color/black" />
+
+        </RelativeLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_continue"
@@ -95,8 +142,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="@color/black"
             android:text="Continue"
             android:textAllCaps="false" />
@@ -114,12 +161,11 @@
             android:id="@+id/bottom_nav_bar"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            app:menu="@menu/nav_bar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/nav_bar" />
     </LinearLayout>
-
 
 
 </RelativeLayout>

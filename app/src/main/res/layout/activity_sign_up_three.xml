@@ -25,7 +25,7 @@
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_ic" />
+        app:srcCompat="@drawable/ic_back" />
 
     <TextView
         android:id="@+id/textView6"
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/pan_ic" />
+            android:src="@drawable/ic_pan" />
 
         <EditText
             android:id="@+id/pan_no"
@@ -100,7 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/gst_ic" />
+            android:src="@drawable/ic_gst" />
 
         <EditText
             android:id="@+id/gstin_no"
