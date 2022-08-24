@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.SuccessActivity">
+
+    <ScrollView
+        android:id="@+id/success"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/content_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/download__2__1"
+                android:layout_width="225dp"
+                android:layout_height="225dp"
+                android:layout_marginTop="109dp"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="download__2__1"
+                android:src="@drawable/ic_tick" />
+
+            <TextView
+                android:id="@+id/congratulations_"
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:layout_marginTop="334dp"
+                android:gravity="center"
+                android:text="@string/congratulations__string"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/you_have_successfully_added_a_property_in_your_portfolio_"
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:layout_marginTop="375dp"
+                android:gravity="center"
+                android:text="@string/you_have_successfully_added_a_property_in_your_portfolio__string"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+
+            <RelativeLayout
+                android:id="@+id/button_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="495dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/solid_border"
+                    android:text="Continue"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
