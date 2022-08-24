@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Hostel</string>
+    <string name="congratulations__string">congratulations!</string>
+    <string name="you_have_successfully_added_a_property_in_your_portfolio__string">You have successfully added a property in your portfolio.</string>
 </resources>
