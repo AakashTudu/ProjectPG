@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignInOtpActivity">
+    tools:context=".UI.SignInOtpActivity">
 
     <ImageView
         android:id="@+id/imageButton"
@@ -14,7 +14,7 @@
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_back" />
+        app:srcCompat="@drawable/ic_arrow_back" />
 
     <ImageView
         android:id="@+id/imageView4"
