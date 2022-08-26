@@ -61,7 +61,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/solid_border"
+                    android:background="@drawable/solid_border_7_dp"
                     android:text="Continue"
                     android:textAllCaps="false"
                     android:textColor="@color/white" />
