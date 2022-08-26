@@ -74,7 +74,7 @@ public class TotalFloorsAdapter extends RecyclerView.Adapter<TotalFloorsAdapter.
 
             if (floor.getSelected()) {
                 btnFloor.setTextColor(Color.WHITE);
-                btnFloor.setBackgroundResource(R.drawable.solid_border);
+                btnFloor.setBackgroundResource(R.drawable.solid_border_7_dp);
             } else {
                 btnFloor.setTextColor(Color.BLACK);
                 btnFloor.setBackgroundResource(R.drawable.outlined_border);
@@ -86,7 +86,7 @@ public class TotalFloorsAdapter extends RecyclerView.Adapter<TotalFloorsAdapter.
             });
             btnPlus.setOnClickListener(view -> {
                 btnFloor.setTextColor(Color.WHITE);
-                btnFloor.setBackgroundResource(R.drawable.solid_border);
+                btnFloor.setBackgroundResource(R.drawable.solid_border_7_dp);
                 floor.setSelected(true);
             });
 

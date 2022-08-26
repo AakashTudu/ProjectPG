@@ -234,7 +234,7 @@
                         android:layout_below="@+id/tv_collected"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="5dp"
-                        android:text="Rs 5,45,900"
+                        android:text="Rs 45,900"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -291,7 +291,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
                         android:layout_marginBottom="5dp"
-                        android:background="@drawable/solid_border"
+                        android:background="@drawable/solid_border_7_dp"
                         android:text="Record"
                         android:textAllCaps="false"
                         android:textColor="@color/white" />
@@ -392,7 +392,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginStart="20dp"
                             android:layout_toEndOf="@+id/ll_people"
-                            android:background="@drawable/solid_border"
+                            android:background="@drawable/solid_border_7_dp"
                             android:text="Notify"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
@@ -415,9 +415,8 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <!--Record Payment Card-->
-            <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
+            <!--Today's Update Card-->
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -524,6 +523,7 @@
         android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        app:labelVisibilityMode="labeled"
         android:layout_alignParentBottom="true"
         app:menu="@menu/nav_bar" />
 
