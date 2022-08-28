@@ -16,11 +16,28 @@
         android:theme="@style/Theme.Hostel"
         tools:targetApi="31">
         <activity
+            android:name=".UI.SelectSharingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.SelectPropertyActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".UI.AddTenantActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.TenantsProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.TenantsActivity"
+            android:exported="true" />
+        <activity
             android:name=".UI.ExpenseManagementActivity"
             android:exported="false" />
         <activity
             android:name=".UI.ComplaintsActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".UI.UserPropertyActivity"
             android:exported="true" />
