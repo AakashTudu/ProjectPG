@@ -43,7 +43,7 @@
         android:id="@+id/btn_plus"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/ic_plus"
+        android:background="@drawable/ic_plus_custom"
         app:layout_constraintBottom_toBottomOf="@+id/btn_floor_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btn_floor_name" />
