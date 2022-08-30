@@ -28,6 +28,18 @@
             android:name=".UI.SelectPropertyActivity"
             android:exported="true" />
         <activity
+            android:name=".UI.ManageActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.RoomArrangementActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.SelectSharingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.SelectPropertyActivity"
+            android:exported="true" />
+        <activity
             android:name=".UI.AddTenantActivity"
             android:exported="true" />
         <activity
