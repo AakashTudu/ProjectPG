@@ -22,4 +22,5 @@
     <string name="title_activity_select_property">SelectPropertyActivity</string>
     <string name="asign_the_room_and_resources_to_your_tenant">Asign the room and resources to your tenant.</string>
     <string name="assign">Asign the room and resources to your tenant.</string>
+    <string name="verify_number_desc">We\'ve sent verification code to <b>9836859382</b></string>
 </resources>
