@@ -12,9 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.hostel.Listeners.OnGroupBtnClickListener;
 import com.example.hostel.Models.Floor;
 import com.example.hostel.R;
-import com.example.hostel.UI.TotalRoomsActivity;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -52,7 +49,7 @@ public class TotalRoomsAdapter extends RecyclerView.Adapter<TotalRoomsAdapter.Vi
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            btn_floor_name = itemView.findViewById(R.id.btn_floor_name);
+            btn_floor_name = itemView.findViewById(R.id.btn_name);
             btn_minus = itemView.findViewById(R.id.btn_minus);
             btn_plus = itemView.findViewById(R.id.btn_plus);
             tv_room_quantity = itemView.findViewById(R.id.tv_room_quantity);

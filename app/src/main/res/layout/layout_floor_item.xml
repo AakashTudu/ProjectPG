@@ -13,13 +13,14 @@
         android:id="@+id/btn_minus"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:visibility="invisible"
         android:background="@drawable/ic_minus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/btn_floor_name"
+    <TextView
+        android:id="@+id/btn_name"
         android:layout_width="0dp"
         android:layout_height="36dp"
         android:layout_marginStart="10dp"
@@ -41,10 +42,11 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_plus"
+        android:visibility="invisible"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/ic_plus_custom"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_floor_name"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_floor_name" />
+        app:layout_constraintTop_toTopOf="@+id/btn_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

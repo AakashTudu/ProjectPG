@@ -10,32 +10,16 @@
         android:id="@+id/rl_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="13dp">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/tv_total_floors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Total Floors"
+            android:text="Total Rooms"
             android:textColor="@color/black"
             android:textStyle="bold" />
-
-        <ru.nikartm.support.ImageBadgeView
-            android:id="@+id/ibv_icon2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="center"
-            android:padding="2dp"
-            android:src="@drawable/ic_notification"
-            app:ibv_badgeColor="#FF0000"
-            app:ibv_badgeLimitValue="false"
-            app:ibv_badgeTextColor="#ffffff"
-            app:ibv_badgeTextSize="10sp"
-            app:ibv_badgeTextStyle="bold"
-            app:ibv_badgeValue="3"
-            app:ibv_fixedBadgeRadius="10dp" />
 
     </RelativeLayout>
 
@@ -56,7 +40,7 @@
         android:layout_below="@+id/lb_1"
         android:layout_centerHorizontal="true"
         android:padding="20dp"
-        android:text="How many floor are there?"
+        android:text="How much Rooms Occupancies are there?"
         android:textColor="@color/black"
         android:textStyle="bold" />
 
@@ -76,18 +60,6 @@
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:orientation="vertical">
-
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_add"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            app:strokeColor="@color/black"
-            android:text="Add Floor"
-            android:textAllCaps="false"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_continue"

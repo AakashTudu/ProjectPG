@@ -16,14 +16,23 @@
         android:theme="@style/Theme.Hostel"
         tools:targetApi="31">
         <activity
+            android:name=".UI.TotalOccupancyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.OccupancyInputActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.SelectSharingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.SelectPropertyActivity"
+            android:exported="true" />
+        <activity
             android:name=".UI.ManageActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".UI.RoomArrangementActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".UI.SelectSharingActivity"
             android:exported="true" />

@@ -1,7 +1,5 @@
 package com.example.hostel.Models;
 
-import android.os.Parcelable;
-
 import java.io.Serializable;
 
 public class Floor implements Serializable {
@@ -13,6 +11,18 @@ public class Floor implements Serializable {
         isSelected = true;
         floorName = "";
         roomsQuantity = 0;
+    }
+
+    public Floor(Boolean isSelected, String floorName) {
+        this.isSelected = isSelected;
+        this.floorName = floorName;
+        roomsQuantity = 0;
+    }
+
+    public Floor(String floorName) {
+        this.floorName = floorName;
+        roomsQuantity = 0;
+        isSelected = true;
     }
 
     public Boolean getSelected() {
