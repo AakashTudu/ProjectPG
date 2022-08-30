@@ -50,4 +50,7 @@ dependencies {
 
     // Used for circular imageview
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // Used for OTP
+    implementation 'com.github.aabhasr1:OtpView:v1.1.2'
 }
