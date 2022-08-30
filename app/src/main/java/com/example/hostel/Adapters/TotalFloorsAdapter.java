@@ -6,7 +6,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
@@ -54,11 +54,11 @@ public class TotalFloorsAdapter extends RecyclerView.Adapter<TotalFloorsAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         AppCompatButton btnMinus, btnPlus;
-        EditText btnFloor;
+        TextView btnFloor;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            btnFloor = itemView.findViewById(R.id.btn_floor_name);
+            btnFloor = itemView.findViewById(R.id.btn_name);
             btnMinus = itemView.findViewById(R.id.btn_minus);
             btnPlus = itemView.findViewById(R.id.btn_plus);
         }
@@ -88,6 +88,21 @@ public class TotalFloorsAdapter extends RecyclerView.Adapter<TotalFloorsAdapter.
                 btnFloor.setTextColor(Color.WHITE);
                 btnFloor.setBackgroundResource(R.drawable.solid_border_7_dp);
                 floor.setSelected(true);
+            });
+
+            btnFloor.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (floor.getSelected()){
+                        btnFloor.setTextColor(Color.BLACK);
+                        btnFloor.setBackgroundResource(R.drawable.outlined_border);
+                        floor.setSelected(false);
+                    }else{
+                        btnFloor.setTextColor(Color.WHITE);
+                        btnFloor.setBackgroundResource(R.drawable.solid_border_7_dp);
+                        floor.setSelected(true);
+                    }
+                }
             });
 
             btnFloor.addTextChangedListener(new TextWatcher() {
