@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.hostel">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Hostel"
+        tools:targetApi="31">
+        <activity
+            android:name=".UI.SplashScreenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UI.EnterOtpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.EnterNumberActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".UI.ProfileActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".UI.TotalOccupancyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.OccupancyInputActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.SelectSharingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.SelectPropertyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.ManageActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.RoomArrangementActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.AddTenantActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.TenantsProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.TenantsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.ExpenseManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.ComplaintsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.UserPropertyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.PropertiesActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".UI.CollectionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.RecordPaymentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UI.SuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.TotalRoomsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.TotalFloorsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".UI.AddPropActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.AfterSignupActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".UI.DashboardActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

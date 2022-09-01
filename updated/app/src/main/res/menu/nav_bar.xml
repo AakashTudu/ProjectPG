@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Dashboard"
+        android:id="@+id/dashboard"
+        android:icon="@drawable/ic_bn_dash"/>
+
+    <item android:title="Manage"
+        android:id="@+id/manage"
+        android:icon="@drawable/bn_manage_icon"/>
+
+    <item android:title="Property"
+        android:id="@+id/property"
+        android:icon="@drawable/bn_prop_icon"/>
+
+    <item android:title="Transaction"
+        android:id="@+id/transaction"
+        android:icon="@drawable/bn_tran_icon"/>
+
+    <item android:title="Profile"
+        android:id="@+id/profile"
+        android:icon="@drawable/bn_prof_icon"/>
+</menu>
