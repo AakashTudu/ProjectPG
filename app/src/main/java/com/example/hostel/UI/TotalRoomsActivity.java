@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import com.example.hostel.Adapters.TotalRoomsAdapter;
@@ -33,17 +32,19 @@ public class TotalRoomsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_total_rooms);
         recyclerView = findViewById(R.id.recyclerView);
         tv_total_room_quantity = findViewById(R.id.tv_total_room_quantity);
-        btn_continue = findViewById(R.id.btn_continue);
+        btn_continue = findViewById(R.id.btn_save);
 
         hotelList = (ArrayList<Floor>) getIntent().getSerializableExtra("hotelList");
 
-        for (Iterator<Floor> iterator = hotelList.iterator(); iterator.hasNext(); ) {
+        recyclerView.setAdapter(adapter);
+/*        for (Iterator<Floor> iterator = hotelList.iterator(); iterator.hasNext(); ) {
             Floor floor = iterator.next();
             if (!floor.getSelected()) {
                 iterator.remove();
             }
-        }
-        adapter = new TotalRoomsAdapter(hotelList, new OnGroupBtnClickListener() {
+        }*/
+
+/*        adapter = new TotalRoomsAdapter(hotelList, new OnGroupBtnClickListener() {
             @Override
             public void addBtnClicked() {
                 totalRoomSum++;
@@ -56,8 +57,7 @@ public class TotalRoomsActivity extends AppCompatActivity {
                 tv_total_room_quantity.setText("" + totalRoomSum);
 
             }
-        });
-        recyclerView.setAdapter(adapter);
+        });*/
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         adapter.notifyDataSetChanged();

@@ -19,8 +19,8 @@ public class SelectPropertyActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
 
-
+/*
         recyclerView.setAdapter(new PropertiesAdapter());
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));*/
     }
 }

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvEditName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_edit_24"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="20dp"
+        android:text="Edit Name"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        />
+
+    <TextView
+        android:id="@+id/tvEditRoomBed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_bedroom_parent_24"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="20dp"
+        android:text="Edit Room and bed"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        />
+
+    <TextView
+        android:id="@+id/tvAddFloor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_floor"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="20dp"
+        android:text="Add Floor"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        />
+
+    <TextView
+        android:id="@+id/tvActivate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_activate"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="20dp"
+        android:text="Activate"
+        android:textColor="#000000"
+        android:textSize="16dp"
+
+        />
+
+    <TextView
+        android:id="@+id/tvDeactivate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_deactivate"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="20dp"
+        android:text="Deactivate"
+        android:textColor="#000000"
+        android:textSize="16dp"
+
+        />
+
+    <TextView
+        android:id="@+id/tvDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_delete"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:text="Delete"
+        android:textColor="#000000"
+        android:textSize="16dp" />
+
+</LinearLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvSingleOccupancy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_one"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="20dp"
+        android:text="Single Occupancy"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        />
+
+    <TextView
+        android:id="@+id/tvDoubleOccupancy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_two"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="20dp"
+        android:text="Double Occupancy"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        />
+
+
+    <TextView
+        android:id="@+id/tvTripleOccupancy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_three"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="20dp"
+        android:text="Triple Occupancy"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        />
+
+    <TextView
+        android:id="@+id/tvFourOccupancy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_four"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="20dp"
+        android:text="Four Occupancy"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        />
+
+    <TextView
+        android:id="@+id/tvFiveOccupancy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_five"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="20dp"
+        android:text="Five Occupancy"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        />
+
+    <TextView
+        android:id="@+id/tvSixOccupancy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_six"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:text="Six Occupancy"
+        android:textColor="#000000"
+        android:textSize="16dp" />
+
+
+</LinearLayout>

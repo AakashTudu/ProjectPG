@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.hostel.Fragments.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboardFragment_to_recordPaymentFragment"
+            app:destination="@id/recordPaymentFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_collectionFragment"
+            app:destination="@id/collectionFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_expenseFragment"
+            app:destination="@id/expenseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.hostel.Fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/manageFragment"
+        android:name="com.example.hostel.Fragments.ManageFragment"
+        android:label="fragment_manage"
+        tools:layout="@layout/fragment_manage" >
+        <action
+            android:id="@+id/action_manageFragment_to_tenantsFragment"
+            app:destination="@id/tenantsFragment" />
+        <action
+            android:id="@+id/action_manageFragment_to_bookingsFragment"
+            app:destination="@id/bookingsFragment" />
+        <action
+            android:id="@+id/action_manageFragment_to_complaintsFragment"
+            app:destination="@id/complaintsFragment" />
+        <action
+            android:id="@+id/action_manageFragment_to_roomVacanciesFragment"
+            app:destination="@id/roomVacanciesFragment" />
+        <action
+            android:id="@+id/action_manageFragment_to_expenseFragment"
+            app:destination="@id/expenseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/propertyFragment"
+        android:name="com.example.hostel.Fragments.PropertyFragment"
+        android:label="fragment_property"
+        tools:layout="@layout/fragment_property">
+        <action
+            android:id="@+id/action_propertyFragment_to_addPropertyFragment"
+            app:destination="@id/addPropertyFragment" />
+        <action
+            android:id="@+id/action_propertyFragment_to_totalFloorFragment"
+            app:destination="@id/totalFloorFragment" />
+        <action
+            android:id="@+id/action_propertyFragment_to_roomArrangementFragment"
+            app:destination="@id/roomArrangementFragment" />
+        <action
+            android:id="@+id/action_propertyFragment_to_userPropertyFragment"
+            app:destination="@id/userPropertyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionFragment"
+        android:name="com.example.hostel.Fragments.TransactionFragment"
+        android:label="fragment_transaction"
+        tools:layout="@layout/fragment_transaction" />
+    <fragment
+        android:id="@+id/recordPaymentFragment"
+        android:name="com.example.hostel.Fragments.RecordPaymentFragment"
+        android:label="fragment_record_payment"
+        tools:layout="@layout/fragment_record_payment"></fragment>
+    <fragment
+        android:id="@+id/collectionFragment"
+        android:name="com.example.hostel.Fragments.CollectionFragment"
+        android:label="fragment_collection"
+        tools:layout="@layout/fragment_collection"></fragment>
+    <fragment
+        android:id="@+id/addPropertyFragment"
+        android:name="com.example.hostel.Fragments.AddPropertyFragment"
+        android:label="fragment_add_property"
+        tools:layout="@layout/fragment_add_property">
+        <action
+            android:id="@+id/action_addPropertyFragment_to_totalFloorFragment"
+            app:destination="@id/totalFloorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/totalFloorFragment"
+        android:name="com.example.hostel.Fragments.TotalFloorFragment"
+        android:label="fragment_total_floor"
+        tools:layout="@layout/fragment_total_floor">
+        <action
+            android:id="@+id/action_totalFloorFragment_to_totalRoomsFragment"
+            app:destination="@id/totalRoomsFragment" />
+        <action
+            android:id="@+id/action_totalFloorFragment_to_propertyFragment"
+            app:destination="@id/propertyFragment"
+            app:popUpTo="@id/propertyFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_totalFloorFragment_to_roomArrangementFragment"
+            app:destination="@id/roomArrangementFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/totalRoomsFragment"
+        android:name="com.example.hostel.Fragments.TotalRoomsFragment"
+        android:label="fragment_total_rooms"
+        tools:layout="@layout/fragment_total_rooms">
+        <action
+            android:id="@+id/action_totalRoomsFragment_to_occupencyInputFragment"
+            app:destination="@id/occupencyInputFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/occupencyInputFragment"
+        android:name="com.example.hostel.Fragments.OccupancyInputFragment"
+        android:label="fragment_occupency_input"
+        tools:layout="@layout/fragment_occupancy_input">
+        <action
+            android:id="@+id/action_occupencyInputFragment_to_roomArrangementFragment"
+            app:destination="@id/roomArrangementFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomArrangementFragment"
+        android:name="com.example.hostel.Fragments.RoomArrangementFragment"
+        android:label="fragment_room_arrangement"
+        tools:layout="@layout/fragment_room_arrangement">
+        <action
+            android:id="@+id/action_roomArrangementFragment_to_addRoomFragment"
+            app:destination="@id/addRoomFragment" />
+        <action
+            android:id="@+id/action_roomArrangementFragment_to_propertyFragment"
+            app:destination="@id/propertyFragment"
+            app:popUpTo="@id/propertyFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_roomArrangementFragment_to_totalFloorFragment"
+            app:destination="@id/totalFloorFragment"
+            app:popUpTo="@id/totalFloorFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/addRoomFragment"
+        android:name="com.example.hostel.Fragments.AddRoomFragment"
+        android:label="fragment_add_room"
+        tools:layout="@layout/fragment_add_room">
+        <action
+            android:id="@+id/action_addRoomFragment_to_successFragment"
+            app:destination="@id/successFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="com.example.hostel.Fragments.SuccessFragment"
+        android:label="fragment_success"
+        tools:layout="@layout/fragment_success">
+        <action
+            android:id="@+id/action_successFragment_to_propertyFragment"
+            app:destination="@id/propertyFragment"
+            app:popUpTo="@id/propertyFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/userPropertyFragment"
+        android:name="com.example.hostel.Fragments.UserPropertyFragment"
+        android:label="fragment_user_property"
+        tools:layout="@layout/fragment_user_property" >
+        <action
+            android:id="@+id/action_userPropertyFragment_to_complaintsFragment"
+            app:destination="@id/complaintsFragment" />
+        <action
+            android:id="@+id/action_userPropertyFragment_to_tenantsFragment"
+            app:destination="@id/tenantsFragment" />
+        <action
+            android:id="@+id/action_userPropertyFragment_to_bookingsFragment"
+            app:destination="@id/bookingsFragment" />
+        <action
+            android:id="@+id/action_userPropertyFragment_to_roomArrangementFragment"
+            app:destination="@id/roomArrangementFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/complaintsFragment"
+        android:name="com.example.hostel.Fragments.ComplaintsFragment"
+        android:label="fragment_complaints"
+        tools:layout="@layout/fragment_complaints" />
+    <fragment
+        android:id="@+id/tenantsFragment"
+        android:name="com.example.hostel.Fragments.TenantsFragment"
+        android:label="fragment_tenants"
+        tools:layout="@layout/fragment_tenants" >
+        <action
+            android:id="@+id/action_tenantsFragment_to_tenantProfileFragment"
+            app:destination="@id/tenantProfileFragment" />
+        <action
+            android:id="@+id/action_tenantsFragment_to_addTenantFragment"
+            app:destination="@id/addTenantFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenantProfileFragment"
+        android:name="com.example.hostel.Fragments.TenantProfileFragment"
+        android:label="fragment_tenant_profile"
+        tools:layout="@layout/fragment_tenant_profile" />
+    <fragment
+        android:id="@+id/addTenantFragment"
+        android:name="com.example.hostel.Fragments.AddTenantFragment"
+        android:label="fragment_add_tenant"
+        tools:layout="@layout/fragment_add_tenant" >
+        <action
+            android:id="@+id/action_addTenantFragment_to_selectPropertyFragment"
+            app:destination="@id/selectPropertyFragment" />
+        <action
+            android:id="@+id/action_addTenantFragment_to_selectSharingFragment"
+            app:destination="@id/selectSharingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectPropertyFragment"
+        android:name="com.example.hostel.Fragments.SelectPropertyFragment"
+        android:label="fragment_select_property"
+        tools:layout="@layout/fragment_select_property" >
+        <action
+            android:id="@+id/action_selectPropertyFragment_to_selectSharingFragment"
+            app:destination="@id/selectSharingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectSharingFragment"
+        android:name="com.example.hostel.Fragments.SelectSharingFragment"
+        android:label="fragment_select_sharing"
+        tools:layout="@layout/fragment_select_sharing" >
+        <action
+            android:id="@+id/action_selectSharingFragment_to_congratulationTenantFragment"
+            app:destination="@id/congratulationTenantFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/congratulationTenantFragment"
+        android:name="com.example.hostel.Fragments.CongratulationTenantFragment"
+        android:label="fragment_congratulation_tenant"
+        tools:layout="@layout/fragment_congratulation_tenant" >
+        <action
+            android:id="@+id/action_congratulationTenantFragment_to_tenantsFragment"
+            app:destination="@id/tenantsFragment"
+            app:popUpTo="@id/tenantsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingsFragment"
+        android:name="com.example.hostel.Fragments.BookingsFragment"
+        android:label="fragment_bookings"
+        tools:layout="@layout/fragment_bookings" >
+        <action
+            android:id="@+id/action_bookingsFragment_to_bookingProfileFragment"
+            app:destination="@id/bookingProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingProfileFragment"
+        android:name="com.example.hostel.Fragments.BookingProfileFragment"
+        android:label="fragment_booking_profile"
+        tools:layout="@layout/fragment_booking_profile" />
+    <fragment
+        android:id="@+id/roomVacanciesFragment"
+        android:name="com.example.hostel.Fragments.RoomVacanciesFragment"
+        android:label="fragment_room_vacancies"
+        tools:layout="@layout/fragment_room_vacancies" >
+        <action
+            android:id="@+id/action_roomVacanciesFragment_to_roomArrangementFragment"
+            app:destination="@id/roomArrangementFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/expenseFragment"
+        android:name="com.example.hostel.Fragments.ExpenseFragment"
+        android:label="fragment_expense"
+        tools:layout="@layout/fragment_expense" >
+        <action
+            android:id="@+id/action_expenseFragment_to_addExpenseFragment"
+            app:destination="@id/addExpenseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addExpenseFragment"
+        android:name="com.example.hostel.Fragments.AddExpenseFragment"
+        android:label="fragment_add_expense"
+        tools:layout="@layout/fragment_add_expense" />
+</navigation>

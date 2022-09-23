@@ -23,7 +23,7 @@ public class TenantsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         et_search = findViewById(R.id.et_search);
 
-        recyclerView.setAdapter(new TenantsAdapter());
+        //recyclerView.setAdapter(new TenantsAdapter());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         et_search.setOnTouchListener((v, event) -> {

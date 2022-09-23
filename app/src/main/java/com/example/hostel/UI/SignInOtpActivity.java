@@ -116,9 +116,9 @@ public class SignInOtpActivity extends AppCompatActivity {
 
                                                         progressBar.setVisibility(View.INVISIBLE);
                                                         sub_otp.setVisibility(View.VISIBLE);
-                                                        Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+/*                                                        Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
                                                         startActivity(intent);
-                                                        finish();
+                                                        finish();*/
 
                                                     }else{
 

@@ -30,12 +30,12 @@ public class TotalFloorsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_total_floors);
-
+/*
         hotelList = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recyclerView);
         btn_add = findViewById(R.id.btn_add);
-        btn_continue = findViewById(R.id.btn_continue);
+        btn_continue = findViewById(R.id.btn_save);
 
         adapter = new TotalFloorsAdapter(hotelList);
 
@@ -50,11 +50,11 @@ public class TotalFloorsActivity extends AppCompatActivity {
             Intent intent = new Intent(TotalFloorsActivity.this, TotalRoomsActivity.class);
             intent.putExtra("hotelList", hotelList);
             startActivity(intent);
-        });
+        });*/
 
     }
 
-    private void showAddBottomSheetDialog() {
+/*    private void showAddBottomSheetDialog() {
 
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         bottomSheetDialog.setContentView(R.layout.bottom_sheet_add_floor);
@@ -74,5 +74,5 @@ public class TotalFloorsActivity extends AppCompatActivity {
         bottomSheetDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         bottomSheetDialog.getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
         bottomSheetDialog.show();
-    }
+    }*/
 }

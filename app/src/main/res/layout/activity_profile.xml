@@ -5,6 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/linearProgressIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminate="true"
+        />
+
     <RelativeLayout
         android:id="@+id/rl_1"
         android:layout_width="match_parent"
@@ -54,13 +62,18 @@
                 android:divider="@android:color/transparent"
                 android:dividerHeight="0.0px"
                 android:elevation="8dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="8dp"
                 app:cardPreventCornerOverlap="false">
 
                 <EditText
+                    android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
                     android:background="@drawable/outlined_border_10_dp_thin">
 
                 </EditText>
@@ -91,7 +104,10 @@
                 app:cardPreventCornerOverlap="false">
 
                 <EditText
+                    android:id="@+id/etEmailId"
                     android:layout_width="match_parent"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
                     android:layout_height="45dp"
                     android:background="@drawable/outlined_border_10_dp_thin">
 
@@ -123,6 +139,9 @@
                 app:cardPreventCornerOverlap="false">
 
                 <EditText
+                    android:id="@+id/etCity"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/outlined_border_10_dp_thin">
@@ -134,7 +153,7 @@
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_continue"
+            android:id="@+id/btnContinue"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_alignParentBottom="true"

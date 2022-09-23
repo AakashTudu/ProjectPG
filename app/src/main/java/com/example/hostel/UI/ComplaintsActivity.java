@@ -19,7 +19,7 @@ public class ComplaintsActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
 
-        recyclerView.setAdapter(new ComplaintsAdapter());
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+/*        recyclerView.setAdapter(new ComplaintsAdapter());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));*/
     }
 }

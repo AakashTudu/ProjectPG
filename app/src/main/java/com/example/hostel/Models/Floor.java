@@ -1,59 +1,55 @@
 package com.example.hostel.Models;
 
+import com.google.firebase.database.Exclude;
+
 import java.io.Serializable;
 
 public class Floor implements Serializable {
-    Boolean isSelected;
-    String floorName;
-    int roomsQuantity;
+
+    private String n; // used for floor name
+    private int roomsQuantity = 0;
+    private String reference;
 
     public Floor() {
-        isSelected = true;
-        floorName = "";
-        roomsQuantity = 0;
     }
 
-    public Floor(Boolean isSelected, String floorName) {
-        this.isSelected = isSelected;
-        this.floorName = floorName;
-        roomsQuantity = 0;
+    public Floor(String n) {
+        this.n = n;
     }
 
-    public Floor(String floorName) {
-        this.floorName = floorName;
-        roomsQuantity = 0;
-        isSelected = true;
+    public String getN() {
+        return n;
     }
 
-    public Boolean getSelected() {
-        return isSelected;
+    public void setN(String n) {
+        this.n = n;
     }
 
-    public void setSelected(Boolean selected) {
-        isSelected = selected;
-    }
 
-    public String getFloorName() {
-        return floorName;
-    }
-
-    public void setFloorName(String floorName) {
-        this.floorName = floorName;
-    }
-
+    @Exclude
     public int getRoomsQuantity() {
         return roomsQuantity;
     }
 
+    @Exclude
     public void setRoomsQuantity(int roomsQuantity) {
         this.roomsQuantity = roomsQuantity;
+    }
+
+    @Exclude
+    public String getReference() {
+        return reference;
+    }
+
+    @Exclude
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     @Override
     public String toString() {
         return "Floor{" +
-                "isSelected=" + isSelected +
-                ", floorName='" + floorName + '\'' +
+                "n='" + n + '\'' +
                 ", roomsQuantity=" + roomsQuantity +
                 '}';
     }

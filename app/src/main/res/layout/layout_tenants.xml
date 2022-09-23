@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -40,40 +41,52 @@
                     android:id="@+id/tv_pg_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Prasanth PG for Men’s"
                     android:textColor="@color/black"
                     android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:text="Prasanth PG for Men’s" />
 
                 <TextView
-                    android:id="@+id/tv_student_name"
+                    android:id="@+id/tvTenantName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_pg_name"
-                    android:text="Varun Kumar"
                     android:textColor="@color/black"
                     android:textSize="18dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:text="Varun Kumar" />
 
                 <ImageView
                     android:id="@+id/iv_open_door"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_student_name"
+                    android:layout_below="@+id/tvTenantName"
                     android:layout_marginTop="3dp"
                     android:src="@drawable/ic_open_door"
 
                     />
 
                 <TextView
+                    android:id="@+id/tvRoomQuantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_student_name"
+                    android:layout_below="@+id/tvTenantName"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="3dp"
                     android:layout_toRightOf="@+id/iv_open_door"
-                    android:text="502"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    tools:text="502" />
+
+                <TextView
+                    android:id="@+id/tvOccupancy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvTenantName"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_toRightOf="@+id/tvRoomQuantity"
+                    android:textColor="@color/black"
+                    tools:text="Single Occupancy" />
 
 
                 <ImageView

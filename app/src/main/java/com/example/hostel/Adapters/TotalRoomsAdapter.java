@@ -1,81 +1,90 @@
 package com.example.hostel.Adapters;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hostel.Listeners.OnGroupBtnClickListener;
 import com.example.hostel.Models.Floor;
-import com.example.hostel.R;
+import com.example.hostel.databinding.LayoutRoomItemBinding;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class TotalRoomsAdapter extends RecyclerView.Adapter<TotalRoomsAdapter.ViewHolder> {
+public class TotalRoomsAdapter extends FirebaseRecyclerAdapter<Floor, TotalRoomsAdapter.ViewHolder> {
 
-    ArrayList<Floor> floorList;
     OnGroupBtnClickListener onGroupBtnClickListener;
 
-    public TotalRoomsAdapter(ArrayList<Floor> floorList, OnGroupBtnClickListener onGroupBtnClickListener) {
-        this.floorList = floorList;
+    public TotalRoomsAdapter(@NonNull FirebaseRecyclerOptions<Floor> options, OnGroupBtnClickListener onGroupBtnClickListener) {
+        super(options);
         this.onGroupBtnClickListener = onGroupBtnClickListener;
+    }
+
+    @Override
+    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Floor floor) {
+        holder.bind(position, floor);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_room_item, parent, false);
-        return new ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(position);
-    }
-
-    @Override
-    public int getItemCount() {
-        return floorList.size();
+        LayoutRoomItemBinding binding = LayoutRoomItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new ViewHolder(binding);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView btn_floor_name,tv_room_quantity;
-        AppCompatButton btn_minus;
-        AppCompatButton btn_plus;
+        LayoutRoomItemBinding binding;
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            btn_floor_name = itemView.findViewById(R.id.btn_name);
-            btn_minus = itemView.findViewById(R.id.btn_minus);
-            btn_plus = itemView.findViewById(R.id.btn_plus);
-            tv_room_quantity = itemView.findViewById(R.id.tv_room_quantity);
+        public ViewHolder(@NonNull LayoutRoomItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
 
-        public void bind(int position) {
-            Floor floor = floorList.get(position);
-            btn_floor_name.setText(floor.getFloorName());
-            tv_room_quantity.setText("" + floor.getRoomsQuantity());
-            btn_minus.setOnClickListener(view -> {
+        public void bind(int position, Floor floor) {
+
+            binding.tvRoomQuantity.setText("" + floor.getRoomsQuantity());
+            binding.btnName.setText(floor.getN());
+
+            binding.btnMinus.setOnClickListener(view -> {
                 if (floor.getRoomsQuantity() > 0) {
                     int quantity = floor.getRoomsQuantity();
                     quantity = quantity - 1;
-                    tv_room_quantity.setText("" + quantity);
+                    binding.tvRoomQuantity.setText("" + quantity);
                     onGroupBtnClickListener.minusBtnCLicked();
                     floor.setRoomsQuantity(quantity);
                 }
             });
 
-            btn_plus.setOnClickListener(view -> {
+            binding.btnPlus.setOnClickListener(view -> {
                 int quantity = floor.getRoomsQuantity();
                 quantity = quantity + 1;
                 floor.setRoomsQuantity(quantity);
-                tv_room_quantity.setText("" + quantity);
+                binding.tvRoomQuantity.setText("" + quantity);
                 onGroupBtnClickListener.addBtnClicked();
             });
         }
+    }
+
+    public HashMap<String,Floor> getFloorMap(){
+        HashMap<String, Floor> map = new HashMap<>();
+        for (int i = 0; i < this.getItemCount(); i++){
+            map.put(getRef(i).getKey(),this.getItem(i));
+        }
+        return map;
+    }
+
+    public List<Floor> getFloorList(){
+        List<Floor> floorList = new ArrayList<>();
+        for (int i=0;i<this.getItemCount();i++){
+            Floor floor = this.getItem(i);
+            floor.setReference(this.getRef(i).getKey());
+            floorList.add(floor);
+        }
+        return floorList;
     }
 }

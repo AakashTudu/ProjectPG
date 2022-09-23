@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 
 import com.example.hostel.Adapters.OccupancyInputAdapter;
 import com.example.hostel.Models.Occupancy;
@@ -24,7 +23,7 @@ public class OccupancyInputActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_occupancy_input);
-        btn_continue = findViewById(R.id.btn_continue);
+        btn_continue = findViewById(R.id.btn_save);
         recyclerView = findViewById(R.id.recyclerView);
         occupancyList = new ArrayList<Occupancy>(){{
             add(new Occupancy("Single Occupancy"));

@@ -19,26 +19,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+
+
+    <RelativeLayout
         android:id="@+id/btn_name"
         android:layout_width="0dp"
         android:layout_height="36dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/solid_border_7_dp"
-        android:gravity="center"
-        android:hint="Enter Floor Name"
-        android:imeOptions="actionDone"
-        android:singleLine="true"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textColorHint="#B7B7B7"
-        android:textSize="14sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btn_minus"
         app:layout_constraintEnd_toStartOf="@+id/btn_plus"
         app:layout_constraintStart_toEndOf="@+id/btn_minus"
-        app:layout_constraintTop_toTopOf="@+id/btn_minus" />
+        app:layout_constraintTop_toTopOf="@+id/btn_minus" >
+
+        <TextView
+            android:id="@+id/tvFloorName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/solid_border_7_dp"
+            android:gravity="center"
+            android:hint="Enter Floor name"
+            android:singleLine="true"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textColorHint="#B7B7B7"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:paddingEnd="10dp"
+            android:src="@drawable/ic_more_grey" />
+
+    </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_plus"

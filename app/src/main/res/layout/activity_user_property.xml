@@ -527,7 +527,7 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_report"
+                    android:id="@+id/cvComplaints"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
@@ -614,7 +614,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/cv_report"
+                    app:layout_constraintStart_toEndOf="@+id/cvComplaints"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <LinearLayout

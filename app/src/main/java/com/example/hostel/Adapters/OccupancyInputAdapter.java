@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,9 +42,12 @@ public class OccupancyInputAdapter extends RecyclerView.Adapter<OccupancyInputAd
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView btn_name;
+        ImageView ivMore;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            btn_name = itemView.findViewById(R.id.btn_name);
+            btn_name = itemView.findViewById(R.id.tvFloorName);
+            ivMore = itemView.findViewById(R.id.ivMore);
+            ivMore.setVisibility(View.GONE);
         }
 
         public void bind() {

@@ -28,33 +28,6 @@
             android:textColor="@color/black"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/iv_translate"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_translate"
-
-            />
-
-        <ru.nikartm.support.ImageBadgeView
-            android:id="@+id/ibv_icon2"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_gravity="center"
-            android:layout_marginEnd="10dp"
-            android:layout_toLeftOf="@+id/iv_translate"
-            android:padding="2dp"
-            android:src="@drawable/ic_notification"
-            app:ibv_badgeColor="#FF0000"
-            app:ibv_badgeLimitValue="false"
-            app:ibv_badgeTextColor="#ffffff"
-            app:ibv_badgeTextSize="10sp"
-            app:ibv_badgeTextStyle="bold"
-            app:ibv_badgeValue="3"
-            app:ibv_fixedBadgeRadius="10dp" />
-
     </RelativeLayout>
 
     <View
@@ -195,7 +168,7 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_continue"
+                android:id="@+id/btn_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"

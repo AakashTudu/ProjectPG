@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -25,26 +26,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"
-            android:background="@drawable/outlined_border_thin"
-            >
+            android:background="@drawable/outlined_border_thin">
+
 
             <ImageView
-                android:id="@+id/iV_building"
-                android:padding="10dp"
+                android:id="@+id/iv_building"
                 android:layout_width="wrap_content"
-                android:src="@drawable/ic_building"
                 android:layout_height="wrap_content"
-                />
+                android:layout_centerVertical="true"
+                tools:src="@drawable/ic_building"
+                android:padding="10dp" />
 
 
             <LinearLayout
+                android:id="@+id/ll1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                android:layout_toRightOf="@+id/iV_building"
-                android:orientation="vertical">
+                android:layout_toLeftOf="@+id/btn_more"
+                android:layout_toRightOf="@+id/iv_building"
+                android:orientation="vertical"
+                android:paddingStart="20dp">
 
                 <TextView
+                    android:id="@+id/tvPgName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Prasant PG for Men's"
@@ -54,6 +58,7 @@
 
 
                 <TextView
+                    android:id="@+id/tvType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PG"
@@ -61,6 +66,7 @@
                     android:textSize="17sp" />
 
                 <TextView
+                    android:id="@+id/tv_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="HSR Layout Bangalore"
@@ -68,6 +74,16 @@
 
 
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btn_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="5dp"
+                android:src="@drawable/ic_more" />
 
         </RelativeLayout>
 

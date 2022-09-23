@@ -23,9 +23,9 @@ public class PropertiesActivity extends AppCompatActivity {
         et_search = findViewById(R.id.et_search);
         recyclerView = findViewById(R.id.recyclerView);
 
-
+/*
         recyclerView.setAdapter(new PropertiesAdapter());
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));*/
 
 
 

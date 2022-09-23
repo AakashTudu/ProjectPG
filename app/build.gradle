@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -53,4 +54,9 @@ dependencies {
 
     // Used for OTP
     implementation 'com.github.aabhasr1:OtpView:v1.1.2'
+
+    // FirebaseUI for Firebase Realtime Database
+    implementation 'com.firebaseui:firebase-ui-database:8.0.1'
+
+    implementation 'com.google.code.gson:gson:2.9.1'
 }

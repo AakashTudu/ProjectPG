@@ -9,14 +9,14 @@ import android.widget.ImageView;
 
 import com.example.hostel.R;
 
-public class AfterSignupActivity extends AppCompatActivity {
+public class PropertyActivity extends AppCompatActivity {
 
     ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_after_signup);
+        setContentView(R.layout.activity_property);
 
         imageView = findViewById(R.id.add_prop);
 

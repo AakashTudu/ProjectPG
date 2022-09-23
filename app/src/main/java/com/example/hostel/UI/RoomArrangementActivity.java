@@ -18,9 +18,9 @@ public class RoomArrangementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_room_arrangement);
 
         recyclerView = findViewById(R.id.recyclerView);
-
+/*
         recyclerView.setAdapter(new RoomsArrangementAdapter());
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));*/
 
     }
 }
