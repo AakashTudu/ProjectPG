@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvPgType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        tools:text="Mens PG" />
+
+    <TextView
+        android:id="@+id/tvPgName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvPgType"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        tools:text="Prasant PG for men's" />
+
+    <TextView
+        android:id="@+id/tvPgAddress"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvPgName"
+        tools:text="India, Bangalore, HSR Layout, Pin-5201374, sector - 2, Street no - 45" />
+
+</RelativeLayout>

@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hostel.Adapters.ManageAdapter;
+import com.example.hostel.DTO.AddTenantDTO;
+import com.example.hostel.Enums.FragmentEnum;
 import com.example.hostel.Models.Option;
 import com.example.hostel.R;
 import com.example.hostel.databinding.FragmentManageBinding;
@@ -33,59 +35,57 @@ public class ManageFragment extends Fragment {
         optionList = new ArrayList<Option>() {{
             add(new Option(
                     R.drawable.ic_tenant,
-                    "TENANT",
-                    getResources().getString(R.string.add_search_your_tenants)
+                    "Tenant"
             ));
 
             add(new Option(
                     R.drawable.ic_vacancy,
-                    "ROOM \n" +
-                            "VACANCIES",
-                    getResources().getString(R.string.check_room_vacancies)
+                    "Room \n" +
+                            "Vacancies"
             ));
 
             add(new Option(
                     R.drawable.ic_enquiries,
-                    "ENQUIRIES",
-                    getResources().getString(R.string.clear_your_doubts)
+                    "Enquiries"
             ));
 
             add(new Option(
                     R.drawable.ic_booking,
-                    "BOOKING’S",
-                    getResources().getString(R.string.check_your_booking_s_status)
+                    "Booking’s"
             ));
 
             add(new Option(
                     R.drawable.ic_report,
-                    "REPORT\n" +
-                            "COMPLAINTS",
-                    getResources().getString(R.string.report_your_complaints)
+                    "Report\n" +
+                            "Complaints"
             ));
 
             add(new Option(
                     R.drawable.ic_expense,
-                    "EXPENSES",
-                    getResources().getString(R.string.track_your_expenses)
+                    "Expenses"
             ));
         }};
 
 
         recyclerView.setAdapter(new ManageAdapter(optionList, data -> {
-            switch (data){
-                case "TENANT":
-                    Navigation.findNavController(binding.getRoot()).navigate(R.id.action_manageFragment_to_tenantsFragment);
+            switch (data) {
+                case "Tenant":
+                    AddTenantDTO addTenantDTO = new AddTenantDTO();
+                    addTenantDTO.setFragmentEnum(FragmentEnum.MANAGE);
+                    Navigation.findNavController(binding.getRoot()).navigate(
+                            ManageFragmentDirections.actionManageFragmentToTenantsFragment(addTenantDTO)
+                    );
                     break;
-                case "BOOKING’S":
+                case "Booking’s":
                     Navigation.findNavController(binding.getRoot()).navigate(R.id.action_manageFragment_to_bookingsFragment);
                     break;
-                case "REPORT\nCOMPLAINTS":
+                case "Report\nComplaints":
                     Navigation.findNavController(binding.getRoot()).navigate(R.id.action_manageFragment_to_complaintsFragment);
                     break;
-                case "ROOM \nVACANCIES":
+                case "Room \nVacancies":
                     Navigation.findNavController(binding.getRoot()).navigate(R.id.action_manageFragment_to_roomVacanciesFragment);
                     break;
-                case "EXPENSES":
+                case "Expenses":
                     Navigation.findNavController(binding.getRoot()).navigate(R.id.action_manageFragment_to_expenseFragment);
             }
         }));

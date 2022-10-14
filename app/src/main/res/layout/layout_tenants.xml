@@ -24,8 +24,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/outlined_border_thin">
+            android:layout_height="wrap_content">
 
 
             <RelativeLayout
@@ -55,6 +54,24 @@
                     android:textSize="18dp"
                     android:textStyle="bold"
                     tools:text="Varun Kumar" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_pg_name"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_toRightOf="@+id/tvTenantName"
+                    android:background="@drawable/solid_border_20_dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="3dp"
+                    android:text="gjkl3"
+                    android:textColor="@color/white"
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/iv_open_door"
@@ -90,8 +107,9 @@
 
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/ivCall"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_call_green_rounded" />

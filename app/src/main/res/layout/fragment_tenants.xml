@@ -9,6 +9,7 @@
     <RelativeLayout
         android:id="@+id/rl_toolbar"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:padding="13dp">
 
@@ -33,6 +34,7 @@
         android:id="@+id/lb_1"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
+        android:visibility="gone"
         android:layout_below="@id/rl_toolbar"
         android:layout_marginStart="10dp"
         android:layout_marginTop="0.5dp"
@@ -173,13 +175,13 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAddTenant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/black"
         android:paddingTop="10dp"
@@ -187,8 +189,7 @@
         android:paddingBottom="10dp"
         android:text="Add Tenant"
         android:textAllCaps="false"
-        app:cornerRadius="10dp"
-        app:icon="@drawable/ic_add" />
+        app:cornerRadius="10dp" />
 
 
 </RelativeLayout>

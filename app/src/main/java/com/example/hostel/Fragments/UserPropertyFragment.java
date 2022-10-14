@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hostel.DTO.AddTenantDTO;
 import com.example.hostel.Models.Property;
 import com.example.hostel.R;
 import com.example.hostel.Utils.Constants;
@@ -17,7 +18,8 @@ import com.example.hostel.databinding.FragmentUserPropertyBinding;
 public class UserPropertyFragment extends Fragment {
 
     FragmentUserPropertyBinding binding;
-    String ref;
+    UserPropertyFragmentArgs args;
+    //String ref;
 
     public UserPropertyFragment() {
         // Required empty public constructor
@@ -26,10 +28,22 @@ public class UserPropertyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        binding = FragmentUserPropertyBinding.inflate(inflater,container,false);
 
-        ref = getArguments().getString(Constants.propertyRef);
+        binding = FragmentUserPropertyBinding.inflate(inflater,container,false);
+        args = UserPropertyFragmentArgs.fromBundle(getArguments());
+
+        AddTenantDTO addTenantDTO = args.getAddTenantDTO();
+
+        Property property = addTenantDTO.getProperty();
+        binding.tvPropertyDetail.setText(property.getName() + " PG for " + property.getType().replace("PG","").trim());
+
+        binding.cvTenant.setOnClickListener(view -> {
+            Navigation.findNavController(view).navigate(
+                UserPropertyFragmentDirections.actionUserPropertyFragmentToTenantsFragment(addTenantDTO)
+            );
+        });
+
+/*        ref = getArguments().getString(Constants.propertyRef);
 
         Property property = (Property) getArguments().getSerializable(Constants.property);
 
@@ -72,7 +86,7 @@ public class UserPropertyFragment extends Fragment {
             bundle.putString(Constants.propertyRef, ref);
             bundle.putString(Constants.fragment, Constants.userPropertyFragment);
             Navigation.findNavController(view).navigate(R.id.action_userPropertyFragment_to_roomArrangementFragment, bundle);
-        });
+        });*/
 
         return binding.getRoot();
     }

@@ -96,10 +96,10 @@ public class AddTenantFragment extends Fragment {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
 
-                SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-");
                 Date d = new Date(year, month, day);
                 String date = dateFormatter.format(d);
-                binding.tvDOB.setText(date);
+                binding.tvDOB.setText(date + year);
             }
         });
         dateDialog.show(getActivity().getSupportFragmentManager(), "datePicker");

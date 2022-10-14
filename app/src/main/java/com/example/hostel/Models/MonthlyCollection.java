@@ -1,5 +1,7 @@
 package com.example.hostel.Models;
 
+import com.google.firebase.database.Exclude;
+
 import java.io.Serializable;
 import java.util.Locale;
 
@@ -41,20 +43,24 @@ public class MonthlyCollection implements Serializable {
         this.totalPrice = totalPrice;
     }
 
+    @Exclude
     public int getPendingPrice() {
         return getTotalPrice() - getPaidPrice();
     }
 
+    @Exclude
     public String getPercentage() {
         float percentage = ((float) paidPrice / totalPrice) * 100;
         return String.format(Locale.getDefault(), "%.2f", percentage) + " %";
     }
 
+    @Exclude
     public String getPendingPercentage() {
         float percentage = ((float) paidPrice / totalPrice) * 100;
         return String.format(Locale.getDefault(), "%.2f", 100 - percentage) + " %";
     }
 
+    @Exclude
     public int getIntPercentage() {
         int percentage = (int) (((float) paidPrice / totalPrice) * 100);
         return percentage;

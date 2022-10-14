@@ -8,16 +8,17 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hostel.FilterableAdapter.FirebaseRecyclerFilterableAdapter;
+import com.example.hostel.Fragments.TenantsFragmentDirections;
 import com.example.hostel.Models.Tenant;
-import com.example.hostel.R;
 import com.example.hostel.Utils.Constants;
+import com.example.hostel.Utils.UserUtils;
 import com.example.hostel.databinding.LayoutTenantsBinding;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class TenantsAdapter extends FirebaseRecyclerAdapter<Tenant, TenantsAdapter.ViewHolder> {
+public class TenantsAdapter extends FirebaseRecyclerFilterableAdapter<Tenant, TenantsAdapter.ViewHolder> {
     public TenantsAdapter(@NonNull FirebaseRecyclerOptions<Tenant> options) {
-        super(options);
+        super(options, true);
     }
 
     @NonNull
@@ -32,6 +33,11 @@ public class TenantsAdapter extends FirebaseRecyclerAdapter<Tenant, TenantsAdapt
         holder.bind(position, tenant);
     }
 
+    @Override
+    protected boolean filterCondition(Tenant tenant, String queryString) {
+        return tenant.getN().toLowerCase().contains(queryString) ||
+                tenant.getN().toLowerCase().contains(queryString);
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -46,11 +52,25 @@ public class TenantsAdapter extends FirebaseRecyclerAdapter<Tenant, TenantsAdapt
             binding.tvTenantName.setText(tenant.getN());
             binding.tvRoomQuantity.setText(tenant.getR());
             binding.tvPgName.setText(tenant.getPn());
-            binding.tvOccupancy.setText(tenant.getO());
-            binding.cardView.setOnClickListener(view -> {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(Constants.tenant, tenant);
-                Navigation.findNavController(view).navigate(R.id.action_tenantsFragment_to_tenantProfileFragment, bundle);
+            binding.tvOccupancy.setText(tenant.getOccupancy());
+
+            try {
+                String ref = getRef(position).getKey();
+                String code = ref.substring(ref.length() - 5);
+                binding.tvCode.setText(code);
+                binding.cardView.setOnClickListener(view -> {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Constants.tenant, tenant);
+                    Navigation.findNavController(view).navigate(
+                            TenantsFragmentDirections.actionTenantsFragmentToTenantProfileFragment(tenant, code)
+                    );
+                });
+            }catch (Exception exception){
+                exception.printStackTrace();
+            }
+
+            binding.ivCall.setOnClickListener(view -> {
+                UserUtils.call(tenant.getP(),view.getContext());
             });
         }
     }

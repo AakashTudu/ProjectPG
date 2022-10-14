@@ -21,19 +21,25 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ServerValue;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class RoomsArrangementAdapter extends FirebaseRecyclerAdapter<Room,RoomsArrangementAdapter.ViewHolder> {
+
+    String propertyRefKey;
+
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
      * {@link FirebaseRecyclerOptions} for configuration options.
      *
      * @param options
+     * @param propertyRefKey
      */
-    public RoomsArrangementAdapter(@NonNull FirebaseRecyclerOptions<Room> options) {
+    public RoomsArrangementAdapter(@NonNull FirebaseRecyclerOptions<Room> options, String propertyRefKey) {
         super(options);
+        this.propertyRefKey = propertyRefKey;
     }
 
     @NonNull
@@ -77,21 +83,66 @@ public class RoomsArrangementAdapter extends FirebaseRecyclerAdapter<Room,RoomsA
 
                     @Override
                     public void btnAddClicked() {
-                        BottomSheet.addBedBottomDialog(itemView.getContext(), (bedNumber,bedPrice) -> {
+                        BottomSheet.addBedBottomDialog(itemView.getContext(), (bedNumber) -> {
                             String ref1 = getRef(position).getKey();
                             Map<String, Object> map = new HashMap<>();
                             map.put("n", bedNumber);
-                            map.put("p", bedPrice);
                             map.put("s", "v");
                             DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                            DatabaseReference userRef = rootRef.child("bed").child(ref1).child(String.valueOf(System.currentTimeMillis()));
-                            userRef.setValue(map);
+                            DatabaseReference userRef = rootRef.child("bed").child(ref1);
+                            userRef.push().setValue(map);
+
+                            updateBedCards(propertyRefKey,1);
+                        });
+                    }
+
+                    @Override
+                    public void btnSharingTypeClicked() {
+                        BottomSheet.showOccupancyOptionDialog(itemView.getContext(), data -> {
+
+                            int sharing = 0;
+
+                            switch (data){
+                                case "Single Occupancy":
+                                    sharing = 1;
+                                    break;
+                                case "Double Occupancy":
+                                    sharing = 2;
+                                    break;
+                                case "Triple Occupancy":
+                                    sharing = 3;
+                                    break;
+                                case "Four Occupancy":
+                                    sharing = 4;
+                                    break;
+                                case "Five Occupancy":
+                                    sharing = 5;
+                                    break;
+                                case "Six Occupancy":
+                                    sharing = 6;
+                                    break;
+                            }
+
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference myRef = database.getReference("bed");
+                            String roomRef = getRef(position).getKey();
+
+                            HashMap<String, Object> bedHashMap = new HashMap<>();
+
+                            for (int i = 1; i <= sharing; i++) {
+                                bedHashMap.put(myRef.push().getKey(),new Bed(String.valueOf(i), "v"));
+                            }
+                            myRef.child(roomRef).updateChildren(bedHashMap);
+
+                            updateBedCards(propertyRefKey,sharing);
+
                         });
                     }
 
                     @Override
                     public void btnDeleteClicked() {
                         getRef(position).removeValue();
+                        getBindingAdapter().notifyDataSetChanged();
                     }
                 });
             });
@@ -114,16 +165,21 @@ public class RoomsArrangementAdapter extends FirebaseRecyclerAdapter<Room,RoomsA
         }
     }
 
+    private void updateBedCards(String propertyRefKey , int vacantBed) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("bedCard").child(propertyRefKey).child("t");
+        reference.setValue(ServerValue.increment(vacantBed));
+    }
+
     private void loadBedRecyclerView(RecyclerView recyclerView, Context context, String reference) {
 
         Query query = FirebaseDatabase.getInstance().getReference().child("bed").child(reference);
         FirebaseRecyclerOptions<Bed> options = new FirebaseRecyclerOptions.Builder<Bed>()
                 .setQuery(query, snapshot -> {
                     String bedNumber = snapshot.child("n").getValue().toString();
-                    String bedPrice = snapshot.child("p").getValue().toString();
                     String bedStatus = snapshot.child("s").getValue().toString();
                     return new Bed(
-                            bedNumber,bedPrice, bedStatus
+                            bedNumber, bedStatus
                     );
                 }).build();
         BedAdapter bedAdapter = new BedAdapter(options);

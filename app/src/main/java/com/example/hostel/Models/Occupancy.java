@@ -9,7 +9,7 @@ public class Occupancy implements Serializable {
 
     public Occupancy(String name) {
         this.name = name;
-        isSelected = true;
+        isSelected = false;
         roomsQuantity = 0;
     }
 

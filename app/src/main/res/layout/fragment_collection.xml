@@ -10,6 +10,7 @@
         android:id="@+id/rl_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:padding="13dp">
 
         <ImageView
@@ -32,6 +33,7 @@
     <View
         android:id="@+id/lb_1"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="0.5dp"
         android:layout_below="@id/rl_toolbar"
         android:layout_marginStart="10dp"
@@ -89,7 +91,7 @@
                             android:id="@+id/tvCollectedMoney"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="₹ 1570000"
+                            android:text="₹ 0"
                             android:textColor="#66E254"
                             android:textSize="18dp"
                             android:textStyle="bold" />
@@ -113,7 +115,7 @@
                             android:layout_marginBottom="5dp"
                             android:background="@drawable/outlined_border"
                             android:padding="0.5dp"
-                            android:progress="81"
+                            android:progress="0"
                             app:indicatorColor="#66E254"
                             app:trackColor="#FFFFFF"
                             app:trackCornerRadius="5dp" />
@@ -123,7 +125,7 @@
                             android:id="@+id/tvPaidPercentage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="120"
+                            android:text="0 %"
                             android:textColor="@color/black"
                             android:textSize="12dp"
                             android:textStyle="bold" />
@@ -165,7 +167,7 @@
                             android:id="@+id/tvPendingMoney"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="₹ 54000"
+                            android:text="₹ 0"
                             android:textColor="#E84343"
                             android:textSize="18dp"
                             android:textStyle="bold" />
@@ -189,7 +191,7 @@
                             android:layout_marginBottom="5dp"
                             android:background="@drawable/outlined_border"
                             android:padding="0.5dp"
-                            android:progress="81"
+                            android:progress="0"
                             app:indicatorColor="#E84343"
                             app:trackColor="#FFFFFF"
                             app:trackCornerRadius="5dp" />
@@ -199,7 +201,7 @@
                             android:id="@+id/tvPendingPercentage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="12"
+                            android:text="0 %"
                             android:textColor="@color/black"
                             android:textSize="12dp"
                             android:textStyle="bold" />
@@ -213,6 +215,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
+                android:visibility="gone"
+                tools:visibility="visible"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/outlined_border"
                 android:orientation="vertical"
@@ -272,6 +276,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
+                android:visibility="gone"
+                tools:visibility="visible"
                 android:background="@drawable/outlined_border"
                 android:orientation="vertical"
                 android:padding="15dp">
@@ -329,6 +335,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
+                android:visibility="gone"
+                tools:visibility="visible"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/outlined_border"
                 android:orientation="vertical"

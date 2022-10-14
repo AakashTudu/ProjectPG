@@ -28,4 +28,6 @@ public class Constants {
     public static String fragment = "fragment";
     public static String managementFragment = "ManageFragment";
     public static String userPropertyFragment = "UserPropertyFragment";
+
+    public static String dateExpense = "";
 }

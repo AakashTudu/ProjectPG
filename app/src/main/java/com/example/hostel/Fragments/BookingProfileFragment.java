@@ -51,7 +51,7 @@ public class BookingProfileFragment extends Fragment {
         binding.tvName.setText(tenant.getN());
         binding.tvPgName.setText(tenant.getPn());
         binding.tvRoomQuantity.setText(tenant.getR());
-        binding.tvOccupancy.setText(tenant.getO());
+        binding.tvOccupancy.setText(tenant.getOccupancy());
 
         adapter = new BookingProfileAdapter(tenantDetails);
         binding.recyclerView.setAdapter(adapter);

@@ -1,13 +1,14 @@
 package com.example.hostel.Adapters;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hostel.Listeners.OnSelectPropertyListener;
+import com.example.hostel.DTO.AddTenantDTO;
+import com.example.hostel.Fragments.SelectPropertyFragmentDirections;
 import com.example.hostel.Models.Property;
 import com.example.hostel.R;
 import com.example.hostel.databinding.LayoutSelectPropertyBinding;
@@ -15,15 +16,16 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class SelectPropertyAdapter extends FirebaseRecyclerAdapter<Property, SelectPropertyAdapter.ViewHolder> {
-    OnSelectPropertyListener onSelectPropertyListener;
-    public SelectPropertyAdapter(@NonNull FirebaseRecyclerOptions<Property> options, OnSelectPropertyListener onSelectPropertyListener) {
+    AddTenantDTO addTenantDTO;
+
+    public SelectPropertyAdapter(@NonNull FirebaseRecyclerOptions<Property> options, AddTenantDTO addTenantDTO) {
         super(options);
-        this.onSelectPropertyListener = onSelectPropertyListener;
+        this.addTenantDTO = addTenantDTO;
     }
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Property property) {
-        holder.bind(position,property);
+        holder.bind(position, property);
     }
 
     @NonNull
@@ -54,8 +56,17 @@ public class SelectPropertyAdapter extends FirebaseRecyclerAdapter<Property, Sel
                 ivBuilding.setBackgroundResource(R.drawable.ic_building_deactivated);*/
             binding.ivBuilding.setBackgroundResource(R.drawable.ic_building);
 
+
+            String ref = getRef(position).getKey();
+            String code = ref.substring(ref.length() - 5);
+            binding.tvCode.setText(code);
+
             binding.cardView.setOnClickListener(view -> {
-                onSelectPropertyListener.selected(property,getRef(position).getKey());
+                addTenantDTO.setPropertyRefKey(getRef(position).getKey());
+                addTenantDTO.setProperty(property);
+                Navigation.findNavController(view).navigate(
+                        SelectPropertyFragmentDirections.actionSelectPropertyFragmentToSelectRoomFragment(addTenantDTO)
+                );
             });
         }
     }

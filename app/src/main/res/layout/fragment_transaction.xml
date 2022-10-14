@@ -10,6 +10,7 @@
     <RelativeLayout
         android:id="@+id/rl_toolbar"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:padding="13dp">
 
@@ -36,6 +37,7 @@
         android:layout_height="0.5dp"
         android:layout_below="@id/rl_toolbar"
         android:layout_marginStart="10dp"
+        android:visibility="gone"
         android:layout_marginTop="0.5dp"
         android:layout_marginEnd="10dp"
         android:background="#03A9F4" />
@@ -112,7 +114,7 @@
                                     android:id="@+id/amt_received"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="700000"
+                                    android:text="0"
                                     android:textColor="#1FB908"
                                     android:textSize="22sp"
                                     />
@@ -191,7 +193,7 @@
                                     android:id="@+id/amt_paid"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="3500"
+                                    android:text="0"
                                     android:textColor="#FD000F"
                                     android:textSize="22sp"
                                     />
@@ -236,6 +238,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="15dp"
                     android:elevation="10dp"
                     android:background="@drawable/greybox"
                     android:orientation="vertical">
@@ -284,7 +287,7 @@
                             android:id="@+id/textView8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1400000"
+                            android:text="0"
                             android:textSize="22sp"
                             android:textColor="@color/black"
                             app:layout_constraintStart_toEndOf="@+id/imageView2"

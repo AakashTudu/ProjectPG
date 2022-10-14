@@ -24,7 +24,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
     @Override
     public int getItemCount() {
-        return 7;
+        return 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/headerBackgroundColor"
+    android:padding="20dp"
+    android:backgroundTint="?attr/headerBackgroundColor"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selected Floor"
+        android:textColor="#D3D3D3"
+        />
+
+    <TextView
+        android:id="@+id/tv_selected_floor"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="4dp"
+        android:textColor="@color/selector_header_text_color"
+        android:textSize="36sp"
+        tools:text="1993" />
+
+</LinearLayout>

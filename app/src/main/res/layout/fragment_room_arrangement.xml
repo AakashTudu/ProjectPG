@@ -12,6 +12,7 @@
         android:id="@+id/rl_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:padding="13dp">
 
         <ImageView
@@ -47,163 +48,174 @@
         android:layout_below="@id/rl_1"
         android:layout_marginStart="10dp"
         android:layout_marginTop="0.5dp"
+        android:visibility="gone"
         android:layout_marginEnd="10dp"
         android:background="#03A9F4" />
 
-    <HorizontalScrollView
-        android:id="@+id/hsv1"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@id/lb_3"
-        android:overScrollMode="never"
-        android:scrollbars="none">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:divider="@android:color/transparent"
-                android:dividerHeight="0.0px"
-                android:elevation="8dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="10dp"
-                app:cardPreventCornerOverlap="false">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTotalBed"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0.0px"
+            android:elevation="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:cardPreventCornerOverlap="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cardVacantBed"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/outlined_border_10_dp_grey_thin"
-                    android:orientation="vertical"
-                    android:paddingStart="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="10dp"
-                    android:gravity="center"
-                    android:paddingBottom="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:text="Total Bed"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="12dp"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:text="200"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Bed"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
 
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="16dp"
-                        android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tvTotalBed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:divider="@android:color/transparent"
-                android:dividerHeight="0.0px"
-                android:elevation="8dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="10dp"
-                app:cardPreventCornerOverlap="false">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardVacantBed"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0.0px"
+            android:elevation="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:cardPreventCornerOverlap="false"
+            app:layout_constraintBottom_toBottomOf="@+id/cardTotalBed"
+            app:layout_constraintEnd_toStartOf="@+id/button6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cardTotalBed"
+            app:layout_constraintTop_toTopOf="@+id/cardTotalBed">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/outlined_border_10_dp_grey_thin"
-                    android:orientation="vertical"
-                    android:gravity="center">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:text="Vacant Bed"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="12dp"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:text="200"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vacant Bed"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
 
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="16dp"
-                        android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tvVacantBed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:divider="@android:color/transparent"
-                android:dividerHeight="0.0px"
-                android:elevation="8dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="10dp"
-                app:cardPreventCornerOverlap="false">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/button6"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0.0px"
+            android:elevation="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:cardPreventCornerOverlap="false"
+            app:layout_constraintBottom_toBottomOf="@+id/cardVacantBed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cardVacantBed"
+            app:layout_constraintTop_toTopOf="@+id/cardVacantBed">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/outlined_border_10_dp_grey_thin"
-                    android:orientation="vertical"
-                    android:paddingStart="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="10dp"
-                    android:gravity="center"
-                    android:paddingBottom="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:text="Total Bed"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="12dp"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:text="200"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Onborad Bed"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
 
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="16dp"
-                        android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tvOnboardBed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        </LinearLayout>
-    </HorizontalScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/lb_1"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_below="@id/hsv1"
+        android:layout_below="@id/cl"
         android:layout_marginStart="10dp"
         android:layout_marginTop="0.5dp"
         android:layout_marginEnd="10dp"
@@ -214,9 +226,8 @@
         android:layout_below="@id/lb_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        >
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFloor"
@@ -252,31 +263,50 @@
         android:id="@+id/rvRoom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/linearLayout1"
+        android:layout_above="@+id/cl2"
         android:layout_below="@id/tvFloorName"
         android:layout_marginTop="20dp"
         android:overScrollMode="never"
         tools:listitem="@layout/layout_room_arrangement" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl2"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:orientation="vertical">
-
+        android:paddingTop="15dp"
+        android:layout_width="match_parent"
+        android:paddingBottom="15dp">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_add"
-            android:layout_width="match_parent"
+            android:id="@+id/btnAddRoom"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="5dp"
             android:text="Add Room"
+            app:cornerRadius="6dp"
             android:textAllCaps="false"
-            app:strokeColor="@color/black" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnSave"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="20dp"
+            android:text="Save"
+            android:textAllCaps="false"
+            app:cornerRadius="6dp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnAddRoom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnAddRoom"
+            app:layout_constraintTop_toTopOf="@+id/btnAddRoom" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </RelativeLayout>

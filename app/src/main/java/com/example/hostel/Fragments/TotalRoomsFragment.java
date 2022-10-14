@@ -48,9 +48,7 @@ public class TotalRoomsFragment extends Fragment {
         bundle.putString(Constants.propertyRef,timeStampRef);
 
         binding.btnContinue.setOnClickListener(view -> {
-
             uploadRooms();
-
         });
 
         binding.btnBack.setOnClickListener(view -> {
@@ -66,10 +64,7 @@ public class TotalRoomsFragment extends Fragment {
         Query query = FirebaseDatabase.getInstance().getReference().child("floor").child(timeStampRef);
         FirebaseRecyclerOptions<Floor> options = new FirebaseRecyclerOptions.Builder<Floor>()
                 .setQuery(query, snapshot -> {
-                    String name = snapshot.child("n").getValue().toString();
-                    String ch = String.valueOf(name.charAt(0));
-                    name = ch.toUpperCase() + name.substring(1) + " Floor";
-                    return new Floor(name);
+                    return snapshot.getValue(Floor.class);
                 }).build();
         adapter = new TotalRoomsAdapter(options, new OnGroupBtnClickListener() {
             @Override

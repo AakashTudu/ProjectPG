@@ -10,6 +10,7 @@
     <RelativeLayout
         android:id="@+id/rl_toolbar"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:padding="13dp">
 
@@ -36,6 +37,7 @@
         android:layout_height="0.5dp"
         android:layout_below="@id/rl_toolbar"
         android:layout_marginStart="10dp"
+        android:visibility="gone"
         android:layout_marginTop="0.5dp"
         android:layout_marginEnd="10dp"
         android:background="#03A9F4" />
@@ -56,9 +58,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginBottom="15dp"
                 android:clipChildren="false"
                 android:clipToPadding="false"
@@ -80,16 +82,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:text="Total Spending"
+                        android:text="Total Spending per day"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvDaySpending"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="20dp"
-                        android:text="₹ 15700"
+                        tools:text="₹ 15700"
                         android:textColor="#4538DF"
                         android:textSize="25sp"
                         android:textStyle="bold" />
@@ -104,10 +107,11 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tvMonthSpending"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:text="₹ 15700"
+                        tools:text="₹ 15700"
                         android:textColor="#4538DF"
                         android:textSize="14sp" />
 
@@ -117,140 +121,39 @@
 
 
             <TextView
-                android:id="@+id/tvPropertyDetail"
+                android:id="@+id/tvExpenseDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
+                android:drawableEnd="@drawable/ic_calender"
+                android:gravity="center_vertical"
+                android:drawablePadding="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="10dp"
                 android:paddingStart="10dp"
                 android:text="26 Dec 2022" />
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="25dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="25dp">
-
-                <TextView
-                    android:id="@+id/tvVeg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:text="Vegetables"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:drawableEnd="@drawable/info"
-                    android:drawablePadding="10dp"
-                    android:paddingEnd="20dp"
-                    android:text="₹ 15700"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_below="@id/tvVeg"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="#03A9F4" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="25dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="25dp">
-
-                <TextView
-                    android:id="@+id/tvWire"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:text="Wire"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:drawableEnd="@drawable/info"
-                    android:drawablePadding="10dp"
-                    android:paddingEnd="20dp"
-                    android:text="₹ 15700"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_below="@id/tvWire"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="#03A9F4" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="25dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="25dp">
-
-                <TextView
-                    android:id="@+id/tvTube"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:text="Tubelight"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:drawableEnd="@drawable/info"
-                    android:drawablePadding="10dp"
-                    android:paddingEnd="20dp"
-                    android:text="₹ 15700"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_below="@id/tvTube"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="#03A9F4" />
-
-            </RelativeLayout>
 
         </LinearLayout>
     </ScrollView>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnAddExpense"
+        android:layout_below="@id/scrollView"
+        tools:listitem="@layout/layout_expense"
+        android:layout_marginBottom="25dp" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAddExpense"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="25dp"
         android:text="Add Expenses"
         android:textAllCaps="false"
         app:cornerRadius="10dp" />

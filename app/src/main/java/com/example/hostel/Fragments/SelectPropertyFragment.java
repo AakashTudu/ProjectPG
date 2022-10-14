@@ -1,6 +1,7 @@
 package com.example.hostel.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,23 +11,20 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.hostel.Adapters.SelectPropertyAdapter;
+import com.example.hostel.DTO.AddTenantDTO;
 import com.example.hostel.Models.Property;
-import com.example.hostel.R;
 import com.example.hostel.Utils.Constants;
 import com.example.hostel.Utils.UserUtils;
 import com.example.hostel.databinding.FragmentSelectPropertyBinding;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 public class SelectPropertyFragment extends Fragment {
 
     FragmentSelectPropertyBinding binding;
-    Property property;
-
-    Bundle bundle;
-
+    SelectPropertyFragmentArgs args;
+    AddTenantDTO addTenantDTO;
     public SelectPropertyFragment() {
         // Required empty public constructor
     }
@@ -36,28 +34,13 @@ public class SelectPropertyFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentSelectPropertyBinding.inflate(inflater, container, false);
-        bundle = new Bundle();
+        args = SelectPropertyFragmentArgs.fromBundle(getArguments());
+
+        addTenantDTO = args.getAddTenantDTO();
 
         binding.btnBack.setOnClickListener(view -> {
             Navigation.findNavController(view).popBackStack();
         });
-
-        binding.btnContinue.setOnClickListener(view -> {
-            if (property != null)
-                Navigation.findNavController(view).navigate(R.id.action_selectPropertyFragment_to_selectSharingFragment, bundle);
-            else
-                Snackbar.make(binding.getRoot(), "Please select property..", Snackbar.LENGTH_SHORT).show();
-        });
-
-        bundle.putString(Constants.tenantName, getArguments().getString(Constants.tenantName));
-        bundle.putString(Constants.mobileNumber, getArguments().getString(Constants.mobileNumber));
-        bundle.putString(Constants.emailId, getArguments().getString(Constants.emailId));
-        bundle.putString(Constants.date, getArguments().getString(Constants.date));
-        bundle.putString(Constants.gender, getArguments().getString(Constants.gender));
-        bundle.putString(Constants.martialStatus, getArguments().getString(Constants.martialStatus));
-        bundle.putString(Constants.occupation, getArguments().getString(Constants.occupation));
-
-
         loadRecyclerView();
         return binding.getRoot();
     }
@@ -75,13 +58,7 @@ public class SelectPropertyFragment extends Fragment {
                             name, type, city, location, isLive
                     );
                 }).build();
-        SelectPropertyAdapter adapter = new SelectPropertyAdapter(options, (property, key) -> {
-            this.property = property;
-            bundle.putString(Constants.propertyRef, key);
-            String message = property.getName() + " PG for " + property.getType().replace("PG", "").trim() + " selected. Press continue..";
-            bundle.putSerializable(Constants.property, property);
-            Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT).show();
-        });
+        SelectPropertyAdapter adapter = new SelectPropertyAdapter(options, addTenantDTO);
 
         binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

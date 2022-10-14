@@ -1,6 +1,8 @@
 package com.example.hostel.Fragments;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -52,13 +54,30 @@ public class PropertyFragment extends Fragment {
                 if(event.getRawX() >= (et_search.getRight() - et_search.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                     if (et_search.hasFocus()) {
                         et_search.clearFocus();
-                        et_search.setText("");
                     }
+                    et_search.setText("");
                     et_search.hideKeyboard();
                     return true;
                 }
             }
             return false;
+        });
+
+        binding.etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                adapter.getFilter().filter(binding.etSearch.getText().toString());
+            }
         });
 
         binding.btnAddProperty.setOnClickListener(view -> {

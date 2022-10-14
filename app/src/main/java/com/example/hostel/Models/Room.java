@@ -1,6 +1,8 @@
 package com.example.hostel.Models;
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable {
     String n;
 
     public Room() {

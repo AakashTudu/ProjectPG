@@ -1,8 +1,11 @@
 package com.example.hostel.Fragments;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -11,6 +14,9 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.hostel.Adapters.TenantsAdapter;
+import com.example.hostel.CustomViews.CustomEditText;
+import com.example.hostel.DTO.AddTenantDTO;
+import com.example.hostel.Enums.FragmentEnum;
 import com.example.hostel.Models.Property;
 import com.example.hostel.Models.Tenant;
 import com.example.hostel.R;
@@ -23,9 +29,10 @@ import com.google.firebase.database.Query;
 public class TenantsFragment extends Fragment {
 
     FragmentTenantsBinding binding;
-    String ref;
     TenantsAdapter adapter;
-
+    CustomEditText et_search;
+    TenantsFragmentArgs args;
+    AddTenantDTO addTenantDTO;
     public TenantsFragment() {
         // Required empty public constructor
     }
@@ -35,9 +42,10 @@ public class TenantsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentTenantsBinding.inflate(inflater, container, false);
+        et_search = binding.etSearch;
+        args = TenantsFragmentArgs.fromBundle(getArguments());
 
-        if (getArguments() != null)
-            ref = getArguments().getString(Constants.propertyRef);
+        addTenantDTO = args.getAddTenantDTO();
 
 
 
@@ -46,29 +54,44 @@ public class TenantsFragment extends Fragment {
         });
 
         binding.btnAddTenant.setOnClickListener(view -> {
-/*            HashMap<String, Object> map = new HashMap<>();
-            map.put("n","Suraj Sharma");
-            map.put("r","201");
-            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-            String timeStampRef = String.valueOf(System.currentTimeMillis());
-            DatabaseReference userRef = rootRef.child("tenants").child(ref).child(timeStampRef);
-            userRef.setValue(map);*/
-
-
-            Bundle bundle = new Bundle();
-            bundle.putString(Constants.propertyRef, ref);
-            if (getArguments()!=null){
-                Property property = (Property) getArguments().getSerializable(Constants.property);
-                bundle.putSerializable(Constants.property, property);
-            }
-            Navigation.findNavController(view).navigate(R.id.action_tenantsFragment_to_addTenantFragment, bundle);
-
-
-/*            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference("tenants");
-            Tenant tenant = new Tenant("Anurag sagar", "101", ref);
-            myRef.push().setValue(tenant);*/
+            Navigation.findNavController(view).navigate(
+                    TenantsFragmentDirections.actionTenantsFragmentToAddTenantFirstFragment(addTenantDTO)
+            );
         });
+
+        binding.etSearch.setOnTouchListener((v, event) -> {
+            final int DRAWABLE_RIGHT = 2;
+
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                if (event.getRawX() >= (et_search.getRight() - et_search.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                    if (et_search.hasFocus()) {
+                        et_search.clearFocus();
+                    }
+                    et_search.setText("");
+                    et_search.hideKeyboard();
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        binding.etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                adapter.getFilter().filter(binding.etSearch.getText().toString());
+            }
+        });
+
 
         loadRoomRecyclerView();
 
@@ -79,25 +102,16 @@ public class TenantsFragment extends Fragment {
 
         Query query;
 
-        if (ref == null) {
+        if (addTenantDTO.getFragmentEnum() == FragmentEnum.MANAGE) {
             query = FirebaseDatabase.getInstance().getReference().child("tenants");
         } else {
-            query = FirebaseDatabase.getInstance().getReference().child("tenants").orderByChild("rf").equalTo(ref);
+            query = FirebaseDatabase.getInstance().getReference().child("tenants").orderByChild("rf").equalTo(addTenantDTO.getPropertyRefKey());
         }
 
         FirebaseRecyclerOptions<Tenant> options = new FirebaseRecyclerOptions.Builder<Tenant>()
                 .setQuery(query, dataSnapshot -> {
-                    Log.d("sfsdfsdf", "snapshot: " + dataSnapshot);
-                    String tenantName = dataSnapshot.child("n").getValue().toString();
-                    String tenantRoomNumber = dataSnapshot.child("r").getValue().toString();
-                    String mobileNumber = dataSnapshot.child("p").getValue().toString();
-                    String occupancy = dataSnapshot.child("o").getValue().toString();
-                    String emailId = dataSnapshot.child("e").getValue().toString();
-                    String propertyName = dataSnapshot.child("pn").getValue().toString();
-                    String reference = dataSnapshot.child("rf").getValue().toString();
-                    return new Tenant(
-                            tenantName, tenantRoomNumber,mobileNumber, occupancy, emailId, propertyName, reference
-                    );
+                    Log.d("dsfsdfsd", "dataSnapshot: " + dataSnapshot);
+                    return dataSnapshot.getValue(Tenant.class);
                 }).build();
         adapter = new TenantsAdapter(options);
 
@@ -111,12 +125,14 @@ public class TenantsFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        adapter.stopListening();
+        if (adapter != null)
+            adapter.stopListening();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        adapter.stopListening();
+        if (adapter != null)
+            adapter.stopListening();
     }
 }

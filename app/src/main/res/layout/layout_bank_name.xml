@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="25dp"
+    android:id="@+id/bank"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tvBankName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:drawablePadding="20dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:paddingStart="50dp"
+        android:text="State Bank of India"
+        />
+
+
+    <ImageView
+        android:id="@+id/ivBankIcon"
+        android:src="@drawable/ic_sbi"
+        android:layout_width="18dp"
+        android:layout_centerVertical="true"
+        android:layout_height="24dp"
+        />
+
+</RelativeLayout>

@@ -4,6 +4,7 @@
     package="com.example.hostel">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -28,6 +29,8 @@
 
         <activity
             android:name=".UI.MainActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".UI.EnterOtpActivity"
@@ -39,12 +42,6 @@
             android:name=".UI.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.TotalOccupancyActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UI.OccupancyInputActivity"
-            android:exported="false" />
-        <activity
             android:name=".UI.SelectSharingActivity"
             android:exported="true" />
         <activity
@@ -54,49 +51,21 @@
             android:name=".UI.RoomArrangementActivity"
             android:exported="true" />
         <activity
-            android:name=".UI.AddTenantActivity"
-            android:exported="true" />
-        <activity
-            android:name=".UI.TenantsProfileActivity"
-            android:exported="true" />
-        <activity
-            android:name=".UI.TenantsActivity"
-            android:exported="true" />
-        <activity
             android:name=".UI.ExpenseManagementActivity"
             android:exported="false" />
         <activity
             android:name=".UI.ComplaintsActivity"
             android:exported="true" />
         <activity
-            android:name=".UI.UserPropertyActivity"
-            android:exported="true" />
-        <activity
             android:name=".UI.PropertiesActivity"
             android:exported="true"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".UI.CollectionActivity"
-            android:exported="true" />
         <activity
             android:name=".UI.RecordPaymentActivity"
             android:exported="true" />
         <activity
             android:name=".UI.SuccessActivity"
             android:exported="false" />
-        <activity
-            android:name=".UI.TotalRoomsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UI.TotalFloorsActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".UI.AddPropActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UI.PropertyActivity"
-            android:exported="true" />
         <activity
             android:name=".UI.SignInOtpActivity"
             android:exported="false" />

@@ -1,5 +1,7 @@
 package com.example.hostel.Adapters;
 
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import com.example.hostel.Listeners.OnFloorOptionClickListener;
 import com.example.hostel.Models.Floor;
 import com.example.hostel.R;
 import com.example.hostel.Utils.BottomSheet;
+import com.example.hostel.databinding.LayoutFloorItemBinding;
+import com.example.monthandyearpicker.Utils;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
@@ -22,13 +26,6 @@ import java.util.Map;
 
 public class TotalFloorsAdapter extends FirebaseRecyclerAdapter<Floor,TotalFloorsAdapter.ViewHolder> {
 
-
-    /**
-     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
-     * {@link FirebaseRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
     public TotalFloorsAdapter(@NonNull FirebaseRecyclerOptions<Floor> options) {
         super(options);
     }
@@ -36,13 +33,13 @@ public class TotalFloorsAdapter extends FirebaseRecyclerAdapter<Floor,TotalFloor
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_floor_item, parent, false);
-        return new ViewHolder(view);
+        LayoutFloorItemBinding binding = LayoutFloorItemBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+        return new ViewHolder(binding);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Floor model) {
-        holder.bind(position);
+    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Floor floor) {
+        holder.bind(position, floor);
     }
 
     @Override
@@ -55,39 +52,39 @@ public class TotalFloorsAdapter extends FirebaseRecyclerAdapter<Floor,TotalFloor
         return position;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvFloorName;
-        ImageView ivMore;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            tvFloorName = itemView.findViewById(R.id.tvFloorName);
-            ivMore = itemView.findViewById(R.id.ivMore);
+        LayoutFloorItemBinding layoutFloorItemBinding;
+
+        public ViewHolder(@NonNull LayoutFloorItemBinding layoutFloorItemBinding) {
+            super(layoutFloorItemBinding.getRoot());
+            this.layoutFloorItemBinding = layoutFloorItemBinding;
         }
 
-        public void bind(int position) {
-            Floor floor = getItem(position);
-            tvFloorName.setText(floor.getN());
+        public void bind(int position, Floor floor) {
 
-            ivMore.setOnClickListener(view -> {
-                BottomSheet.showFloorOptionDialog(itemView.getContext(), new OnFloorOptionClickListener() {
-                    @Override
-                    public void btnEditClicked() {
+            TextView btnFloor = layoutFloorItemBinding.tvFloorName;
 
-                        BottomSheet.editFloorBottomDialog(itemView.getContext(), data -> {
+            btnFloor.setText(Utils.numberToOrdinalWord(floor.getN()));
 
-                            Map<String, Object> map = new HashMap<>();
-                            map.put("n", data.trim());
+            if (floor.getSelected()) {
+                btnFloor.setTextColor(Color.WHITE);
+                btnFloor.setBackgroundResource(R.drawable.solid_border_7_dp);
+            } else {
+                btnFloor.setTextColor(Color.BLACK);
+                btnFloor.setBackgroundResource(R.drawable.outlined_border);
+            }
 
-                            getRef(position).setValue(map);
-                        }, floor.getN().replace(" Floor",""));
-                    }
-
-                    @Override
-                    public void btnDeleteClicked() {
-                        getRef(position).removeValue();
-                    }
-                });
+            btnFloor.setOnClickListener(view -> {
+                if (floor.getSelected()){
+                    btnFloor.setTextColor(Color.BLACK);
+                    btnFloor.setBackgroundResource(R.drawable.outlined_border);
+                    floor.setSelected(false);
+                }else{
+                    btnFloor.setTextColor(Color.WHITE);
+                    btnFloor.setBackgroundResource(R.drawable.solid_border_7_dp);
+                    floor.setSelected(true);
+                }
             });
         }
     }

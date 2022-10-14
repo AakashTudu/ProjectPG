@@ -19,6 +19,7 @@ import com.example.hostel.Listeners.OnRoomOptionClickListener;
 import com.example.hostel.R;
 import com.example.hostel.databinding.LayoutBottomOccupancyBinding;
 import com.example.hostel.databinding.LayoutBottomOccupationBinding;
+import com.example.hostel.databinding.LayoutBottomRoomBinding;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputEditText;
@@ -118,23 +119,25 @@ public class BottomSheet {
 
     public static void showRoomOptionDialog(Context context, OnRoomOptionClickListener onRoomOptionClickListener) {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-        bottomSheetDialog.setContentView(R.layout.layout_bottom_room);
+        LayoutBottomRoomBinding binding = LayoutBottomRoomBinding.inflate(LayoutInflater.from(context));
+        bottomSheetDialog.setContentView(binding.getRoot());
 
-        TextView tvEdit = bottomSheetDialog.findViewById(R.id.tvEditRoomNumber);
-        TextView tvAddBed = bottomSheetDialog.findViewById(R.id.tvAddBed);
-        TextView tvDelete = bottomSheetDialog.findViewById(R.id.tvDelete);
-
-        tvEdit.setOnClickListener(view -> {
+        binding.tvEditRoomNumber.setOnClickListener(view -> {
             onRoomOptionClickListener.btnEditClicked();
             bottomSheetDialog.cancel();
         });
 
-        tvAddBed.setOnClickListener(view -> {
+        binding.tvAddBed.setOnClickListener(view -> {
             onRoomOptionClickListener.btnAddClicked();
             bottomSheetDialog.cancel();
         });
 
-        tvDelete.setOnClickListener(view -> {
+        binding.tvSharingType.setOnClickListener(view -> {
+            onRoomOptionClickListener.btnSharingTypeClicked();
+            bottomSheetDialog.cancel();
+        });
+
+        binding.tvDelete.setOnClickListener(view -> {
             onRoomOptionClickListener.btnDeleteClicked();
             bottomSheetDialog.cancel();
         });
@@ -260,11 +263,9 @@ public class BottomSheet {
         bottomSheetDialog.setContentView(R.layout.bottom_sheet_add_bed);
         AppCompatButton tvAdd = bottomSheetDialog.findViewById(R.id.btn_add_bottom_sheet);
         TextInputEditText etBedName = bottomSheetDialog.findViewById(R.id.etBedNumber);
-        TextInputEditText etBedPrice = bottomSheetDialog.findViewById(R.id.etBedPrice);
         tvAdd.setOnClickListener(view -> {
             String name = etBedName.getText().toString();
-            String price = etBedPrice.getText().toString();
-            onAddBedListener.addBtnClicked(name, price);
+            onAddBedListener.addBtnClicked(name);
             bottomSheetDialog.cancel();
         });
         bottomSheetDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -272,18 +273,15 @@ public class BottomSheet {
         bottomSheetDialog.show();
     }
 
-    public static void editBedBottomDialog(Context context, OnEditBedListener onBtnClickListener, String bedNumber,String bedPrice) {
+    public static void editBedBottomDialog(Context context, OnEditBedListener onBtnClickListener, String bedNumber) {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
         bottomSheetDialog.setContentView(R.layout.bottom_sheet_edit_bed);
         AppCompatButton tvAdd = bottomSheetDialog.findViewById(R.id.btn_edit_bottom_sheet);
         TextInputEditText etBedNumber = bottomSheetDialog.findViewById(R.id.etBedNumber);
-        TextInputEditText etBedPrice = bottomSheetDialog.findViewById(R.id.etBedPrice);
         etBedNumber.setText(bedNumber);
-        etBedPrice.setText(bedPrice);
         tvAdd.setOnClickListener(view -> {
             String number = etBedNumber.getText().toString();
-            String price = etBedPrice.getText().toString();
-            onBtnClickListener.editBtnClicked(number,price);
+            onBtnClickListener.editBtnClicked(number);
             bottomSheetDialog.cancel();
         });
         bottomSheetDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);

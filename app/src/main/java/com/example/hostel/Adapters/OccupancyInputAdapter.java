@@ -10,9 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hostel.Models.Floor;
 import com.example.hostel.Models.Occupancy;
 import com.example.hostel.R;
+import com.example.hostel.databinding.LayoutFloorItemBinding;
 
 import java.util.ArrayList;
 
@@ -26,8 +26,8 @@ public class OccupancyInputAdapter extends RecyclerView.Adapter<OccupancyInputAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_floor_item, parent, false);
-        return new ViewHolder(view);
+        LayoutFloorItemBinding binding = LayoutFloorItemBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+        return new ViewHolder(binding);
     }
 
     @Override
@@ -42,12 +42,9 @@ public class OccupancyInputAdapter extends RecyclerView.Adapter<OccupancyInputAd
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView btn_name;
-        ImageView ivMore;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            btn_name = itemView.findViewById(R.id.tvFloorName);
-            ivMore = itemView.findViewById(R.id.ivMore);
-            ivMore.setVisibility(View.GONE);
+        public ViewHolder(@NonNull LayoutFloorItemBinding layoutFloorItemBinding) {
+            super(layoutFloorItemBinding.getRoot());
+            btn_name = layoutFloorItemBinding.tvFloorName;
         }
 
         public void bind() {

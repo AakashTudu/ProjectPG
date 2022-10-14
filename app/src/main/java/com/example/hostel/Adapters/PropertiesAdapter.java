@@ -1,26 +1,27 @@
 package com.example.hostel.Adapters;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hostel.DTO.AddTenantDTO;
+import com.example.hostel.Enums.FragmentEnum;
+import com.example.hostel.FilterableAdapter.FirebaseRecyclerFilterableAdapter;
+import com.example.hostel.Fragments.PropertyFragmentDirections;
 import com.example.hostel.Listeners.OnPropertyOptionClickListener;
 import com.example.hostel.Models.Property;
 import com.example.hostel.R;
 import com.example.hostel.Utils.BottomSheet;
 import com.example.hostel.Utils.Constants;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.example.hostel.databinding.LayoutPropertiesBinding;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class PropertiesAdapter extends FirebaseRecyclerAdapter<Property, PropertiesAdapter.ViewHolder> {
+public class PropertiesAdapter extends FirebaseRecyclerFilterableAdapter<Property, PropertiesAdapter.ViewHolder> {
 
 
     /**
@@ -30,14 +31,14 @@ public class PropertiesAdapter extends FirebaseRecyclerAdapter<Property, Propert
      * @param options
      */
     public PropertiesAdapter(@NonNull FirebaseRecyclerOptions<Property> options) {
-        super(options);
+        super(options, true);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_properties, parent, false);
-        return new ViewHolder(view);
+        LayoutPropertiesBinding binding = LayoutPropertiesBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new ViewHolder(binding);
     }
 
     @Override
@@ -46,29 +47,24 @@ public class PropertiesAdapter extends FirebaseRecyclerAdapter<Property, Propert
     }
 
 
+    @Override
+    protected boolean filterCondition(Property property, String queryString) {
+        return property.getName().toLowerCase().contains(queryString) || property.getName().toLowerCase().contains(queryString);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
+        LayoutPropertiesBinding binding;
 
-        TextView iv_text, iv_type, iv_location;
-        ImageView btn_more, ivBuilding;
-        CardView cardView;
-
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            iv_text = itemView.findViewById(R.id.tvPgName);
-            iv_type = itemView.findViewById(R.id.tvType);
-            iv_location = itemView.findViewById(R.id.tv_location);
-            cardView = itemView.findViewById(R.id.cardView);
-            btn_more = itemView.findViewById(R.id.btn_more);
-            ivBuilding = itemView.findViewById(R.id.iv_building);
-
+        public ViewHolder(@NonNull LayoutPropertiesBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
 
         public void bind(int position, Property property) {
 
-            iv_text.setText(property.getName());
-            iv_type.setText(property.getType());
-            iv_location.setText(property.getLocation() + ", " + property.getCity());
+            binding.tvPgName.setText(property.getName());
+            binding.tvType.setText(property.getType());
+            binding.tvLocation.setText(property.getLocation() + ", " + property.getCity());
 
             Boolean isLive = Boolean.parseBoolean(property.getIsLive());
 
@@ -77,18 +73,32 @@ public class PropertiesAdapter extends FirebaseRecyclerAdapter<Property, Propert
             }else
                 ivBuilding.setBackgroundResource(R.drawable.ic_building_deactivated);*/
 
-            ivBuilding.setBackgroundResource(R.drawable.ic_building);
+            binding.ivBuilding.setBackgroundResource(R.drawable.ic_building);
 
-            cardView.setOnClickListener(view -> {
-                String timeStampRef = getRef(position).getKey();
+            String ref = getRef(position).getKey();
+            String code = ref.substring(ref.length() - 5);
+            binding.tvCode.setText(code);
+
+            binding.cardView.setOnClickListener(view -> {
+/*                String timeStampRef = getRef(position).getKey();
                 Bundle bundle = new Bundle();
                 bundle.putString(Constants.propertyRef, timeStampRef);
                 bundle.putString("position", String.valueOf(position + 1));
                 bundle.putSerializable(Constants.property, property);
-                Navigation.findNavController(view).navigate(R.id.action_propertyFragment_to_userPropertyFragment, bundle);
+                Navigation.findNavController(view).navigate(R.id.action_propertyFragment_to_userPropertyFragment, bundle);*/
+
+                AddTenantDTO addTenantDTO = new AddTenantDTO();
+                addTenantDTO.setPropertyRefKey(getRef(position).getKey());
+                addTenantDTO.setProperty(property);
+                addTenantDTO.setFragmentEnum(FragmentEnum.USER_PROPERTY);
+
+                Navigation.findNavController(view).navigate(
+                        PropertyFragmentDirections.actionPropertyFragmentToUserPropertyFragment(addTenantDTO)
+                );
+
             });
 
-            btn_more.setOnClickListener(view -> {
+            binding.btnMore.setOnClickListener(view -> {
                 BottomSheet.showPropertyBottomDialog(itemView.getContext(), new OnPropertyOptionClickListener() {
                     @Override
                     public void btnEditClicked() {
@@ -98,8 +108,10 @@ public class PropertiesAdapter extends FirebaseRecyclerAdapter<Property, Propert
                     @Override
                     public void btnAddFloorClicked() {
                         String timeStampRef = getRef(position).getKey();
+                        Log.d("sdfsdfsd", "PropertiesAdapter: " + timeStampRef);
                         Bundle bundle = new Bundle();
                         bundle.putString(Constants.propertyRef, timeStampRef);
+                        bundle.putString(Constants.fragment, "PropertyFragment");
                         Navigation.findNavController(view).navigate(R.id.action_propertyFragment_to_totalFloorFragment, bundle);
                     }
 

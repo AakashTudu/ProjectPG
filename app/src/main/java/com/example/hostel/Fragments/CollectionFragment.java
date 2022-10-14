@@ -26,15 +26,20 @@ public class CollectionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentCollectionBinding.inflate(inflater, container, false);
-        MonthlyCollection collection = (MonthlyCollection) getArguments().getSerializable(Constants.collection);
 
-        binding.tvCollectedMoney.setText("Rs " + collection.getPaidPrice());
-        binding.tvPendingMoney.setText("Rs " + collection.getPendingPrice());
+        if (getArguments()!=null){
+            MonthlyCollection collection = (MonthlyCollection) getArguments().getSerializable(Constants.collection);
+            if (collection!=null){
+                binding.tvCollectedMoney.setText("Rs " + collection.getPaidPrice());
+                binding.tvPendingMoney.setText("Rs " + collection.getPendingPrice());
 
-        binding.lpiPaid.setProgress(collection.getIntPercentage());
-        binding.lpiPending.setProgress(100-collection.getIntPercentage());
-        binding.tvPaidPercentage.setText(collection.getPercentage());
-        binding.tvPendingPercentage.setText(collection.getPendingPercentage());
+                binding.lpiPaid.setProgress(collection.getIntPercentage());
+                binding.lpiPending.setProgress(100-collection.getIntPercentage());
+                binding.tvPaidPercentage.setText(collection.getPercentage());
+                binding.tvPendingPercentage.setText(collection.getPendingPercentage());
+            }
+        }
+
 
         binding.btnBack.setOnClickListener(view -> {
             Navigation.findNavController(view).popBackStack();

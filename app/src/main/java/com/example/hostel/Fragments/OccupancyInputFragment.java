@@ -1,6 +1,5 @@
 package com.example.hostel.Fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,8 +13,6 @@ import android.view.ViewGroup;
 import com.example.hostel.Adapters.OccupancyInputAdapter;
 import com.example.hostel.Models.Occupancy;
 import com.example.hostel.R;
-import com.example.hostel.UI.OccupancyInputActivity;
-import com.example.hostel.UI.TotalOccupancyActivity;
 import com.example.hostel.Utils.Constants;
 import com.example.hostel.databinding.FragmentOccupancyInputBinding;
 

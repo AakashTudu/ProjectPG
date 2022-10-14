@@ -11,7 +11,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:divider="@android:color/transparent"
@@ -24,8 +24,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:background="@drawable/outlined_border_10_dp_thin"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             >
 
             <LinearLayout
@@ -53,6 +53,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
+                        android:paddingEnd="5dp"
                         android:paddingStart="20dp"
                         android:src="@drawable/ic_more" />
 

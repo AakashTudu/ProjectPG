@@ -19,6 +19,7 @@
         android:id="@+id/rl_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:padding="13dp">
 
         <ImageView
@@ -41,6 +42,7 @@
     <View
         android:id="@+id/lb_1"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="0.5dp"
         android:layout_below="@id/rl_toolbar"
         android:layout_marginStart="10dp"
@@ -52,9 +54,9 @@
         android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="20dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -101,10 +103,11 @@
 
 
                 <TextView
+                    android:id="@+id/tvMenPG"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Men's PG"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -129,6 +132,7 @@
 
 
                 <TextView
+                    android:id="@+id/tvLadiesPG"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ladies PG"
@@ -167,6 +171,7 @@
 
 
                 <TextView
+                    android:id="@+id/tvCoedPG"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Coed PG"
@@ -197,6 +202,26 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:text="State"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <AutoCompleteTextView
+            android:id="@+id/etStateName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/text_input_layout"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="20dp"
+            android:text=""
+            tools:ignore="SpeakableTextPresentCheck" />
+
 
         <TextView
             android:id="@+id/textView17"
@@ -207,7 +232,7 @@
             android:textColor="@color/black"
             android:textStyle="bold" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/etCityName"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -218,6 +243,7 @@
             android:paddingStart="20dp"
             android:text=""
             tools:ignore="SpeakableTextPresentCheck" />
+
 
         <TextView
             android:id="@+id/textView18"
@@ -248,9 +274,9 @@
         android:id="@+id/btnContinue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="44dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/solid_border_7_dp"
         android:text="Continue"
         app:layout_constraintEnd_toEndOf="parent"

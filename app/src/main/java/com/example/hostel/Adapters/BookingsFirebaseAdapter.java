@@ -63,7 +63,7 @@ public class BookingsFirebaseAdapter extends FirebaseRecyclerAdapter<Tenant, Boo
             layoutTenantsBinding.tvTenantName.setText(tenant.getN());
             layoutTenantsBinding.tvRoomQuantity.setText(tenant.getR());
             layoutTenantsBinding.tvPgName.setText(tenant.getPn());
-            layoutTenantsBinding.tvOccupancy.setText(tenant.getO());
+            layoutTenantsBinding.tvOccupancy.setText(tenant.getOccupancy());
             layoutTenantsBinding.cardView.setOnClickListener(view -> {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(Constants.tenant, tenant);
@@ -75,7 +75,7 @@ public class BookingsFirebaseAdapter extends FirebaseRecyclerAdapter<Tenant, Boo
             layoutOnboardedBinding.tvTenantName.setText(tenant.getN());
             layoutOnboardedBinding.tvRoomQuantity.setText(tenant.getR());
             layoutOnboardedBinding.tvPgName.setText(tenant.getPn());
-            layoutOnboardedBinding.tvOccupancy.setText(tenant.getO());
+            layoutOnboardedBinding.tvOccupancy.setText(tenant.getOccupancy());
         }
     }
 }

@@ -32,6 +32,19 @@
         />
 
     <TextView
+        android:id="@+id/tvSharingType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_sharing"
+        android:drawablePadding="20dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="20dp"
+        android:text="Sharing"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        />
+
+    <TextView
         android:id="@+id/tvDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

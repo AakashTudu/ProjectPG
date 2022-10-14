@@ -4,159 +4,253 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.SelectSharingActivity">
+    tools:context=".SelectSharingActivity">
 
-
-    <RelativeLayout
-        android:id="@+id/rl_toolbar"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="122dp"
         android:layout_height="wrap_content"
-        android:padding="13dp">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="100dp"
+        android:text="Select Sharing"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
-        <ImageView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:src="@drawable/ic_arrow_back" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Select Sharing"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="23dp"
+        app:srcCompat="@drawable/back_btn" />
 
     <View
         android:id="@+id/lb_1"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_below="@id/rl_toolbar"
+        android:layout_below="@id/textView5"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="0.5dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:background="#03A9F4" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_nav_bar"
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/lb_1"
-        android:scrollbars="none">
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Asign the room and resources \nto your tenant. "
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lb_1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:text="Step 5/5"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lb_1"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="70dp"
+        android:text="Sharing Type"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/etSharingType"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/textView10"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:background="@drawable/linedbox"
+        android:text=""
+        android:hint="Replace it with dropdown"
+        android:paddingStart="10dp"/>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView10"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="70dp"
+        android:text="Room Number"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        />
+
+    <EditText
+        android:id="@+id/etRoomNumber"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/textView11"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:background="@drawable/linedbox"
+        android:text=""
+        android:paddingStart="10dp"/>
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView11"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="70dp"
+        android:text="Bed Number"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/etBedNumber"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/textView12"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/linedbox"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:paddingStart="10dp"
+        android:text="" />
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etBedNumber"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:layout_weight="1">
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Room Rent"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="48dp"
+                android:background="@drawable/linedbox"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical">
 
-                <TextView
+                <ImageView
+                    android:id="@+id/imageView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/assign" />
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/rupee" />
 
-                <TextView
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Sec. Deposit"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/linedbox"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="Step  3/3" />
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/rupee" />
 
-            </RelativeLayout>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    />
 
-
-
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Sharing Type"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/text_input_layout"
-                android:ems="10"
-                android:gravity="center_vertical"
-                android:inputType="textPersonName"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:text="Select sharing type"
-                android:textColor="@color/black"
-                app:drawableRightCompat="@drawable/ic_arrow_down"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Room Number"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/text_input_layout"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text=""
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Bed Number"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/text_input_layout"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text=""
-                tools:ignore="SpeakableTextPresentCheck" />
+            </LinearLayout>
 
         </LinearLayout>
 
-    </ScrollView>
+    </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_nav_bar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/black"
-        android:text="Done"
-        android:textAllCaps="false"
-        app:cornerRadius="10dp" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav_bar"
+    <TextView
+        android:id="@+id/textView14"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/nav_bar" />
+        android:layout_height="48dp"
+        android:layout_below="@+id/ll"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/selectedbox"
+        android:gravity="center"
+        android:text="Continue"
+        android:textAlignment="center"
+        android:textColor="@color/white" />
+
 
 </RelativeLayout>

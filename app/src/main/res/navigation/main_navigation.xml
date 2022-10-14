@@ -8,277 +8,635 @@
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.example.hostel.Fragments.DashboardFragment"
-        android:label="fragment_dashboard"
+        android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_dashboardFragment_to_recordPaymentFragment"
-            app:destination="@id/recordPaymentFragment" />
+            app:destination="@id/recordPaymentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_dashboardFragment_to_collectionFragment"
-            app:destination="@id/collectionFragment" />
+            app:destination="@id/collectionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_dashboardFragment_to_expenseFragment"
-            app:destination="@id/expenseFragment" />
+            app:destination="@id/expenseFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.hostel.Fragments.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_bankDetailsFragment"
+            app:destination="@id/bankDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_businessDetailsFragment"
+            app:destination="@id/businessDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
     <fragment
         android:id="@+id/manageFragment"
         android:name="com.example.hostel.Fragments.ManageFragment"
-        android:label="fragment_manage"
+        android:label="Manage"
         tools:layout="@layout/fragment_manage" >
         <action
             android:id="@+id/action_manageFragment_to_tenantsFragment"
-            app:destination="@id/tenantsFragment" />
+            app:destination="@id/tenantsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_manageFragment_to_bookingsFragment"
-            app:destination="@id/bookingsFragment" />
+            app:destination="@id/bookingsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_manageFragment_to_complaintsFragment"
-            app:destination="@id/complaintsFragment" />
+            app:destination="@id/complaintsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_manageFragment_to_roomVacanciesFragment"
-            app:destination="@id/roomVacanciesFragment" />
+            app:destination="@id/roomVacanciesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_manageFragment_to_expenseFragment"
-            app:destination="@id/expenseFragment" />
+            app:destination="@id/expenseFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/propertyFragment"
         android:name="com.example.hostel.Fragments.PropertyFragment"
-        android:label="fragment_property"
+        android:label="Properties"
         tools:layout="@layout/fragment_property">
         <action
             android:id="@+id/action_propertyFragment_to_addPropertyFragment"
-            app:destination="@id/addPropertyFragment" />
+            app:destination="@id/addPropertyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_propertyFragment_to_totalFloorFragment"
-            app:destination="@id/totalFloorFragment" />
+            app:destination="@id/totalFloorFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_propertyFragment_to_roomArrangementFragment"
-            app:destination="@id/roomArrangementFragment" />
+            app:destination="@id/roomArrangementFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_propertyFragment_to_userPropertyFragment"
-            app:destination="@id/userPropertyFragment" />
+            app:destination="@id/userPropertyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/transactionFragment"
         android:name="com.example.hostel.Fragments.TransactionFragment"
-        android:label="fragment_transaction"
+        android:label="Transaction"
         tools:layout="@layout/fragment_transaction" />
     <fragment
         android:id="@+id/recordPaymentFragment"
         android:name="com.example.hostel.Fragments.RecordPaymentFragment"
-        android:label="fragment_record_payment"
-        tools:layout="@layout/fragment_record_payment"></fragment>
+        android:label="Record Payment"
+        tools:layout="@layout/fragment_record_payment" />
     <fragment
         android:id="@+id/collectionFragment"
         android:name="com.example.hostel.Fragments.CollectionFragment"
-        android:label="fragment_collection"
-        tools:layout="@layout/fragment_collection"></fragment>
+        android:label="Collection"
+        tools:layout="@layout/fragment_collection" />
     <fragment
         android:id="@+id/addPropertyFragment"
         android:name="com.example.hostel.Fragments.AddPropertyFragment"
-        android:label="fragment_add_property"
+        android:label="Add Property"
         tools:layout="@layout/fragment_add_property">
         <action
             android:id="@+id/action_addPropertyFragment_to_totalFloorFragment"
-            app:destination="@id/totalFloorFragment" />
+            app:destination="@id/totalFloorFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/totalFloorFragment"
         android:name="com.example.hostel.Fragments.TotalFloorFragment"
-        android:label="fragment_total_floor"
+        android:label="Total Floor"
         tools:layout="@layout/fragment_total_floor">
         <action
             android:id="@+id/action_totalFloorFragment_to_totalRoomsFragment"
-            app:destination="@id/totalRoomsFragment" />
+            app:destination="@id/totalRoomsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_totalFloorFragment_to_propertyFragment"
             app:destination="@id/propertyFragment"
             app:popUpTo="@id/propertyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_totalFloorFragment_to_roomArrangementFragment"
-            app:destination="@id/roomArrangementFragment" />
+            app:destination="@id/roomArrangementFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
     <fragment
         android:id="@+id/totalRoomsFragment"
         android:name="com.example.hostel.Fragments.TotalRoomsFragment"
-        android:label="fragment_total_rooms"
+        android:label="Total Rooms"
         tools:layout="@layout/fragment_total_rooms">
         <action
             android:id="@+id/action_totalRoomsFragment_to_occupencyInputFragment"
-            app:destination="@id/occupencyInputFragment" />
+            app:destination="@id/occupencyInputFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/occupencyInputFragment"
         android:name="com.example.hostel.Fragments.OccupancyInputFragment"
-        android:label="fragment_occupency_input"
+        android:label="Total Rooms"
         tools:layout="@layout/fragment_occupancy_input">
         <action
             android:id="@+id/action_occupencyInputFragment_to_roomArrangementFragment"
-            app:destination="@id/roomArrangementFragment" />
+            app:destination="@id/roomArrangementFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/roomArrangementFragment"
         android:name="com.example.hostel.Fragments.RoomArrangementFragment"
-        android:label="fragment_room_arrangement"
+        android:label="Total Rooms"
         tools:layout="@layout/fragment_room_arrangement">
         <action
             android:id="@+id/action_roomArrangementFragment_to_addRoomFragment"
-            app:destination="@id/addRoomFragment" />
+            app:destination="@id/addRoomFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_roomArrangementFragment_to_propertyFragment"
             app:destination="@id/propertyFragment"
             app:popUpTo="@id/propertyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_roomArrangementFragment_to_totalFloorFragment"
             app:destination="@id/totalFloorFragment"
             app:popUpTo="@id/totalFloorFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/addRoomFragment"
         android:name="com.example.hostel.Fragments.AddRoomFragment"
-        android:label="fragment_add_room"
+        android:label="Add Room"
         tools:layout="@layout/fragment_add_room">
         <action
             android:id="@+id/action_addRoomFragment_to_successFragment"
-            app:destination="@id/successFragment" />
+            app:destination="@id/successFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/successFragment"
         android:name="com.example.hostel.Fragments.SuccessFragment"
-        android:label="fragment_success"
+        android:label="Congratulation"
         tools:layout="@layout/fragment_success">
         <action
             android:id="@+id/action_successFragment_to_propertyFragment"
             app:destination="@id/propertyFragment"
             app:popUpTo="@id/propertyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/userPropertyFragment"
         android:name="com.example.hostel.Fragments.UserPropertyFragment"
-        android:label="fragment_user_property"
+        android:label="Property"
         tools:layout="@layout/fragment_user_property" >
         <action
             android:id="@+id/action_userPropertyFragment_to_complaintsFragment"
-            app:destination="@id/complaintsFragment" />
+            app:destination="@id/complaintsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_userPropertyFragment_to_tenantsFragment"
-            app:destination="@id/tenantsFragment" />
+            app:destination="@id/tenantsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_userPropertyFragment_to_bookingsFragment"
-            app:destination="@id/bookingsFragment" />
+            app:destination="@id/bookingsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_userPropertyFragment_to_roomArrangementFragment"
-            app:destination="@id/roomArrangementFragment" />
+            app:destination="@id/roomArrangementFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="addTenantDTO"
+            app:argType="com.example.hostel.DTO.AddTenantDTO"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/complaintsFragment"
         android:name="com.example.hostel.Fragments.ComplaintsFragment"
-        android:label="fragment_complaints"
+        android:label="Complaints"
         tools:layout="@layout/fragment_complaints" />
     <fragment
         android:id="@+id/tenantsFragment"
         android:name="com.example.hostel.Fragments.TenantsFragment"
-        android:label="fragment_tenants"
-        tools:layout="@layout/fragment_tenants" >
+        android:label="Tenants"
+        tools:layout="@layout/fragment_tenants">
         <action
             android:id="@+id/action_tenantsFragment_to_tenantProfileFragment"
-            app:destination="@id/tenantProfileFragment" />
+            app:destination="@id/tenantProfileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_tenantsFragment_to_addTenantFragment"
-            app:destination="@id/addTenantFragment" />
+            app:destination="@id/addTenantFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_tenantsFragment_to_addTenantFirstFragment"
+            app:destination="@id/addTenantFirstFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="addTenantDTO"
+            app:argType="com.example.hostel.DTO.AddTenantDTO" />
     </fragment>
     <fragment
         android:id="@+id/tenantProfileFragment"
         android:name="com.example.hostel.Fragments.TenantProfileFragment"
-        android:label="fragment_tenant_profile"
-        tools:layout="@layout/fragment_tenant_profile" />
+        android:label="Tenant Profile"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"
+        tools:layout="@layout/fragment_tenant_profile">
+        <action
+            android:id="@+id/action_tenantProfileFragment_to_tenantProfileDetialFragment"
+            app:destination="@id/tenantProfileDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="tenant"
+            app:argType="com.example.hostel.Models.Tenant" />
+        <action
+            android:id="@+id/action_tenantProfileFragment_to_documentFragment"
+            app:destination="@id/documentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_tenantProfileFragment_to_passbookFragment"
+            app:destination="@id/passbookFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="code"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/addTenantFragment"
         android:name="com.example.hostel.Fragments.AddTenantFragment"
-        android:label="fragment_add_tenant"
+        android:label="Add Tenant"
         tools:layout="@layout/fragment_add_tenant" >
         <action
             android:id="@+id/action_addTenantFragment_to_selectPropertyFragment"
-            app:destination="@id/selectPropertyFragment" />
+            app:destination="@id/selectPropertyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_addTenantFragment_to_selectSharingFragment"
-            app:destination="@id/selectSharingFragment" />
+            app:destination="@id/selectSharingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/selectPropertyFragment"
         android:name="com.example.hostel.Fragments.SelectPropertyFragment"
-        android:label="fragment_select_property"
-        tools:layout="@layout/fragment_select_property" >
+        android:label="Select Property"
+        tools:layout="@layout/fragment_select_property">
         <action
             android:id="@+id/action_selectPropertyFragment_to_selectSharingFragment"
-            app:destination="@id/selectSharingFragment" />
+            app:destination="@id/selectSharingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_selectPropertyFragment_to_selectRoomFragment"
+            app:destination="@id/selectRoomFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="addTenantDTO"
+            app:argType="com.example.hostel.DTO.AddTenantDTO" />
     </fragment>
     <fragment
         android:id="@+id/selectSharingFragment"
         android:name="com.example.hostel.Fragments.SelectSharingFragment"
-        android:label="fragment_select_sharing"
-        tools:layout="@layout/fragment_select_sharing" >
+        android:label="Select Sharing"
+        tools:layout="@layout/fragment_select_sharing">
         <action
             android:id="@+id/action_selectSharingFragment_to_congratulationTenantFragment"
-            app:destination="@id/congratulationTenantFragment" />
+            app:destination="@id/congratulationTenantFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="addTenantDTO"
+            app:argType="com.example.hostel.DTO.AddTenantDTO" />
     </fragment>
     <fragment
         android:id="@+id/congratulationTenantFragment"
         android:name="com.example.hostel.Fragments.CongratulationTenantFragment"
-        android:label="fragment_congratulation_tenant"
+        android:label="Congratulation"
         tools:layout="@layout/fragment_congratulation_tenant" >
         <action
             android:id="@+id/action_congratulationTenantFragment_to_tenantsFragment"
             app:destination="@id/tenantsFragment"
             app:popUpTo="@id/tenantsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="addTenantDTO"
+            app:argType="com.example.hostel.DTO.AddTenantDTO" />
     </fragment>
     <fragment
         android:id="@+id/bookingsFragment"
         android:name="com.example.hostel.Fragments.BookingsFragment"
-        android:label="fragment_bookings"
+        android:label="Bookings"
         tools:layout="@layout/fragment_bookings" >
         <action
             android:id="@+id/action_bookingsFragment_to_bookingProfileFragment"
-            app:destination="@id/bookingProfileFragment" />
+            app:destination="@id/bookingProfileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/bookingProfileFragment"
         android:name="com.example.hostel.Fragments.BookingProfileFragment"
-        android:label="fragment_booking_profile"
+        android:label="Bookings"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"
         tools:layout="@layout/fragment_booking_profile" />
     <fragment
         android:id="@+id/roomVacanciesFragment"
         android:name="com.example.hostel.Fragments.RoomVacanciesFragment"
-        android:label="fragment_room_vacancies"
+        android:label="Room Vacancies"
         tools:layout="@layout/fragment_room_vacancies" >
         <action
             android:id="@+id/action_roomVacanciesFragment_to_roomArrangementFragment"
-            app:destination="@id/roomArrangementFragment" />
+            app:destination="@id/roomArrangementFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/expenseFragment"
         android:name="com.example.hostel.Fragments.ExpenseFragment"
-        android:label="fragment_expense"
+        android:label="Expense Management"
         tools:layout="@layout/fragment_expense" >
         <action
             android:id="@+id/action_expenseFragment_to_addExpenseFragment"
-            app:destination="@id/addExpenseFragment" />
+            app:destination="@id/addExpenseFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/addExpenseFragment"
         android:name="com.example.hostel.Fragments.AddExpenseFragment"
-        android:label="fragment_add_expense"
-        tools:layout="@layout/fragment_add_expense" />
+        android:label="Add Expense"
+        tools:layout="@layout/fragment_add_expense" >
+        <argument
+            android:name="expense"
+            app:argType="com.example.hostel.Models.Expense"
+            app:nullable="true" />
+        <argument
+            android:name="expenseRef"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="option"
+            app:argType="com.example.hostel.BottomSheetDialog.OptionDialog$Option" />
+        <argument
+            android:name="date"
+            app:argType="string" />
+        <argument
+            android:name="month"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/bankDetailsFragment"
+        android:name="com.example.hostel.Fragments.BankDetailsFragment"
+        android:label="Bank Details"
+        tools:layout="@layout/fragment_bank_details">
+        <action
+            android:id="@+id/action_bankDetailsFragment_to_addBankFragment"
+            app:destination="@id/addBankFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTenantFirstFragment"
+        android:name="com.example.hostel.Fragments.AddTenantFirstFragment"
+        android:label="Add Tenant"
+        tools:layout="@layout/fragment_add_tenant_first">
+        <action
+            android:id="@+id/action_addTenantFirstFragment_to_addTenantSecondFragment"
+            app:destination="@id/addTenantSecondFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="addTenantDTO"
+            app:argType="com.example.hostel.DTO.AddTenantDTO" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTenantSecondFragment"
+        android:name="com.example.hostel.Fragments.AddTenantSecondFragment"
+        android:label="Add Tenant"
+        tools:layout="@layout/fragment_add_tenant_second">
+        <action
+            android:id="@+id/action_addTenantSecondFragment_to_selectPropertyFragment"
+            app:destination="@id/selectPropertyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="addTenantDTO"
+            app:argType="com.example.hostel.DTO.AddTenantDTO" />
+        <action
+            android:id="@+id/action_addTenantSecondFragment_to_selectRoomFragment"
+            app:destination="@id/selectRoomFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/selectRoomFragment"
+        android:name="com.example.hostel.Fragments.SelectRoomFragment"
+        android:label="Select Room"
+        tools:layout="@layout/fragment_select_room">
+        <action
+            android:id="@+id/action_selectRoomFragment_to_selectSharingFragment"
+            app:destination="@id/selectSharingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="addTenantDTO"
+            app:argType="com.example.hostel.DTO.AddTenantDTO" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenantProfileDetailFragment"
+        android:name="com.example.hostel.Fragments.TenantProfileDetailFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_tenant_profile_detial">
+        <argument
+            android:name="tenant"
+            app:argType="com.example.hostel.Models.Tenant" />
+    </fragment>
+    <fragment
+        android:id="@+id/passbookFragment"
+        android:name="com.example.hostel.Fragments.PassbookFragment"
+        android:label="Passbook"
+        tools:layout="@layout/fragment_passbook" />
+    <fragment
+        android:id="@+id/documentFragment"
+        android:name="com.example.hostel.Fragments.DocumentFragment"
+        android:label="Document"
+        tools:layout="@layout/fragment_document" />
+    <fragment
+        android:id="@+id/addBankFragment"
+        android:name="com.example.hostel.Fragments.AddBankFragment"
+        android:label="Add Bank"
+        tools:layout="@layout/fragment_add_bank" >
+        <argument
+            android:name="option"
+            app:argType="com.example.hostel.BottomSheetDialog.OptionDialog$Option" />
+        <argument
+            android:name="bank"
+            app:nullable="true"
+            app:argType="com.example.hostel.Models.Bank" />
+        <argument
+            android:name="bankRef"
+            app:nullable="true"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/businessDetailsFragment"
+        android:name="com.example.hostel.Fragments.BusinessDetailsFragment"
+        android:label="Business Details"
+        tools:layout="@layout/fragment_business_details" />
 </navigation>

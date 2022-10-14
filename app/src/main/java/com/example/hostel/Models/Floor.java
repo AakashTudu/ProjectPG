@@ -6,25 +6,25 @@ import java.io.Serializable;
 
 public class Floor implements Serializable {
 
-    private String n; // used for floor name
+    private int n; // used for floor name
     private int roomsQuantity = 0;
     private String reference;
+    private Boolean isSelected = true;
 
     public Floor() {
     }
 
-    public Floor(String n) {
+    public Floor(int n) {
         this.n = n;
     }
 
-    public String getN() {
+    public int getN() {
         return n;
     }
 
-    public void setN(String n) {
+    public void setN(int n) {
         this.n = n;
     }
-
 
     @Exclude
     public int getRoomsQuantity() {
@@ -44,6 +44,14 @@ public class Floor implements Serializable {
     @Exclude
     public void setReference(String reference) {
         this.reference = reference;
+    }
+
+    public Boolean getSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(Boolean selected) {
+        isSelected = selected;
     }
 
     @Override

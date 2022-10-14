@@ -11,12 +11,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hostel.Adapters.BedAdapter;
 import com.example.hostel.Adapters.BookingsAdapter;
 import com.example.hostel.Adapters.BookingsFirebaseAdapter;
-import com.example.hostel.Models.Bed;
 import com.example.hostel.Models.Tenant;
 import com.example.hostel.R;
 import com.example.hostel.Utils.Constants;
@@ -149,18 +146,14 @@ public class BookingsFragment extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Tenant tenant = snapshot.getValue(Tenant.class);
-                if (tenant != null && tenant.getS().equals(status))
-                    hashMap.put(snapshot.getKey(), tenant);
+                if (tenant != null) hashMap.put(snapshot.getKey(), tenant);
                 loadData();
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Tenant tenant = snapshot.getValue(Tenant.class);
-                if (!tenant.getS().equals(status))
-                    hashMap.remove(snapshot.getKey());
-                else
-                    hashMap.put(snapshot.getKey(), tenant);
+                hashMap.put(snapshot.getKey(), tenant);
                 loadData();
             }
 

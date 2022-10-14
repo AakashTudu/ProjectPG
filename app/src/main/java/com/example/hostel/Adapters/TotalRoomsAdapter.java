@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.hostel.Listeners.OnGroupBtnClickListener;
 import com.example.hostel.Models.Floor;
 import com.example.hostel.databinding.LayoutRoomItemBinding;
+import com.example.monthandyearpicker.Utils;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
@@ -48,7 +49,7 @@ public class TotalRoomsAdapter extends FirebaseRecyclerAdapter<Floor, TotalRooms
         public void bind(int position, Floor floor) {
 
             binding.tvRoomQuantity.setText("" + floor.getRoomsQuantity());
-            binding.btnName.setText(floor.getN());
+            binding.btnName.setText(Utils.numberToOrdinalWord(floor.getN()));
 
             binding.btnMinus.setOnClickListener(view -> {
                 if (floor.getRoomsQuantity() > 0) {

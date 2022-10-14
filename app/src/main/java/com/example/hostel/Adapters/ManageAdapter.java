@@ -47,14 +47,13 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView iv_option;
-        TextView tv_name, tv_description;
+        TextView tv_name;
         CardView cv_tenant;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             iv_option = itemView.findViewById(R.id.iv_option);
             tv_name = itemView.findViewById(R.id.tv_name);
-            tv_description = itemView.findViewById(R.id.tv_description);
             cv_tenant = itemView.findViewById(R.id.cv_tenant);
         }
 
@@ -64,7 +63,6 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
             iv_option.setBackgroundResource(option.getImageID());
 
             tv_name.setText(option.getName());
-            tv_description.setText(option.getDescription());
 
             cv_tenant.setOnClickListener(view -> {
                 onBtnClickListener.btnClicked(option.getName());

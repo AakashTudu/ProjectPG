@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hostel.Listeners.OnFloorItemClickListener;
 import com.example.hostel.Models.Floor;
+import com.example.hostel.Models.User;
 import com.example.hostel.R;
+import com.example.monthandyearpicker.Utils;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
@@ -29,9 +31,8 @@ public class FloorHorizontalAdapter extends FirebaseRecyclerAdapter<Floor,FloorH
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Floor model) {
         if (isEmpty) {
             isEmpty = false;
-            String name = model.getN();
             String roomRef = getRef(position).getKey();
-            onFloorItemClickListener.firstItem(name,roomRef);
+            onFloorItemClickListener.firstItem(model.getN(),roomRef);
         }
         holder.bind(position);
     }
@@ -56,7 +57,7 @@ public class FloorHorizontalAdapter extends FirebaseRecyclerAdapter<Floor,FloorH
 
         public void bind(int position) {
             Floor floor = getItem(position);
-            tvFloorName.setText(floor.getN());
+            tvFloorName.setText(Utils.numberToOrdinalWord(floor.getN()));
             cardView.setOnClickListener(view -> {
                 onFloorItemClickListener.clicked(floor.getN(),getRef(position).getKey());
             });
