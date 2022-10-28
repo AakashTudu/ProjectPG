@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hostel.R;
+import com.example.hostel.Utils.UserSharedPref;
+import com.example.hostel.Utils.UserUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -77,13 +79,40 @@ public class SplashScreenActivity extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Intent i;
-                            if (snapshot.exists())  // if snapshot  exist its mean that user exist
-                                i = new Intent(getApplicationContext(), MainActivity.class);
-                            else
-                                i = new Intent(getApplicationContext(), ProfileActivity.class);
-                            startActivity(i);
-                            finish();
+                            if (snapshot.exists()) { // if snapshot  exist its mean that user exist
+                                if (UserSharedPref.initializeSharedPreferenceForEmptyPropertyCheck(SplashScreenActivity.this).getBoolean(UserSharedPref.emptyPropertyCheck, true)) {
+
+                                    Query query = FirebaseDatabase.getInstance().getReference().child("properties").child(UserUtils.phoneNumber()).limitToFirst(1);
+
+                                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            if (snapshot.exists()) {
+                                                UserSharedPref.initializeSharedPreferenceForEmptyPropertyCheck(SplashScreenActivity.this).edit().putBoolean(UserSharedPref.emptyPropertyCheck,false).apply();
+                                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                                finish();
+                                            }
+                                            else {
+                                                startActivity(new Intent(getApplicationContext(), AddPropertyActivity.class));
+                                                finish();
+                                            }
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
+                                }else{
+                                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                    finish();
+                                }
+                            }
+                            else {
+                                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                                finish();
+                            }
                         }
                     },1000);
                 }

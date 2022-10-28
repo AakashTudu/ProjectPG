@@ -1,21 +1,25 @@
 package com.example.hostel.Fragments;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.hostel.Adapters.PropertiesAdapter;
+import com.example.hostel.Adapters.paging.PropertyPagingAdapter;
 import com.example.hostel.CustomViews.CustomEditText;
 import com.example.hostel.Models.Property;
 import com.example.hostel.R;
@@ -24,20 +28,21 @@ import com.example.hostel.databinding.FragmentPropertyBinding;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.shreyaspatil.firebase.recyclerpagination.DatabasePagingOptions;
 
 public class PropertyFragment extends Fragment {
 
     private FragmentPropertyBinding binding;
     RecyclerView recyclerView;
-    PropertiesAdapter adapter;
-
+    PropertyPagingAdapter pagingAdapter;
+    PropertiesAdapter normalAdapter;
     CustomEditText et_search;
     Button btn_add_property;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentPropertyBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
 
         et_search = binding.etSearch;
         btn_add_property = binding.btnAddProperty;
@@ -45,7 +50,20 @@ public class PropertyFragment extends Fragment {
         recyclerView = binding.recyclerView;
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        loadRecyclerView();
+
+        et_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    if (!et_search.getText().toString().equals("")){
+                        loadSearchRecyclerView();
+                        et_search.hideKeyboard();
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
 
         et_search.setOnTouchListener((v, event) -> {
             final int DRAWABLE_RIGHT = 2;
@@ -57,27 +75,12 @@ public class PropertyFragment extends Fragment {
                     }
                     et_search.setText("");
                     et_search.hideKeyboard();
+                    normalAdapter.stopListening();
+                    loadPagingRecyclerView();
                     return true;
                 }
             }
             return false;
-        });
-
-        binding.etSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                adapter.getFilter().filter(binding.etSearch.getText().toString());
-            }
         });
 
         binding.btnAddProperty.setOnClickListener(view -> {
@@ -85,33 +88,60 @@ public class PropertyFragment extends Fragment {
 
         });
 
-        return root;
+        binding.tvRequestCall.setOnClickListener(view -> {
+            UserUtils.call("1234576890", view.getContext());
+        });
+
+        loadPagingRecyclerView();
+
+        return binding.getRoot();
     }
 
-    private void loadRecyclerView() {
-        Query query = FirebaseDatabase.getInstance().getReference().child("properties").child(UserUtils.phoneNumber());
+    private void loadSearchRecyclerView() {
+
+        String queryText = et_search.getText().toString();
+        queryText = UserUtils.capitalize(queryText);
+
+        Query query = FirebaseDatabase.getInstance().getReference().child("properties").child(UserUtils.phoneNumber()).orderByChild("name")
+                .startAt(queryText).endAt(queryText + "\uf8ff");
+
         FirebaseRecyclerOptions<Property> options = new FirebaseRecyclerOptions.Builder<Property>()
                 .setQuery(query, snapshot -> {
-                    String name = snapshot.child("name").getValue().toString();
-                    String type = snapshot.child("type").getValue().toString();
-                    String city = snapshot.child("city").getValue().toString();
-                    String location = snapshot.child("location").getValue().toString();
-                    String isLive = snapshot.child("isLive").getValue().toString();
-                    return new Property(
-                            name,type, city ,location,isLive
-                    );
+                    return snapshot.getValue(Property.class);
                 }).build();
-        adapter = new PropertiesAdapter(options);
+        normalAdapter = new PropertiesAdapter(options, PropertiesAdapter.Page.PROPERTY);
 
-        recyclerView.setAdapter(adapter);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerView.setAdapter(normalAdapter);
 
-        adapter.startListening();
+        normalAdapter.startListening();
+    }
+
+    private void loadPagingRecyclerView() {
+
+        Query mDatabase = FirebaseDatabase.getInstance().getReference().child("properties").child(UserUtils.phoneNumber());
+
+        PagedList.Config config = new PagedList.Config.Builder().setEnablePlaceholders(false).setPrefetchDistance(5).setPageSize(10).build();
+
+        DatabasePagingOptions<Property> options = new DatabasePagingOptions.Builder<Property>().setLifecycleOwner(this).setQuery(mDatabase, config, Property.class).build();
+        pagingAdapter = new PropertyPagingAdapter(options, binding.swipeRefreshLayout, PropertiesAdapter.Page.PROPERTY);
+
+        binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                pagingAdapter.refresh();
+            }
+        });
+
+        binding.recyclerView.setAdapter(pagingAdapter);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        adapter.stopListening();
+        if (normalAdapter != null)
+            normalAdapter.stopListening();
         binding = null;
     }
 

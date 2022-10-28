@@ -48,7 +48,7 @@ public class SelectPropertyAdapter extends FirebaseRecyclerAdapter<Property, Sel
             binding.tvType.setText(property.getType());
             binding.tvLocation.setText(property.getLocation() + ", " + property.getCity());
 
-            Boolean isLive = Boolean.parseBoolean(property.getIsLive());
+            //Boolean isLive = Boolean.parseBoolean(property.getIsLive());
 
 /*            if (isLive){
                 ivBuilding.setBackgroundResource(R.drawable.ic_building_active);

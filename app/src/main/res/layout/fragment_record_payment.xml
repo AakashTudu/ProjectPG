@@ -64,15 +64,90 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
+                android:id="@+id/tvTenantName"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="4dp"
-                android:paddingStart="25dp"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:background="@drawable/text_input_layout"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text=""
+                android:textColor="@color/black"
+                app:drawableRightCompat="@drawable/ic_arrow_down"
+                tools:text="Bikash kumar"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingTop="20dp"
+                android:text="Date of Payment"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDateOfPayment"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/text_input_layout"
+                android:ems="10"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                tools:text="15-07-12"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingTop="20dp"
+                android:text="Payment Mode"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPaymentMode"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/text_input_layout"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                tools:text="Cash"
+                android:textColor="@color/black"
+                app:drawableRightCompat="@drawable/ic_arrow_down"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingTop="20dp"
+                android:text="Payment Type"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPaymentType"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/text_input_layout"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                tools:text="Rent"
+                android:textColor="@color/black"
+                app:drawableRightCompat="@drawable/ic_arrow_down"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
@@ -85,53 +160,15 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/etPendingAmount"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/text_input_layout"
-                android:paddingStart="25dp"
+                android:inputType="number"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text=""
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:paddingTop="20dp"
-                android:text="Date of Payment"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/text_input_layout"
-                android:ems="10"
-                android:paddingStart="25dp"
-                android:inputType="textPersonName"
-                android:text=""
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:paddingTop="20dp"
-                android:text="Payment Mode"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/text_input_layout"
-                android:ems="10"
-                android:paddingStart="25dp"
-                android:inputType="textPersonName"
                 android:text=""
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -145,15 +182,16 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/etAmountPaid"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/text_input_layout"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:paddingStart="25dp"
-                android:text=""
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:inputType="number"
+                android:paddingStart="20dp"
+                tools:ignore="SpeakableTextPresentCheck"
+                tools:text="5000" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -165,23 +203,26 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/etReceivedBy"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/text_input_layout"
                 android:ems="10"
-                android:paddingStart="25dp"
-                android:inputType="textPersonName"
-                android:text=""
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:inputType="text"
+                tools:text="Raj Kumar"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_save"
+                android:id="@+id/btnContinue"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/black"
+                android:textColor="@color/white"
                 android:text="Continue"
                 android:textAllCaps="false"
                 app:cornerRadius="10dp" />

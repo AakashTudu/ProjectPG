@@ -8,18 +8,18 @@ public class Expense implements Serializable {
     private String t;   // t denotes the title of expense
     private String p;   // p denotes amount
     private String r;   // r denotes the description od expense
-    private String d;   // d denotes date if expense
-    private Boolean m;  // m denotes traction type i.e transaction or shopping
+    private String d_r;   // d denotes date of expense & r denoted property ref
+    private String e;   // e denotes expense type
 
     public Expense() {
     }
 
-    public Expense(String t, String p, String r, String d, Boolean m) {
+    public Expense(String t, String p, String r, String d_r, String e) {
         this.t = t;
         this.p = p;
         this.r = r;
-        this.d = d;
-        this.m = m;
+        this.d_r = d_r;
+        this.e = e;
     }
 
     public String getT() {
@@ -46,20 +46,20 @@ public class Expense implements Serializable {
         this.r = r;
     }
 
-    public String getD() {
-        return d;
+    public void setD_r(String d_r) {
+        this.d_r = d_r;
     }
 
-    public void setD(String d) {
-        this.d = d;
+    public String getE() {
+        return e;
     }
 
-    public Boolean getM() {
-        return m;
+    public void setE(String e) {
+        this.e = e;
     }
 
-    public void setM(Boolean m) {
-        this.m = m;
+    public String getD_r() {
+        return d_r;
     }
 
     @Exclude
@@ -94,20 +94,27 @@ public class Expense implements Serializable {
 
     @Exclude
     public String getDate() {
-        return d;
-    }
-    @Exclude
-    public void setDate(String date) {
-        this.d = date;
+        return d_r.split("_")[0];
     }
 
     @Exclude
-    public Boolean isShoppingChecked() {
-        return m;
+    public String getPropertyRef() {
+        return d_r.split("_")[1];
     }
 
     @Exclude
-    public void setShoppingChecked(Boolean isShoppingChecked) {
-        this.m = isShoppingChecked;
+    public void setDate_propertyRef(String date_propertyRef) {
+        this.d_r = date_propertyRef;
     }
+
+    @Exclude
+    public String getExpenseType() {
+        return e;
+    }
+
+    @Exclude
+    public void setExpenseType(String expenseType) {
+        this.e = expenseType;
+    }
+
 }

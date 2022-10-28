@@ -53,86 +53,92 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmer_view_container"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    android:divider="@android:color/transparent"
-                    android:dividerHeight="0.0px"
-                    android:elevation="8dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="10dp"
-                    app:cardPreventCornerOverlap="false">
+                    android:layout_height="wrap_content">
 
-                    <RelativeLayout
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/outlined_border_thin"
-                        android:padding="20dp">
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:divider="@android:color/transparent"
+                        android:dividerHeight="0.0px"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="10dp"
+                        app:cardPreventCornerOverlap="false">
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:background="@drawable/outlined_border_thin"
+                            android:padding="20dp">
 
-                            <TextView
-                                android:id="@+id/tvName"
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_toLeftOf="@+id/iv_placeholder"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="20dp"
+                                    android:background="#dddddd"
+                                    android:textColor="@color/black"
+                                    android:textSize="22dp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="20dp"
+                                    android:background="#dddddd"
+                                    android:id="@+id/tvEmail"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/tvCity"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="20dp"
+                                    android:background="#dddddd"
+                                    android:layout_marginTop="10dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"
+                                    />
+                            </LinearLayout>
+
+                            <ImageView
+                                android:id="@+id/iv_more"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Varun Kumar"
-                                android:textColor="@color/black"
-                                android:textSize="22dp" />
-<!--
-                            <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_alignParentEnd="true"
                                 android:layout_marginTop="10dp"
-                                android:layout_height="wrap_content"
-                                android:text="+91 123456789"
-                                android:textColor="@color/black" />-->
+                                android:src="@drawable/ic_more" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/tvEmail"
-                                android:text="varun@gmail.com"
-                                android:textColor="@color/black" />
-
-                            <TextView
-                                android:id="@+id/tvCity"
+                            <ImageView
+                                android:id="@+id/iv_placeholder"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Banglore"
-                                android:layout_marginTop="10dp"
-                                android:textColor="@color/black"
-                                android:textStyle="bold"
-                                />
-                        </LinearLayout>
+                                android:layout_toLeftOf="@+id/iv_more"
+                                android:src="@drawable/ic_placeholder" />
 
-                        <ImageView
-                            android:id="@+id/iv_more"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="10dp"
-                            android:src="@drawable/ic_more" />
+                        </RelativeLayout>
 
-                        <ImageView
-                            android:id="@+id/iv_placeholder"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_toLeftOf="@+id/iv_more"
-                            android:src="@drawable/ic_placeholder" />
+                    </androidx.cardview.widget.CardView>
 
-                    </RelativeLayout>
+                </com.facebook.shimmer.ShimmerFrameLayout>
 
-                </androidx.cardview.widget.CardView>
+
 
             </RelativeLayout>
 

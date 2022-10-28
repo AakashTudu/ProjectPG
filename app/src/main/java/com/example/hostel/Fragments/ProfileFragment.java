@@ -1,5 +1,6 @@
 package com.example.hostel.Fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,8 +41,10 @@ public class ProfileFragment extends Fragment {
             FirebaseAuth.getInstance().signOut();
         });
 
+        binding.shimmerViewContainer.startShimmer();
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference userNameRef = rootRef.child("users").child(UserUtils.phoneNumber());
+        userNameRef.keepSynced(true);
         userNameRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -50,6 +53,13 @@ public class ProfileFragment extends Fragment {
                 binding.tvName.setText(user.getName());
                 binding.tvCity.setText(user.getCity());
                 binding.tvEmail.setText(user.getEmail());
+
+                binding.tvName.setBackgroundColor(Color.WHITE);
+                binding.tvCity.setBackgroundColor(Color.WHITE);
+                binding.tvEmail.setBackgroundColor(Color.WHITE);
+
+                binding.shimmerViewContainer.hideShimmer();
+
             }
 
             @Override

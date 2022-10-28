@@ -4,8 +4,11 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hostel.Fragments.ComplaintsFragment;
+import com.example.hostel.Fragments.ComplaintsFragmentDirections;
 import com.example.hostel.Models.Complaint;
 import com.example.hostel.databinding.LayoutComplaintsBinding;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -30,43 +33,24 @@ public class ComplaintsAdapter extends FirebaseRecyclerAdapter<Complaint, Compla
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        LayoutComplaintsBinding layoutComplaintsBinding;
+        LayoutComplaintsBinding binding;
 
-        public ViewHolder(@NonNull LayoutComplaintsBinding layoutComplaintsBinding) {
-            super(layoutComplaintsBinding.getRoot());
-            this.layoutComplaintsBinding = layoutComplaintsBinding;
+        public ViewHolder(@NonNull LayoutComplaintsBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
 
         public void bind(int position, Complaint complaint) {
-            layoutComplaintsBinding.tvTenantName.setText(complaint.getN());
-            layoutComplaintsBinding.tvPgName.setText(complaint.getPn());
-            layoutComplaintsBinding.tvRoomNumber.setText(complaint.getR());
-            layoutComplaintsBinding.tvComplaintDescription.setText(complaint.getC());
+            binding.tvTenantName.setText(complaint.getN());
+            binding.tvPgName.setText(complaint.getPn());
+            binding.tvRoomNumber.setText(complaint.getR());
+            binding.tvComplaintDescription.setText(complaint.getC());
+
+            binding.cardView.setOnClickListener(view -> {
+                Navigation.findNavController(view).navigate(
+                        ComplaintsFragmentDirections.actionComplaintsFragmentToComplaintStatusFragment()
+                );
+            });
         }
     }
 }
-
-
-
-/*    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_complaints,parent,false);
-        return new ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return 3;
-    }
-
-public class ViewHolder extends RecyclerView.ViewHolder {
-    public ViewHolder(@NonNull View itemView) {
-        super(itemView);
-    }
-}*/

@@ -61,9 +61,10 @@ public class SelectSharingFragment extends Fragment {
 
 
             String tenantName = addTenantDTO.getName();
+            tenantName = UserUtils.capitalize(tenantName);
             String mobileNumber = addTenantDTO.getPhoneNumber();
             String emailId = addTenantDTO.getEmailId();
-            String dob = addTenantDTO.getDOB();
+            String doj = addTenantDTO.getDOJ();
             Boolean gender = addTenantDTO.isGender();
             Boolean martialStatus = addTenantDTO.isMartialStatus();
             String occupation = addTenantDTO.getOccupation();
@@ -80,7 +81,7 @@ public class SelectSharingFragment extends Fragment {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myRef = database.getReference("tenants");
                 String propertyName = property.getName() + " PG for " + property.getType().replace("PG", "").trim();
-                Tenant tenant = new Tenant(tenantName, roomNumber, mobileNumber, sharingType, emailId, propertyName, propertyRefKey, dob, gender, martialStatus, occupation, bedNumber, rent);
+                Tenant tenant = new Tenant(tenantName, roomNumber, mobileNumber, sharingType, emailId, propertyName, propertyRefKey, doj, gender, martialStatus, occupation, bedNumber, rent);
                 myRef.push().setValue(tenant).addOnSuccessListener(unused -> {
                     binding.linearProgressIndicator.setVisibility(View.GONE);
                     Navigation.findNavController(view).navigate(SelectSharingFragmentDirections.actionSelectSharingFragmentToCongratulationTenantFragment(addTenantDTO));

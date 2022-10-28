@@ -10,7 +10,7 @@ public class AddTenantDTO implements Serializable {
     String phoneNumber;
     String emailId;
     String occupation;
-    String DOB;
+    String DOJ;
     boolean gender;
     boolean martialStatus;
     String propertyRefKey;
@@ -53,12 +53,12 @@ public class AddTenantDTO implements Serializable {
         this.occupation = occupation;
     }
 
-    public String getDOB() {
-        return DOB;
+    public String getDOJ() {
+        return DOJ;
     }
 
-    public void setDOB(String DOB) {
-        this.DOB = DOB;
+    public void setDOJ(String DOJ) {
+        this.DOJ = DOJ;
     }
 
     public boolean isGender() {

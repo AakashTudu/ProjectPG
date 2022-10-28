@@ -12,7 +12,7 @@ public class Tenant implements Serializable {
     private String e;  // e denotes email id of tenant
     private String pn; // pn denotes PG name
     private String rf; // rf denotes reference of property
-    private String d;  // d denotes date of birth of tenant
+    private String d;  // d denotes date of joining of tenant
     private Boolean g;  // g denotes gender of tenant if g is true means male otherwise female
     private Boolean m;  // m denotes martialStatus of tenant if m is true means single otherwise married
     private String j;  // j denotes the job the tenant is doing

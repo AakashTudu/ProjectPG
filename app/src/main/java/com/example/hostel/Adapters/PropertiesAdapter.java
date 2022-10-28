@@ -3,36 +3,45 @@ package com.example.hostel.Adapters;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hostel.DTO.AddExpenseDTO;
 import com.example.hostel.DTO.AddTenantDTO;
 import com.example.hostel.Enums.FragmentEnum;
 import com.example.hostel.FilterableAdapter.FirebaseRecyclerFilterableAdapter;
 import com.example.hostel.Fragments.PropertyFragmentDirections;
+import com.example.hostel.Fragments.PropertySearchFragment;
+import com.example.hostel.Fragments.PropertySearchFragmentDirections;
 import com.example.hostel.Listeners.OnPropertyOptionClickListener;
 import com.example.hostel.Models.Property;
 import com.example.hostel.R;
 import com.example.hostel.Utils.BottomSheet;
 import com.example.hostel.Utils.Constants;
 import com.example.hostel.databinding.LayoutPropertiesBinding;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class PropertiesAdapter extends FirebaseRecyclerFilterableAdapter<Property, PropertiesAdapter.ViewHolder> {
+public class PropertiesAdapter extends FirebaseRecyclerAdapter<Property, PropertiesAdapter.ViewHolder> {
 
+    Page page;
+    AddExpenseDTO addExpenseDTO;
 
-    /**
-     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
-     * {@link FirebaseRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
-    public PropertiesAdapter(@NonNull FirebaseRecyclerOptions<Property> options) {
-        super(options, true);
+    public PropertiesAdapter(@NonNull FirebaseRecyclerOptions<Property> options ,Page page) {
+        super(options);
+        this.page = page;
     }
+
+    public PropertiesAdapter(@NonNull FirebaseRecyclerOptions<Property> options ,Page page, AddExpenseDTO addExpenseDTO) {
+        super(options);
+        this.page = page;
+        this.addExpenseDTO = addExpenseDTO;
+    }
+
 
     @NonNull
     @Override
@@ -44,12 +53,6 @@ public class PropertiesAdapter extends FirebaseRecyclerFilterableAdapter<Propert
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Property property) {
         holder.bind(position, property);
-    }
-
-
-    @Override
-    protected boolean filterCondition(Property property, String queryString) {
-        return property.getName().toLowerCase().contains(queryString) || property.getName().toLowerCase().contains(queryString);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -66,7 +69,7 @@ public class PropertiesAdapter extends FirebaseRecyclerFilterableAdapter<Propert
             binding.tvType.setText(property.getType());
             binding.tvLocation.setText(property.getLocation() + ", " + property.getCity());
 
-            Boolean isLive = Boolean.parseBoolean(property.getIsLive());
+            //Boolean isLive = Boolean.parseBoolean(property.getIsLive());
 
 /*            if (isLive){
                 ivBuilding.setBackgroundResource(R.drawable.ic_building_active);
@@ -79,24 +82,17 @@ public class PropertiesAdapter extends FirebaseRecyclerFilterableAdapter<Propert
             String code = ref.substring(ref.length() - 5);
             binding.tvCode.setText(code);
 
-            binding.cardView.setOnClickListener(view -> {
-/*                String timeStampRef = getRef(position).getKey();
-                Bundle bundle = new Bundle();
-                bundle.putString(Constants.propertyRef, timeStampRef);
-                bundle.putString("position", String.valueOf(position + 1));
-                bundle.putSerializable(Constants.property, property);
-                Navigation.findNavController(view).navigate(R.id.action_propertyFragment_to_userPropertyFragment, bundle);*/
+            switch (page){
+                case PROPERTY:
+                    initClickListeners(position,property);
+                    break;
+                case SEARCH_PROPERTY:
+                    initSearchClickListener(position, property);
+            }
+        }
 
-                AddTenantDTO addTenantDTO = new AddTenantDTO();
-                addTenantDTO.setPropertyRefKey(getRef(position).getKey());
-                addTenantDTO.setProperty(property);
-                addTenantDTO.setFragmentEnum(FragmentEnum.USER_PROPERTY);
+        private void initClickListeners(int position, Property property) {
 
-                Navigation.findNavController(view).navigate(
-                        PropertyFragmentDirections.actionPropertyFragmentToUserPropertyFragment(addTenantDTO)
-                );
-
-            });
 
             binding.btnMore.setOnClickListener(view -> {
                 BottomSheet.showPropertyBottomDialog(itemView.getContext(), new OnPropertyOptionClickListener() {
@@ -139,7 +135,45 @@ public class PropertiesAdapter extends FirebaseRecyclerFilterableAdapter<Propert
                     }
                 });
             });
+
+            binding.cardView.setOnClickListener(view -> {
+/*                String timeStampRef = getRef(position).getKey();
+                Bundle bundle = new Bundle();
+                bundle.putString(Constants.propertyRef, timeStampRef);
+                bundle.putString("position", String.valueOf(position + 1));
+                bundle.putSerializable(Constants.property, property);
+                Navigation.findNavController(view).navigate(R.id.action_propertyFragment_to_userPropertyFragment, bundle);*/
+
+                AddTenantDTO addTenantDTO = new AddTenantDTO();
+                addTenantDTO.setPropertyRefKey(getRef(position).getKey());
+                addTenantDTO.setProperty(property);
+                addTenantDTO.setFragmentEnum(FragmentEnum.USER_PROPERTY);
+
+                Navigation.findNavController(view).navigate(
+                        PropertyFragmentDirections.actionPropertyFragmentToUserPropertyFragment(addTenantDTO)
+                );
+
+            });
         }
+
+        private void initSearchClickListener(int position, Property property) {
+            binding.btnMore.setVisibility(View.GONE);
+
+            binding.cardView.setOnClickListener(view -> {
+                addExpenseDTO.setPropertyRefKey(getRef(position).getKey());
+                addExpenseDTO.setProperty(property);
+                addExpenseDTO.setPropertyName(property.getName().split(" ")[0] + " PG for " + property.getType().replace("PG","").trim());
+                Navigation.findNavController(view).navigate(
+                        PropertySearchFragmentDirections.actionPropertySearchFragmentToAddExpenseFragment(addExpenseDTO)
+                );
+            });
+        }
+
+    }
+
+    public enum Page{
+        SEARCH_PROPERTY,
+        PROPERTY
     }
 
 }

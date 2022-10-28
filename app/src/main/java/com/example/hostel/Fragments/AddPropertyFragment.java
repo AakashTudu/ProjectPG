@@ -1,6 +1,7 @@
 package com.example.hostel.Fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,14 +11,15 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.hostel.R;
+import com.example.hostel.UI.AddPropertyActivity;
+import com.example.hostel.UI.MainActivity;
 import com.example.hostel.Utils.Constants;
+import com.example.hostel.Utils.UserSharedPref;
 import com.example.hostel.Utils.UserUtils;
 import com.example.hostel.databinding.FragmentAddPropertyBinding;
 import com.google.android.material.snackbar.Snackbar;
@@ -95,6 +97,7 @@ public class AddPropertyFragment extends Fragment {
         binding.btnContinue.setOnClickListener(view -> {
 
             String name = binding.etPropertyName.getText().toString();
+            name = UserUtils.capitalize(name);
             String city = binding.etCityName.getText().toString();
             String location = binding.etPropertyLocation.getText().toString();
 
@@ -119,16 +122,23 @@ public class AddPropertyFragment extends Fragment {
             map.put("type", type.toString());
             map.put("city", city);
             map.put("location", location);
-            map.put("isLive", false);
             DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
             String timeStampRef = String.valueOf(System.currentTimeMillis());
             DatabaseReference userRef = rootRef.child("properties").child(UserUtils.phoneNumber()).child(timeStampRef);
             userRef.setValue(map).addOnSuccessListener(unused -> {
                 binding.linearProgressIndicator.setVisibility(View.GONE);
-                Bundle bundle = new Bundle();
-                bundle.putString(Constants.propertyRef, timeStampRef);
-                bundle.putString(Constants.fragment, "AddPropertyFragment");
-                Navigation.findNavController(view).navigate(R.id.action_addPropertyFragment_to_totalFloorFragment, bundle);
+
+                if (getActivity().getClass().getName().equals(AddPropertyActivity.class.getName())){
+                    UserSharedPref.initializeSharedPreferenceForEmptyPropertyCheck(view.getContext()).edit().putBoolean(UserSharedPref.emptyPropertyCheck, false).apply();
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    ((AddPropertyActivity) getActivity()).startActivity(intent);
+                    getActivity().finish();
+                }else if(getActivity().getClass().getName().equals(MainActivity.class.getName())){
+                    Bundle bundle = new Bundle();
+                    bundle.putString(Constants.propertyRef, timeStampRef);
+                    bundle.putString(Constants.fragment, "AddPropertyFragment");
+                    Navigation.findNavController(view).navigate(R.id.action_addPropertyFragment_to_totalFloorFragment, bundle);
+                }
             });
         });
 

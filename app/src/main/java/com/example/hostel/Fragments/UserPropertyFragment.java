@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hostel.DTO.AddExpenseDTO;
 import com.example.hostel.DTO.AddTenantDTO;
+import com.example.hostel.DTO.ComplaintDTO;
 import com.example.hostel.Models.Property;
 import com.example.hostel.R;
 import com.example.hostel.Utils.Constants;
@@ -40,6 +42,25 @@ public class UserPropertyFragment extends Fragment {
         binding.cvTenant.setOnClickListener(view -> {
             Navigation.findNavController(view).navigate(
                 UserPropertyFragmentDirections.actionUserPropertyFragmentToTenantsFragment(addTenantDTO)
+            );
+        });
+
+
+        binding.cvExpenses.setOnClickListener(view -> {
+            AddExpenseDTO addExpenseDTO = new AddExpenseDTO();
+            addExpenseDTO.setProperty(addTenantDTO.getProperty());
+            addExpenseDTO.setPropertyRefKey(addTenantDTO.getPropertyRefKey());
+            Navigation.findNavController(view).navigate(
+                    UserPropertyFragmentDirections.actionUserPropertyFragmentToExpenseFragment(addExpenseDTO)
+            );
+        });
+
+        binding.cvComplaints.setOnClickListener(view -> {
+            ComplaintDTO complaintDTO = new ComplaintDTO();
+            complaintDTO.setPropertyRefKey(addTenantDTO.getPropertyRefKey());
+            complaintDTO.setProperty(addTenantDTO.getProperty());
+            Navigation.findNavController(view).navigate(
+                    UserPropertyFragmentDirections.actionUserPropertyFragmentToComplaintsFragment(complaintDTO)
             );
         });
 

@@ -63,7 +63,7 @@ public class TenantProfileFragment extends Fragment {
 
         binding.ivPassbook.setOnClickListener(view -> {
             Navigation.findNavController(view).navigate(
-                    TenantProfileFragmentDirections.actionTenantProfileFragmentToPassbookFragment()
+                    TenantProfileFragmentDirections.actionTenantProfileFragmentToPassbookFragment(args.getTenantRefKey())
             );
         });
 

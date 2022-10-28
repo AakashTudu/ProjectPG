@@ -18,6 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hostel.R;
+import com.example.hostel.Utils.UserSharedPref;
+import com.example.hostel.Utils.UserUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -28,13 +30,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class EnterOtpActivity extends AppCompatActivity {
 
     //Button sub_otp;
     EditText inputotp1, inputotp2, inputotp3, inputotp4, inputotp5, inputotp6;
-    TextView textView;
     String just_no, phoneNo, backEndOtp;
     ProgressBar progressBar;
 
@@ -58,8 +60,6 @@ public class EnterOtpActivity extends AppCompatActivity {
         inputotp6 = findViewById(R.id.inputotp6);
         //sub_otp = findViewById(R.id.sub_otp);
 
-        //Showing the captured mobile number
-        textView = findViewById(R.id.phoneNo);
         just_no = getIntent().getStringExtra("mobile");
         phoneNo = just_no;
         String html = "We've sent verification code to <b>" + getIntent().getStringExtra("mobile") + "</b>";
@@ -200,13 +200,40 @@ public class EnterOtpActivity extends AppCompatActivity {
                                                             @Override
                                                             public void onDataChange(DataSnapshot snapshot) {
 
-                                                                Intent i;
-                                                                if (snapshot.exists())  // if snapshot  exist its mean that user exist
-                                                                    i = new Intent(getApplicationContext(), MainActivity.class);
-                                                                else
-                                                                    i = new Intent(getApplicationContext(), ProfileActivity.class);
-                                                                startActivity(i);
-                                                                finish();
+                                                                if (snapshot.exists()) { // if snapshot  exist its mean that user exist
+                                                                    if (UserSharedPref.initializeSharedPreferenceForEmptyPropertyCheck(EnterOtpActivity.this).getBoolean(UserSharedPref.emptyPropertyCheck, true)) {
+
+                                                                        Query query = FirebaseDatabase.getInstance().getReference().child("properties").child(UserUtils.phoneNumber()).limitToFirst(1);
+
+                                                                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                                            @Override
+                                                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                                if (snapshot.exists()) {
+                                                                                    UserSharedPref.initializeSharedPreferenceForEmptyPropertyCheck(EnterOtpActivity.this).edit().putBoolean(UserSharedPref.emptyPropertyCheck,false).apply();
+                                                                                    startActivity(new Intent(EnterOtpActivity.this, MainActivity.class));
+                                                                                    finish();
+                                                                                }
+                                                                                else {
+                                                                                    startActivity(new Intent(EnterOtpActivity.this, AddPropertyActivity.class));
+                                                                                    finish();
+                                                                                }
+
+                                                                            }
+
+                                                                            @Override
+                                                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                                                            }
+                                                                        });
+                                                                    }else{
+                                                                        startActivity(new Intent(EnterOtpActivity.this, MainActivity.class));
+                                                                        finish();
+                                                                    }
+                                                                }
+                                                                else {
+                                                                    startActivity(new Intent(EnterOtpActivity.this, ProfileActivity.class));
+                                                                    finish();
+                                                                }
                                                             }
 
                                                             @Override

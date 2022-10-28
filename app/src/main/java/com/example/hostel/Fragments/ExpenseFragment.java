@@ -2,8 +2,6 @@ package com.example.hostel.Fragments;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.hostel.Adapters.ExpenseAdapter;
 import com.example.hostel.BottomSheetDialog.OptionDialog;
 import com.example.hostel.CustomViews.DatePickerFragment;
+import com.example.hostel.DTO.AddExpenseDTO;
 import com.example.hostel.Models.Expense;
-import com.example.hostel.R;
 import com.example.hostel.Utils.Constants;
 import com.example.hostel.Utils.UserUtils;
 import com.example.hostel.databinding.FragmentExpenseBinding;
@@ -30,7 +28,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -43,7 +40,8 @@ public class ExpenseFragment extends Fragment {
     FragmentExpenseBinding binding;
     String currentDate;
     String month;
-
+    ExpenseFragmentArgs args;
+    AddExpenseDTO addExpenseDTO;
 
     public ExpenseFragment() {
         // Required empty public constructor
@@ -54,22 +52,21 @@ public class ExpenseFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentExpenseBinding.inflate(inflater, container, false);
+        args = ExpenseFragmentArgs.fromBundle(getArguments());
+        if (args.getAddExpenseDTO() != null) {
+            addExpenseDTO = args.getAddExpenseDTO();
+        } else {
+            addExpenseDTO = new AddExpenseDTO();
+        }
 
-        binding.btnBack.setOnClickListener(view -> {
-            Navigation.findNavController(view).popBackStack();
-        });
 
         binding.btnAddExpense.setOnClickListener(view -> {
-/*            Bundle bundle = new Bundle();
-            bundle.putString("date", currentDate);
-            bundle.putString("month", month);
-            Navigation.findNavController(view).navigate(R.id.action_expenseFragment_to_addExpenseFragment, bundle);*/
-/*            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-            DatabaseReference reference = firebaseDatabase.getReference("expense");
-            Expense expense = new Expense("Vegetable", "1200", "2 kg onion", currentDate);
-            reference.push().setValue(expense);*/
+
+            addExpenseDTO.setOption(OptionDialog.Option.ADD);
+            addExpenseDTO.setDate(currentDate);
+            addExpenseDTO.setMonth(month);
             Navigation.findNavController(view).navigate(
-                ExpenseFragmentDirections.actionExpenseFragmentToAddExpenseFragment(null,null, OptionDialog.Option.ADD,currentDate,month)
+                    ExpenseFragmentDirections.actionExpenseFragmentToAddExpenseFragment(addExpenseDTO)
             );
         });
 
@@ -77,27 +74,57 @@ public class ExpenseFragment extends Fragment {
             showDatePickerDialog();
         });
 
-        Calendar cal = Calendar.getInstance();
-        String date = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(cal.getTime());
-        currentDate = date;
-        if (Constants.dateExpense.isEmpty()){
-            loadRoomRecyclerView(currentDate);
+        if(Constants.currentDate==null){
+            Calendar cal = Calendar.getInstance();
+            String date = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(cal.getTime());
+            currentDate = date;
+            Constants.currentDate = date;
         }else{
-            loadRoomRecyclerView(Constants.dateExpense);
+            currentDate = Constants.currentDate;
+        }
+
+
+        if (addExpenseDTO.getProperty() != null) {
+            loadExpenseRecyclerView(currentDate + "_" + addExpenseDTO.getPropertyRefKey());
+        } else {
+            loadRecyclerViewByDate(currentDate);
         }
 
         return binding.getRoot();
     }
 
-    private void loadRoomRecyclerView(String date) {
-        currentDate = date;
-        binding.tvExpenseDate.setText(currentDate);
-        Constants.dateExpense = date;
-        Query query = FirebaseDatabase.getInstance().getReference().child("expense").orderByChild("d").equalTo(date);
+    private void loadExpenseRecyclerView(String date_propertyRef) {
+        currentDate = date_propertyRef.split("_")[0];
+        binding.tvExpenseDate.setText(date_propertyRef.split("_")[0]);
+        Query query = FirebaseDatabase.getInstance().getReference().child("expense");
+
+        if (addExpenseDTO.getPropertyRefKey() != null) {
+            query = query.orderByChild("d_r").equalTo(date_propertyRef);
+        }
 
         FirebaseRecyclerOptions<Expense> options = new FirebaseRecyclerOptions.Builder<Expense>()
                 .setQuery(query, dataSnapshot -> dataSnapshot.getValue(Expense.class)).build();
-        ExpenseAdapter adapter = new ExpenseAdapter(options);
+        ExpenseAdapter adapter = new ExpenseAdapter(options, addExpenseDTO);
+
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerView.setAdapter(adapter);
+
+        adapter.startListening();
+
+        try {
+            displayCardDetails(currentDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadRecyclerViewByDate(String date) {
+        binding.tvExpenseDate.setText(date);
+        Query query = FirebaseDatabase.getInstance().getReference().child("expense").orderByChild("d_r").startAt(date)
+                .endAt(date + "\uf8ff");
+        FirebaseRecyclerOptions<Expense> options = new FirebaseRecyclerOptions.Builder<Expense>()
+                .setQuery(query, dataSnapshot -> dataSnapshot.getValue(Expense.class)).build();
+        ExpenseAdapter adapter = new ExpenseAdapter(options, addExpenseDTO);
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.setAdapter(adapter);
@@ -116,19 +143,23 @@ public class ExpenseFragment extends Fragment {
         month = UserUtils.getMonth(date);
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference monthRef = firebaseDatabase.getReference("expenseCard/month").child(month);
+        DatabaseReference monthRef = firebaseDatabase.getReference("expenseCard/global/month").child(month);
+        DatabaseReference dayRef = firebaseDatabase.getReference("expenseCard/global/day").child(date);
 
-        DatabaseReference dayRef = firebaseDatabase.getReference("expenseCard/day").child(date);
+
+        if (addExpenseDTO.getPropertyRefKey() != null) {
+            monthRef = firebaseDatabase.getReference("expenseCard/" + addExpenseDTO.getPropertyRefKey() + "/month").child(month);
+            dayRef = firebaseDatabase.getReference("expenseCard/" + addExpenseDTO.getPropertyRefKey() + "/day").child(date);
+        }
 
         monthRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
                     binding.tvMonthSpending.setText("₹ " + snapshot.getValue());
-                }else{
+                } else {
                     binding.tvMonthSpending.setText("₹ 0");
                 }
-                Log.d("sdgsdfsdf", "onDataChange: " + snapshot);
             }
 
             @Override
@@ -145,7 +176,6 @@ public class ExpenseFragment extends Fragment {
                 }else{
                     binding.tvDaySpending.setText("₹ 0");
                 }
-                Log.d("sdgsdfsdf", "onDataChange: " + snapshot);
             }
 
             @Override
@@ -166,10 +196,21 @@ public class ExpenseFragment extends Fragment {
                 Date d = new Date(year, month, day);
                 String date = dateFormatter.format(d) + " " + year;
                 currentDate = date;
-                loadRoomRecyclerView(currentDate);
+                Constants.currentDate = date;
+                if (addExpenseDTO.getProperty() != null)
+                    loadExpenseRecyclerView(currentDate + "_" + addExpenseDTO.getPropertyRefKey());
+                else{
+                    loadRecyclerViewByDate(currentDate);
+                }
                 binding.tvExpenseDate.setText(date);
             }
         });
         dateDialog.show(getActivity().getSupportFragmentManager(), "datePicker");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Constants.currentDate = null;
     }
 }

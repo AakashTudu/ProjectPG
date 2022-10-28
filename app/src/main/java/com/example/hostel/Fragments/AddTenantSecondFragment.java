@@ -35,13 +35,13 @@ public class AddTenantSecondFragment extends Fragment {
         AddTenantSecondFragmentArgs args = AddTenantSecondFragmentArgs.fromBundle(getArguments());
         AddTenantDTO addTenantDTO = args.getAddTenantDTO();
 
-        binding.tvDOB.setOnClickListener(view -> {
+        binding.tvDOJ.setOnClickListener(view -> {
             showDatePickerDialog();
         });
 
         binding.btnContinue.setOnClickListener(view -> {
             if (Validation.addTenantSecondPage(binding)) {
-                addTenantDTO.setDOB(binding.tvDOB.getText().toString());
+                addTenantDTO.setDOJ(binding.tvDOJ.getText().toString());
                 addTenantDTO.setGender(binding.radioGroup.getCheckedRadioButtonId() == binding.rbMale.getId());
                 addTenantDTO.setMartialStatus(binding.switchMartialStatus.isChecked());
 
@@ -70,7 +70,7 @@ public class AddTenantSecondFragment extends Fragment {
                 SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-");
                 Date d = new Date(year, month, day);
                 String date = dateFormatter.format(d);
-                binding.tvDOB.setText(date + year);
+                binding.tvDOJ.setText(date + year);
             }
         });
         dateDialog.show(getActivity().getSupportFragmentManager(), "datePicker");

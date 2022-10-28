@@ -49,14 +49,7 @@ public class SelectPropertyFragment extends Fragment {
         Query query = FirebaseDatabase.getInstance().getReference().child("properties").child(UserUtils.phoneNumber());
         FirebaseRecyclerOptions<Property> options = new FirebaseRecyclerOptions.Builder<Property>()
                 .setQuery(query, snapshot -> {
-                    String name = snapshot.child("name").getValue().toString();
-                    String type = snapshot.child("type").getValue().toString();
-                    String city = snapshot.child("city").getValue().toString();
-                    String location = snapshot.child("location").getValue().toString();
-                    String isLive = snapshot.child("isLive").getValue().toString();
-                    return new Property(
-                            name, type, city, location, isLive
-                    );
+                    return snapshot.getValue(Property.class);
                 }).build();
         SelectPropertyAdapter adapter = new SelectPropertyAdapter(options, addTenantDTO);
 

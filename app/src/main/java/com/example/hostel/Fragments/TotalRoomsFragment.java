@@ -62,6 +62,7 @@ public class TotalRoomsFragment extends Fragment {
 
     private void loadRecyclerView() {
         Query query = FirebaseDatabase.getInstance().getReference().child("floor").child(timeStampRef);
+        query.keepSynced(true);
         FirebaseRecyclerOptions<Floor> options = new FirebaseRecyclerOptions.Builder<Floor>()
                 .setQuery(query, snapshot -> {
                     return snapshot.getValue(Floor.class);

@@ -6,9 +6,11 @@ import android.widget.Toast;
 
 import com.example.hostel.databinding.ActivityProfileBinding;
 import com.example.hostel.databinding.FragmentAddBankBinding;
+import com.example.hostel.databinding.FragmentAddExpenseBinding;
 import com.example.hostel.databinding.FragmentAddTenantBinding;
 import com.example.hostel.databinding.FragmentAddTenantFirstBinding;
 import com.example.hostel.databinding.FragmentAddTenantSecondBinding;
+import com.example.hostel.databinding.FragmentRecordPaymentBinding;
 import com.example.hostel.databinding.FragmentSelectSharingBinding;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -75,8 +77,8 @@ public class Validation {
     public static boolean addTenantSecondPage(FragmentAddTenantSecondBinding binding) {
         View view = binding.getRoot().getRootView();
 
-        if (binding.tvDOB.getText().toString().equals("")) {
-            Snackbar.make(view, "Enter Date of birth...", Snackbar.LENGTH_SHORT).show();
+        if (binding.tvDOJ.getText().toString().equals("")) {
+            Snackbar.make(view, "Enter Date of Joining...", Snackbar.LENGTH_SHORT).show();
             return false;
         }
 
@@ -135,6 +137,71 @@ public class Validation {
             Snackbar.make(view, "Please enter ifsc code...", Snackbar.LENGTH_SHORT).show();
             return false;
         }
+        return true;
+    }
+
+    public static boolean recordPaymentPage(FragmentRecordPaymentBinding binding) {
+        View view = binding.getRoot().getRootView();
+        if (binding.tvTenantName.getText().toString().equals("")) {
+            Snackbar.make(view, "Please Select Tenant...", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (binding.tvDateOfPayment.getText().toString().equals("")) {
+            Snackbar.make(view, "Please select date...", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (binding.tvPaymentMode.getText().toString().equals("")) {
+            Snackbar.make(view, "Please select payment mode...", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (binding.tvPaymentType.getText().toString().equals("")) {
+            Snackbar.make(view, "Please select payment type...", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (binding.etPendingAmount.getText().toString().equals("") && binding.etAmountPaid.getText().toString().equals("")) {
+            Snackbar.make(view, "Please enter any of one Amount paid or Pending amount...", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (binding.etReceivedBy.getText().toString().equals("")) {
+            Snackbar.make(view, "Please enter received by...", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+    }
+
+    public static boolean addExpensePage(FragmentAddExpenseBinding binding) {
+        View view = binding.getRoot().getRootView();
+        if (binding.etExpenseTitle.getText().toString().equals("")) {
+            Snackbar.make(view, "Please enter expense title...", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (binding.etAmount.getText().toString().equals("")) {
+            Snackbar.make(view, "Please enter amount...", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (binding.tvExpenseType.getText().toString().equals("")) {
+            Snackbar.make(view, "Please select expense type...", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (binding.tvProperty.getText().toString().equals("")) {
+            Snackbar.make(view, "Please select property...", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (binding.etDescription.getText().toString().equals("")) {
+            Snackbar.make(view, "Please enter description...", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+
         return true;
     }
 }

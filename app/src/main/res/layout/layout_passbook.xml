@@ -30,16 +30,16 @@
 
 
             <TextView
-                android:id="@+id/tvName"
+                android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp"
                 android:text="26 June 2022" />
 
             <TextView
-                android:id="@+id/tvDescription"
+                android:id="@+id/tvType"
                 android:paddingStart="15dp"
-                android:layout_below="@+id/tvName"
+                android:layout_below="@+id/tvDate"
                 android:textColor="@color/black"
                 android:text="Rent"
                 android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@+id/tvName"
+                android:layout_below="@+id/tvDate"
                 android:drawablePadding="10dp"
                 android:paddingEnd="20dp"
                 android:textColor="@color/black"

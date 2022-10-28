@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,7 +24,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormatSymbols;
@@ -47,9 +45,11 @@ public class DashboardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("users").child(UserUtils.phoneNumber());
+        DatabaseReference myRef = database.getReference("users").child(UserUtils.phoneNumber()).child("name");
 
-        myRef.child("name").addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.keepSynced(true);
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String name = snapshot.getValue(String.class);
@@ -64,7 +64,9 @@ public class DashboardFragment extends Fragment {
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         binding.recordPay.setOnClickListener(view -> {
-            Navigation.findNavController(view).navigate(R.id.action_dashboardFragment_to_recordPaymentFragment);
+            Navigation.findNavController(view).navigate(
+                    DashboardFragmentDirections.actionDashboardFragmentToRecordPaymentFragment(null, null)
+            );
         });
 
 
@@ -79,7 +81,9 @@ public class DashboardFragment extends Fragment {
         });
 
         binding.btnExpenses.setOnClickListener(view -> {
-            Navigation.findNavController(view).navigate(R.id.action_dashboardFragment_to_expenseFragment);
+            Navigation.findNavController(view).navigate(
+                    DashboardFragmentDirections.actionDashboardFragmentToExpenseFragment(null)
+            );
         });
 
 

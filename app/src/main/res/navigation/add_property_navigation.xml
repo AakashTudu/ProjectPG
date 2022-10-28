@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_property_navigation"
+    app:startDestination="@id/addPropertyFragment">
+    <fragment
+        android:id="@+id/addPropertyFragment"
+        android:name="com.example.hostel.Fragments.AddPropertyFragment"
+        android:label="Add Property"
+        tools:layout="@layout/fragment_add_property" />
+</navigation>

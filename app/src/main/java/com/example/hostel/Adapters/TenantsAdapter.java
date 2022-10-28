@@ -1,6 +1,5 @@
 package com.example.hostel.Adapters;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -9,16 +8,18 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hostel.FilterableAdapter.FirebaseRecyclerFilterableAdapter;
+import com.example.hostel.Fragments.TenantSearchFragmentDirections;
 import com.example.hostel.Fragments.TenantsFragmentDirections;
 import com.example.hostel.Models.Tenant;
-import com.example.hostel.Utils.Constants;
 import com.example.hostel.Utils.UserUtils;
 import com.example.hostel.databinding.LayoutTenantsBinding;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class TenantsAdapter extends FirebaseRecyclerFilterableAdapter<Tenant, TenantsAdapter.ViewHolder> {
-    public TenantsAdapter(@NonNull FirebaseRecyclerOptions<Tenant> options) {
+    Page page;
+    public TenantsAdapter(@NonNull FirebaseRecyclerOptions<Tenant> options, Page page) {
         super(options, true);
+        this.page = page;
     }
 
     @NonNull
@@ -58,13 +59,15 @@ public class TenantsAdapter extends FirebaseRecyclerFilterableAdapter<Tenant, Te
                 String ref = getRef(position).getKey();
                 String code = ref.substring(ref.length() - 5);
                 binding.tvCode.setText(code);
-                binding.cardView.setOnClickListener(view -> {
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable(Constants.tenant, tenant);
-                    Navigation.findNavController(view).navigate(
-                            TenantsFragmentDirections.actionTenantsFragmentToTenantProfileFragment(tenant, code)
-                    );
-                });
+
+                switch (page){
+                    case TENANT:
+                        tenantCardCLickListener(tenant,code,getRef(position).getKey());
+                        break;
+                    case SEARCH_TENANT:
+                        searchTenantCardListener(tenant, getRef(position).getKey());
+                }
+
             }catch (Exception exception){
                 exception.printStackTrace();
             }
@@ -73,5 +76,25 @@ public class TenantsAdapter extends FirebaseRecyclerFilterableAdapter<Tenant, Te
                 UserUtils.call(tenant.getP(),view.getContext());
             });
         }
+
+        private void tenantCardCLickListener(Tenant tenant, String code, String tenantRefKey) {
+            binding.cardView.setOnClickListener(view -> {
+                Navigation.findNavController(view).navigate(
+                        TenantsFragmentDirections.actionTenantsFragmentToTenantProfileFragment(tenant, code, tenantRefKey)
+                );
+            });
+        }
+
+        private void searchTenantCardListener(Tenant tenant, String tenantRefKey) {
+            binding.cardView.setOnClickListener(view -> {
+                Navigation.findNavController(view).navigate(
+                        TenantSearchFragmentDirections.actionTenantSearchFragmentToRecordPaymentFragment(tenant, tenantRefKey)
+                );
+            });
+        }
+    }
+    public enum Page{
+        SEARCH_TENANT,
+        TENANT
     }
 }

@@ -21,7 +21,6 @@
 
     <ImageView
         android:id="@+id/ivBankIcon"
-        android:src="@drawable/ic_sbi"
         android:layout_width="18dp"
         android:layout_centerVertical="true"
         android:layout_height="24dp"

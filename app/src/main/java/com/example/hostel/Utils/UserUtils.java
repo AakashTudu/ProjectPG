@@ -132,4 +132,12 @@ public class UserUtils {
     public static String capitalize(String str) {
         return StringUtils.capitalize(str);
     }
+
+    public static String dateConverter(String originalDate, String originalFormat, String targetFormat) throws ParseException {
+        DateFormat originalDateFormat = new SimpleDateFormat(originalFormat, Locale.ENGLISH);
+        DateFormat targetDateFormat = new SimpleDateFormat(targetFormat);
+        Date date = originalDateFormat.parse(originalDate);
+        String formattedDate = targetDateFormat.format(date);
+        return formattedDate;
+    }
 }

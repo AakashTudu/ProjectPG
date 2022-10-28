@@ -137,7 +137,23 @@
         android:id="@+id/recordPaymentFragment"
         android:name="com.example.hostel.Fragments.RecordPaymentFragment"
         android:label="Record Payment"
-        tools:layout="@layout/fragment_record_payment" />
+        tools:layout="@layout/fragment_record_payment">
+        <action
+            android:id="@+id/action_recordPaymentFragment_to_tenantSearchFragment"
+            app:destination="@id/tenantSearchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="tenant"
+            app:argType="com.example.hostel.Models.Tenant"
+            app:nullable="true" />
+        <argument
+            android:name="tenantRefKey"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/collectionFragment"
         android:name="com.example.hostel.Fragments.CollectionFragment"
@@ -242,6 +258,14 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_roomArrangementFragment_to_roomDetailFragment"
+            app:destination="@id/roomDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/addRoomFragment"
@@ -308,12 +332,32 @@
             android:name="addTenantDTO"
             app:argType="com.example.hostel.DTO.AddTenantDTO"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_userPropertyFragment_to_expenseFragment"
+            app:destination="@id/expenseFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/complaintsFragment"
         android:name="com.example.hostel.Fragments.ComplaintsFragment"
         android:label="Complaints"
-        tools:layout="@layout/fragment_complaints" />
+        tools:layout="@layout/fragment_complaints">
+        <argument
+            android:name="complaintDTO"
+            app:argType="com.example.hostel.DTO.ComplaintDTO"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_complaintsFragment_to_complaintStatusFragment"
+            app:destination="@id/complaintStatusFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
     <fragment
         android:id="@+id/tenantsFragment"
         android:name="com.example.hostel.Fragments.TenantsFragment"
@@ -379,6 +423,9 @@
             app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="code"
+            app:argType="string" />
+        <argument
+            android:name="tenantRefKey"
             app:argType="string" />
     </fragment>
     <fragment
@@ -497,7 +544,7 @@
         android:id="@+id/expenseFragment"
         android:name="com.example.hostel.Fragments.ExpenseFragment"
         android:label="Expense Management"
-        tools:layout="@layout/fragment_expense" >
+        tools:layout="@layout/fragment_expense">
         <action
             android:id="@+id/action_expenseFragment_to_addExpenseFragment"
             app:destination="@id/addExpenseFragment"
@@ -505,29 +552,26 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="addExpenseDTO"
+            app:argType="com.example.hostel.DTO.AddExpenseDTO"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/addExpenseFragment"
         android:name="com.example.hostel.Fragments.AddExpenseFragment"
         android:label="Add Expense"
-        tools:layout="@layout/fragment_add_expense" >
+        tools:layout="@layout/fragment_add_expense">
         <argument
-            android:name="expense"
-            app:argType="com.example.hostel.Models.Expense"
-            app:nullable="true" />
-        <argument
-            android:name="expenseRef"
-            app:argType="string"
-            app:nullable="true" />
-        <argument
-            android:name="option"
-            app:argType="com.example.hostel.BottomSheetDialog.OptionDialog$Option" />
-        <argument
-            android:name="date"
-            app:argType="string" />
-        <argument
-            android:name="month"
-            app:argType="string" />
+            android:name="addExpenseDTO"
+            app:argType="com.example.hostel.DTO.AddExpenseDTO" />
+        <action
+            android:id="@+id/action_addExpenseFragment_to_propertySearchFragment"
+            app:destination="@id/propertySearchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/bankDetailsFragment"
@@ -611,7 +655,11 @@
         android:id="@+id/passbookFragment"
         android:name="com.example.hostel.Fragments.PassbookFragment"
         android:label="Passbook"
-        tools:layout="@layout/fragment_passbook" />
+        tools:layout="@layout/fragment_passbook" >
+        <argument
+            android:name="tenantRefKey"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/documentFragment"
         android:name="com.example.hostel.Fragments.DocumentFragment"
@@ -639,4 +687,51 @@
         android:name="com.example.hostel.Fragments.BusinessDetailsFragment"
         android:label="Business Details"
         tools:layout="@layout/fragment_business_details" />
+    <fragment
+        android:id="@+id/tenantSearchFragment"
+        android:name="com.example.hostel.Fragments.TenantSearchFragment"
+        android:label="Search Tenant"
+        tools:layout="@layout/fragment_tenant_search">
+        <action
+            android:id="@+id/action_tenantSearchFragment_to_recordPaymentFragment"
+            app:destination="@id/recordPaymentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/recordPaymentFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/propertySearchFragment"
+        android:name="com.example.hostel.Fragments.PropertySearchFragment"
+        android:label="Search Property"
+        tools:layout="@layout/fragment_property_search">
+        <action
+            android:id="@+id/action_propertySearchFragment_to_addExpenseFragment"
+            app:destination="@id/addExpenseFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/addExpenseFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="addExpenseDTO"
+            app:argType="com.example.hostel.DTO.AddExpenseDTO"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/complaintStatusFragment"
+        android:name="com.example.hostel.Fragments.ComplaintStatusFragment"
+        android:label="Complaint Status"
+        tools:layout="@layout/fragment_complaint_status" />
+    <fragment
+        android:id="@+id/roomDetailFragment"
+        android:name="com.example.hostel.Fragments.RoomDetailFragment"
+        android:label="fragment_room_detail"
+        tools:layout="@layout/fragment_room_detail" >
+        <argument android:name="propertyRefKey"
+            app:argType="string" />
+    </fragment>
 </navigation>

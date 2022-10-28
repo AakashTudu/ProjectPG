@@ -8,9 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hostel.Fragments.RoomArrangementFragmentDirections;
 import com.example.hostel.Listeners.OnRoomOptionClickListener;
 import com.example.hostel.Models.Bed;
 import com.example.hostel.Models.Room;
@@ -58,11 +61,13 @@ public class RoomsArrangementAdapter extends FirebaseRecyclerAdapter<Room,RoomsA
         TextView tvRoomNumber;
         RecyclerView rVBed;
         ImageView ivMore;
+        CardView cardView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvRoomNumber = itemView.findViewById(R.id.tvRoomQuantity);
             rVBed = itemView.findViewById(R.id.rvBed);
             ivMore = itemView.findViewById(R.id.ivMore);
+            cardView = itemView.findViewById(R.id.cardView);
         }
 
         public void bind(int position, Room room) {
@@ -142,26 +147,15 @@ public class RoomsArrangementAdapter extends FirebaseRecyclerAdapter<Room,RoomsA
                     @Override
                     public void btnDeleteClicked() {
                         getRef(position).removeValue();
-                        getBindingAdapter().notifyDataSetChanged();
                     }
                 });
             });
 
-            /*ivMore.setOnClickListener(view -> {
-                BottomSheet.addBedBottomDialog(itemView.getContext(), new OnBtnClickListener() {
-                    @Override
-                    public void btnClicked(String data) {
-                        Log.d("sdgsdgd", "ref: " + getRef(position).getKey());
-                        String ref = getRef(position).getKey();
-                        Map<String, Object> map = new HashMap<>();
-                        map.put("n", data);
-                        map.put("s", "v");
-                        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                        DatabaseReference userRef = rootRef.child("bed").child(ref).child(String.valueOf(System.currentTimeMillis()));
-                        userRef.setValue(map);
-                    }
-                });
-            });*/
+            cardView.setOnClickListener(view -> {
+                Navigation.findNavController(view).navigate(
+                        RoomArrangementFragmentDirections.actionRoomArrangementFragmentToRoomDetailFragment(propertyRefKey)
+                );
+            });
         }
     }
 

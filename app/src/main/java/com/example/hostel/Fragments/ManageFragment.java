@@ -80,13 +80,17 @@ public class ManageFragment extends Fragment {
                     Navigation.findNavController(binding.getRoot()).navigate(R.id.action_manageFragment_to_bookingsFragment);
                     break;
                 case "Report\nComplaints":
-                    Navigation.findNavController(binding.getRoot()).navigate(R.id.action_manageFragment_to_complaintsFragment);
+                    Navigation.findNavController(binding.getRoot()).navigate(
+                            ManageFragmentDirections.actionManageFragmentToComplaintsFragment(null)
+                    );
                     break;
                 case "Room \nVacancies":
                     Navigation.findNavController(binding.getRoot()).navigate(R.id.action_manageFragment_to_roomVacanciesFragment);
                     break;
                 case "Expenses":
-                    Navigation.findNavController(binding.getRoot()).navigate(R.id.action_manageFragment_to_expenseFragment);
+                    Navigation.findNavController(binding.getRoot()).navigate(
+                            ManageFragmentDirections.actionManageFragmentToExpenseFragment(null)
+                    );
             }
         }));
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));

@@ -4,17 +4,15 @@ import java.io.Serializable;
 
 public class Property implements Serializable {
     String name, type, city ,location;
-    String isLive;
 
     public Property() {
     }
 
-    public Property(String name, String type, String city, String location, String isLive) {
+    public Property(String name, String type, String city, String location) {
         this.name = name;
         this.type = type;
         this.city = city;
         this.location = location;
-        this.isLive = isLive;
     }
 
     public String getName() {
@@ -45,15 +43,4 @@ public class Property implements Serializable {
         return location;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getIsLive() {
-        return isLive;
-    }
-
-    public void setIsLive(String isLive) {
-        this.isLive = isLive;
-    }
 }

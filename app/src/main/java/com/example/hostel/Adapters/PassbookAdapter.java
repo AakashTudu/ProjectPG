@@ -6,9 +6,27 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hostel.Models.Transaction;
 import com.example.hostel.databinding.LayoutPassbookBinding;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class PassbookAdapter extends RecyclerView.Adapter<PassbookAdapter.ViewHolder> {
+public class PassbookAdapter extends FirebaseRecyclerAdapter<Transaction,PassbookAdapter.ViewHolder> {
+
+    /**
+     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
+     * {@link FirebaseRecyclerOptions} for configuration options.
+     *
+     * @param options
+     */
+    public PassbookAdapter(@NonNull FirebaseRecyclerOptions<Transaction> options) {
+        super(options);
+    }
+
+    @Override
+    protected void onBindViewHolder(@NonNull PassbookAdapter.ViewHolder viewHolder, int position, @NonNull Transaction Transaction) {
+        viewHolder.bind(position, Transaction);
+    }
 
     @NonNull
     @Override
@@ -17,19 +35,17 @@ public class PassbookAdapter extends RecyclerView.Adapter<PassbookAdapter.ViewHo
         return new ViewHolder(binding);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull PassbookAdapter.ViewHolder holder, int position) {
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return 4;
-    }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public ViewHolder(@NonNull LayoutPassbookBinding itemView) {
-            super(itemView.getRoot());
+        LayoutPassbookBinding binding;
+        public ViewHolder(@NonNull LayoutPassbookBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
+        public void bind(int position, Transaction transaction) {
+            binding.tvDate.setText(transaction.getDate());
+            binding.tvType.setText(transaction.getPaymentType());
+            binding.tvAmount.setText("₹ " + transaction.getAmountPaid());
         }
     }
 }

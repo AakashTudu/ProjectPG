@@ -48,7 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                 userRef.setValue(map).addOnSuccessListener(unused -> {
                     binding.linearProgressIndicator.setVisibility(View.GONE);
-                    startActivity(new Intent(ProfileActivity.this, MainActivity.class));
+                    startActivity(new Intent(ProfileActivity.this, AddPropertyActivity.class));
                     finish();
                 });
 
