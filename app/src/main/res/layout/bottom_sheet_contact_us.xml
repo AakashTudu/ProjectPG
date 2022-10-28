@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+91 123466789758"
+        android:text="+91 8050263861"
         />
 
     <TextView
@@ -31,7 +31,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="grubstay@gmail.com"
+        android:text="hawltofficial@gmail.com"
         />
 
     <TextView
@@ -46,7 +46,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="India, Bangalore, HSR Layout, Pin-5201374, sector - 2, Street no - 45"
+        android:text="No.343/1, 9th Main Rd, above HDFC Bank, Sector 7, HSR Layout, Bengaluru, Karnataka 560102"
         />
 
 </LinearLayout>

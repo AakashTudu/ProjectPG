@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -111,6 +112,8 @@ public class TenantsFragment extends Fragment {
         Query query = FirebaseDatabase.getInstance().getReference().child("tenants").orderByChild("n")
                 .startAt(queryText).endAt(queryText+"\uf8ff");
 
+        query.keepSynced(true);
+
         FirebaseRecyclerOptions<Tenant> options = new FirebaseRecyclerOptions.Builder<Tenant>()
                 .setQuery(query, dataSnapshot -> {
                     return dataSnapshot.getValue(Tenant.class);
@@ -127,24 +130,35 @@ public class TenantsFragment extends Fragment {
 
         Query mDatabase = FirebaseDatabase.getInstance().getReference().child("tenants");
 
-/*        if (addTenantDTO.getPropertyRefKey()!=null){
+        if (addTenantDTO.getPropertyRefKey()!=null){
             mDatabase = mDatabase.orderByChild("rf").equalTo(addTenantDTO.getPropertyRefKey());
-        }*/
+            mDatabase.keepSynced(true);
+            FirebaseRecyclerOptions<Tenant> options = new FirebaseRecyclerOptions.Builder<Tenant>()
+                    .setQuery(mDatabase, dataSnapshot -> {
+                        return dataSnapshot.getValue(Tenant.class);
+                    }).build();
+            normalAdapter = new TenantsAdapter(options, TenantsAdapter.Page.SEARCH_TENANT);
 
-        PagedList.Config config = new PagedList.Config.Builder().setEnablePlaceholders(false).setPrefetchDistance(5).setPageSize(10).build();
+            binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            binding.recyclerView.setAdapter(normalAdapter);
 
-        DatabasePagingOptions<Tenant> options = new DatabasePagingOptions.Builder<Tenant>().setLifecycleOwner(this).setQuery(mDatabase, config, Tenant.class).build();
-        pagingAdapter = new TenantsPagingAdapter(options, binding.swipeRefreshLayout, TenantsAdapter.Page.TENANT);
-        binding.recyclerView.setAdapter(pagingAdapter);
+            normalAdapter.startListening();
+        }else{
+            PagedList.Config config = new PagedList.Config.Builder().setEnablePlaceholders(false).setPrefetchDistance(5).setPageSize(10).build();
 
-        binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                pagingAdapter.refresh();
-            }
-        });
+            DatabasePagingOptions<Tenant> options = new DatabasePagingOptions.Builder<Tenant>().setLifecycleOwner(this).setQuery(mDatabase, config, Tenant.class).build();
+            pagingAdapter = new TenantsPagingAdapter(options, binding.swipeRefreshLayout, TenantsAdapter.Page.TENANT);
+            binding.recyclerView.setAdapter(pagingAdapter);
 
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    pagingAdapter.refresh();
+                }
+            });
+
+            binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        }
     }
 
     @Override
