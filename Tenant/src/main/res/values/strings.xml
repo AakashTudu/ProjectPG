@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tenant</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="address">India, Bangalore, HSR Layout, Pin-5201374, sector - 2, Street no - 45</string>
+    <string name="report_issue"><![CDATA[Report & get \nsolved your \nproblem easily.]]></string>
+</resources>

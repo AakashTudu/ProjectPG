@@ -13,4 +13,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Hostel"
-include ':app'
+include ':manager'
+include ':tenant'
