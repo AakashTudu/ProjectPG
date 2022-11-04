@@ -357,7 +357,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="3dp"
                         android:layout_toRightOf="@+id/iv_open_door"
-                        tools:text="502" />
+                        android:text="502" />
 
                     <TextView
                         android:id="@+id/tvOccupancy"
@@ -366,7 +366,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="3dp"
                         android:layout_toRightOf="@+id/tvRoomQuantity"
-                        tools:text="Single Occupancy" />
+                        android:text="Single Occupancy" />
                 </RelativeLayout>
 
             </LinearLayout>
@@ -621,7 +621,7 @@
                         android:id="@+id/tvAddExpense"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Add Expense"
+                        android:text="Add \nExpense"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="#29B1EA" />
@@ -638,6 +638,13 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_arrow_light_blue" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:layout_alignParentEnd="true"
                         android:src="@drawable/ic_add_expense" />
@@ -647,6 +654,298 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardCheckIn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="15dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0.0px"
+                android:elevation="5dp"
+                android:padding="20dp"
+                app:cardBackgroundColor="#ECEBFF"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardPreventCornerOverlap="false"
+                app:layout_constraintBottom_toTopOf="@+id/cardPickupParcel"
+                app:layout_constraintEnd_toStartOf="@+id/cardLeavingProperty"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    >
+
+
+                    <TextView
+                        android:id="@+id/tvCheckIn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:text="Check-in\nLate?"
+                        android:textStyle="bold"
+                        android:textColor="#29B1EA" />
+
+                    <TextView
+                        android:id="@+id/tvCheckInDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvCheckIn"
+                        android:layout_marginTop="10dp"
+                        android:text="Inform your \nwarden to keep \nthe gates open"
+                        android:textColor="#29B1EA" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_check_in" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_arrow_light_blue" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardLeavingProperty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0.0px"
+                android:elevation="5dp"
+                android:padding="20dp"
+                app:cardBackgroundColor="#FFD6DB"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardPreventCornerOverlap="false"
+                app:layout_constraintBottom_toBottomOf="@+id/cardCheckIn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/cardCheckIn"
+                app:layout_constraintTop_toTopOf="@+id/cardCheckIn">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp">
+
+                    <TextView
+                        android:id="@+id/tvLeavingProperty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Leaving \nProperty?"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#FF112E" />
+
+                    <TextView
+                        android:id="@+id/tvLeavingPropertyDes"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvLeavingProperty"
+                        android:text="Inform your \nwarden to give \n30 days notice"
+                        android:textColor="#FF112E" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_leave_property" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_arrow_red" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardPickupParcel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="15dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0.0px"
+                android:elevation="5dp"
+                android:padding="20dp"
+                app:cardBackgroundColor="#E4FFF7"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardPreventCornerOverlap="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cardReturnParcel"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardCheckIn"
+                app:layout_constraintVertical_bias="0.5">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp">
+
+                    <TextView
+                        android:id="@+id/tvPickupParcel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pickup Parcel"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#0A8080" />
+
+                    <TextView
+                        android:id="@+id/tvPickupParcelDes"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvPickupParcel"
+                        android:text="Inform us, we \nwill receive \nyour parcel"
+                        android:textColor="#0A8080" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_arrow_light_blue" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardReturnParcel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0.0px"
+                android:elevation="5dp"
+                android:padding="20dp"
+                app:cardBackgroundColor="#FFDCED"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardPreventCornerOverlap="false"
+                app:layout_constraintBottom_toBottomOf="@+id/cardPickupParcel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/cardPickupParcel"
+                app:layout_constraintTop_toTopOf="@+id/cardPickupParcel">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp">
+
+                    <TextView
+                        android:id="@+id/tvReturnParcel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Return Parcel"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#F31881" />
+
+                    <TextView
+                        android:id="@+id/tvReturnParcelDes"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvReturnParcel"
+                        android:text="We will return \nyour parcel\n"
+                        android:textColor="#F31881" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_arrow_pink" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Sunday menu 🍔"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            tools:listitem="@layout/layout_menu"
+            android:layout_width="match_parent"
+            tools:itemCount="1"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Action's Tab 🤵"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewAction"
+            tools:listitem="@layout/layout_action"
+            android:layout_width="match_parent"
+            tools:itemCount="1"
+            android:layout_height="wrap_content"
+            />
 
     </LinearLayout>
 
